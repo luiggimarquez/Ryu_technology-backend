@@ -8,7 +8,6 @@ router.get('/', (req,res) => {
     res.json(productos)
 });
 
-
 router.get('/:id', (req,res) => {
 
     let resultado = []
@@ -24,7 +23,6 @@ router.get('/:id', (req,res) => {
     res.json(resultado)
 } );
 
-
 router.post('/', (req,res) => {
 
     let recibido = req.body;
@@ -33,7 +31,6 @@ router.post('/', (req,res) => {
     productos.push(recibido)
     res.json(recibido)
 } );
-
 
 router.put('/:id', (req,res) => {
     
@@ -55,7 +52,6 @@ router.put('/:id', (req,res) => {
     boolean ? (variable = (`producto Id: ${id} actualizado`)) : (variable = (`producto Id: ${id} no existe`))
     res.send(variable);
 } );
-
 
 router.delete('/:id', (req,res) => {
     

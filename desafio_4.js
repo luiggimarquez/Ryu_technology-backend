@@ -8,16 +8,6 @@ app.use(express.urlencoded({extended: true}))
 app.use('/api/productos', productos)
 app.use(express.static(__dirname+'/public'));
 
-/* 
-app.get('/api/productos',((req,res)=>{
-    
-  
-    res.send("respuesta, esto es una respuesta")
-  
-
-})) */
-
-
 const server = app.listen(PORT, () => {
   console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
 })
