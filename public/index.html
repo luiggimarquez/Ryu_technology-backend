@@ -5,11 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    
-    <title>Document</title>
+    <title>Template engines</title>
 </head>
 <body>
-
 
     <header>
         <h1>Ryu Technology</h1>
@@ -17,23 +15,26 @@
 
     <main>
 
-        <h1 class="titulo">Desafio 4</h1>
+        <h1 class="tittle">Desafio 5 -  Templates engine</h1>
+        <h2 class="tittle">Por favor ingresa un producto</h2>
 
+        <section class="formCenter">
 
-        <section>
-
-            <form class="formulario" action="/api/productos" method="post" >
+            <form class="form" action="/productos" method="post" >
 
                 <input class="input" type="text" placeholder="Tittle" name="tittle" id="tittle" required >
                 <input class="input" type="number" placeholder="Price" name="price" id="price" required>
                 <input class="input" type="text" placeholder="Thumbnail" name="thumbnail" id="thumbnail" required>
-                <button type="submit">Enviar</button>
-                <input type="reset" value="Restablecer">
-    
+                <div class="buttonAling">
+                    <button type="submit"> Enviar </button>
+                    <input type="reset" value=" Restablecer ">
+                </div>
+                
             </form>
+            
+            <div class="centerButton"><a href="/productos"><button>Ir a Productos</button></a></div>
 
         </section>
-
     </main>
     
 </body>

@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/template.css")
+        title Desafio_5_pug
+    body
+        header
+
+            h1 Ryu Technology
+        
+        h2 Productos - Pug
+
+        if boolean
+
+            div(class='centerTable')
+            
+                table
+                    thead
+                        tr
+                            th Title
+                            th Price (USD)
+                            th Thumbnail
+                    tbody
+
+                        each val in products
+                            tr 
+                                td #{val.tittle}
+                                td #{val.price}
+                                td
+                                    img(class="imgSize" src='' + val.thumbnail)                
+        else
+            h2 No hay productos      
+        div( class="centerButton")
+            a(href="/")
+                button Ir a formulario
