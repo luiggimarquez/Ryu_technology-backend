@@ -15,12 +15,12 @@
 
     <main>
 
-        <h1 class="tittle">Desafio 5 -  Templates engine</h1>
+        <h1 class="tittle">Desafio 6 -  Websocket</h1>
         <h2 class="tittle">Por favor ingresa un producto</h2>
 
         <section class="formCenter">
 
-            <form class="form" action="/productos" method="post" >
+            <form class="form" action="/" method="post" id="formulario">
 
                 <input class="input" type="text" placeholder="Tittle" name="tittle" id="tittle" required >
                 <input class="input" type="number" placeholder="Price" name="price" id="price" required>
@@ -31,11 +31,14 @@
                 </div>
                 
             </form>
-            
-            <div class="centerButton"><a href="/productos"><button>Ir a Productos</button></a></div>
 
         </section>
+        <section id="templateProducts"></section>
+
     </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="./index.js"></script>
     
 </body>
 </html>
