@@ -9,14 +9,11 @@ let ID = 0;
 
 async function getAll(){
 
-    
-
     try{
         let readProducts = await fs.promises.readFile('./routes/productos.txt')
         //let contenidos = JSON.parse(readProducts)
         let contenidos = JSON.parse(readProducts)
             return (contenidos)
-        
         
     }catch(err){
         console.log(err);
@@ -25,14 +22,8 @@ async function getAll(){
     }
 }
 
-
-
-
 router.get("/", (req,res) =>{
 
-    /* let boolean = true;
-    if(products.length === 0){ boolean = false;}
-    res.render('index', {products,boolean} ) */
     res.sendFile('index.html' ,{ root: './public' } )
 
 })
@@ -54,5 +45,6 @@ router.post("/",(req,res) =>{
 products=getAll()
 
 module.exports = {router, products};
+
 
 

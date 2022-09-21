@@ -11,6 +11,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/', productsList.router)
 
+app.use(express.static(__dirname+ '/public'));
+
 socketServer.on('connection',(client)=>{
     console.log('usuario conectado')
     
@@ -30,7 +32,7 @@ socketServer.on('connection',(client)=>{
 })
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 httpServer.listen(PORT, () =>{
     console.log(`Servidor escuchando al puerto ${PORT}`)
 })
