@@ -154,3 +154,12 @@ textarea {
     width: 80%;
 }
 
+.footer {
+
+    color: white;
+    background-color: darkblue;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
