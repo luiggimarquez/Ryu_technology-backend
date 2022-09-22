@@ -22,7 +22,7 @@ header{
     margin-top: 100px;
 }
 
-.form{
+.form, .form2{
 
     display: flex;
     justify-content: center;
@@ -100,3 +100,57 @@ td {
 
     width: 50px;
 }
+
+.formatPrinting {
+    
+    display: flex;
+    margin: 10px 17px;
+}
+
+.mailColor {
+
+    color: blue;
+    font-weight: 900;
+    padding: 0px 9px 0px 0px;
+}
+
+.dateColor {
+
+    color: brown;
+    padding: 0px 9px 0px 0px;
+}
+
+.colorMessage {
+
+    color: green;
+    font-style: italic;
+    padding: 0px 9px 0px 9px;
+}
+
+.form2{ 
+
+    width: 550px;
+}
+textarea {
+
+    height: 80px;
+    width: 400px;
+}
+.tituloChat{
+    
+    margin: 10px 0px;
+    color: white;
+    font-size: larger;
+}
+.buttonChat {
+
+    margin: 10px;
+    padding: 5px;
+}
+.templateChat {
+
+    background-color: #8a2be226;
+    border-radius: 24px;
+    width: 80%;
+}
+

@@ -1,5 +1,8 @@
 const socketClient = io();
 let form = document.getElementById('formulario')
+let formChat = document.getElementById('formularioChat')
+let inputName = document.getElementById("name")
+let inputChat = document.getElementById("msg")
 
 socketClient.on('products', prod => {
 
@@ -9,12 +12,25 @@ socketClient.on('products', prod => {
     })
 });
 
+socketClient.on('totalChat', msg =>{
 
-form.onsubmit = (e) =>{
-    //e.preventDefault();
-  
+    printMessage(msg)
+})
+
+form.onsubmit = () =>{
+    
     socketClient.emit('update')
+}
 
+formChat.onsubmit = (e) =>{
+
+    e.preventDefault()
+    const name = inputName.value;
+    const message = inputChat.value;
+    const date = new Date()
+    const totalMesagge = `<p class="mailColor">${name}</p><p class="dateColor">[ ${date.toLocaleString()} ] </p> : <p class="colorMessage">${message}</p>`
+    socketClient.emit("messageChat",totalMesagge)
+    inputChat.value=''
 }
 
 function loadTableProducts(products) {
@@ -25,12 +41,19 @@ function loadTableProducts(products) {
 
             const template = Handlebars.compile(data);
             const tableProducts = template({products})
-            //console.log(tableProducts)
             return tableProducts
         })  
 }
 
+printMessage = (messages) => {
 
+    let main = document.getElementById('templateChat')
+    main.innerHTML =[];
+    messages.forEach(x =>{
 
-
-
+        let messagePrinting = document.createElement("div");
+        messagePrinting.className="formatPrinting";
+        messagePrinting.innerHTML =`${x}`
+        main.insertAdjacentElement("beforeend", messagePrinting);
+    })
+}
