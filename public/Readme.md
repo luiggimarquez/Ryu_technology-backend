@@ -1,1 +1,0 @@
-En el archivo ejemplos.txt se encuentran informacion de productos para agregar al formulario.
