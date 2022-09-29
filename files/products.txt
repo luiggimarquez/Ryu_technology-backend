@@ -1,0 +1,36 @@
+[
+  {
+    "nameProduct": "Laptop",
+    "descriptionProduct": "description",
+    "codeProduct": "X34RT00",
+    "photoProduct": "qwerty",
+    "priceProduct": "666",
+    "stockProduct": "3",
+    "id": 2,
+    "timeatamp": "Wed Sep 28 2022 00:19:57 GMT-0300 (GMT-03:00)"
+  },
+  {
+    "nameProduct": "dino",
+    "descriptionProduct": "auto",
+    "codeProduct": "XT600",
+    "photoProduct": "pic",
+    "priceProduct": "3",
+    "stockProduct": "-5",
+    "id": 3,
+    "timeatamp": "Wed Sep 28 2022 00:20:20 GMT-0300 (GMT-03:00)"
+  },
+  {
+    "0": {
+      "tittle": "The lord of the Ring",
+      "price": 20,
+      "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_901405-MLA47207907728_082021-O.webp"
+    },
+    "1": {
+      "tittle": "The lord of the Ring 2",
+      "price": 40,
+      "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_901405-MLA47207907728_082021-O.webp"
+    },
+    "id": 4,
+    "timestamp": "Thu Sep 29 2022 12:33:32 GMT-0300 (GMT-03:00)"
+  }
+]

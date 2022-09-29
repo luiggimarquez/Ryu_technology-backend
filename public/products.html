@@ -5,19 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+
+    <section class="card" id="card"></section>
 
 
  <section >
     <form id="form">
         <div>Formulario para actualizar productos</div>
-        <input type="text" class="input" placeholder="name" name="nameUpdate" id="nameUpdate" required >
+        <input type="text" class="input" placeholder="Nombre" name="nameProduct" id="nameProduct" required >
+        <input type="text" class="input" placeholder="description" name="descriptionProduct" id="descriptionProduct" required >
+        <input type="text" class="input" placeholder="codigo" name="codeProduct" id="codeProduct" required >
+        <input type="text" class="input" placeholder="foto" name="photoProduct" id="photoProduct" required >
+        <input type="number" class="input" placeholder="precio" name="priceProduct" id="priceProduct" required >
+        <input type="number" class="input" placeholder="stock" name="stockProduct" id="stockProduct" required >
+    
         <button type="submit">Enviar</button>
     </form>
 
- </section>   
+ </section>
 
-<script type="module" src="demo.js"></script>
+ <section class="itemIdAlining">
+    <div class="itemId">
+        <p>Consulta por ID</p>
+        <input type="number" class="input" placeholder="Ingresa ID" name="itemId" id="itemId">
+    </div>
+ </section>
+
+<div id="myModal" class="modal">
+    <div class="modal-content" id="modal-content">
+        <span class="close">&times;</span>
+        <div class="itemModal" id="itemModal"></div>
+    </div>
+</div>
+
+<script type="module" src="../products.js"></script>
+
 </body>
 </html>
