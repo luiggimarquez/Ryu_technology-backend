@@ -1,0 +1,7 @@
+[
+  {
+    "idCart": "1",
+    "timestampCart": "Mon Oct 03 2022 00:57:16 GMT-0300 (GMT-03:00)",
+    "products": []
+  }
+]

@@ -1,3 +1,30 @@
+class Products{
+
+	constructor(nameProduct,descriptionProduct, codeProduct, photoProduct, priceProduct, stockProduct){
+
+		this.nameProduct = nameProduct;
+		this.descriptionProduct = descriptionProduct;
+		this.codeProduct = codeProduct;
+		this.photoProduct = photoProduct
+		this.priceProduct = priceProduct
+		this.stockProduct = stockProduct
+	}
+}
+
+class Cart{
+
+	constructor(idCart, timestampCart, products){
+
+		this.idCart = idCart;
+		this.timestampCart = timestampCart;
+		this.products = products;
+
+	}
+}
+
+let cart =[]
+let idCartNow =[]
+let productReceived = []
 let formAddProduct = document.getElementById("form")
 let inputNameProduct = document.getElementById("nameProduct")
 let inputDescriptionProduct = document.getElementById("descriptionProduct")
@@ -8,12 +35,12 @@ let inputStockProduct = document.getElementById("stockProduct")
 let containerProduct = document.getElementById('card')
 let modalContainer = document.getElementById('itemModal')
 let getProductbyId = document.getElementById("itemId")
-let productReceived = []
+
+// function for write HTML code
 
 function loadProducts(items) {
 
 	containerProduct.innerHTML="";
-	
 	if(items.error !== "producto no encontrado"){
 
 		items.forEach(product => {
@@ -29,11 +56,12 @@ function loadProducts(items) {
 						<img src="${photoProduct}" alt="">
 						<div class="datosBoton">
 								<span class=textCard>${nameProduct}</span>
-								<img src="../img/plus.png" class="botonRedondo" id=id${id}>
+								<button id="addCart${id}"> Add to Cart</button>
 						</div>
 
 						<div class="dataBase">
 
+							<p>ID Producto: ${id}</p></br>
 							<p>Codigo: ${codeProduct}</p></br>
 							<p>Precio: ${priceProduct}</p></br>
 							<p>Disponibles: ${stockProduct}</p></br>
@@ -49,6 +77,8 @@ function loadProducts(items) {
 			containerProduct.appendChild(div);
 
 
+			//Modal - Popup Window for show form to modify items
+
 			let modifyItem = document.getElementById(`myBtn${id}`)
 			modifyItem.addEventListener(('click'), ()=>{
 
@@ -61,7 +91,8 @@ function loadProducts(items) {
 				<div class="alineadorContenido">
 				
 					<div class="dataBase">
-					
+
+						<div class="tittleFormEdit">Formulario para editar productos</div>
 						<div class="dataModal"><p>ID: ${id}</p><p><input type="number" class="input" value=${id} name="idProduct" id="idProduct" readonly></p></div>
 						<div class="dataModal"><p>Foto: ${photoProduct}</p><p><input type="text" class="input" placeholder="Nuevo URL" name="newUrl" id="newUrl"></p></div>
 						<div class="dataModal"><p>Nombre: ${nameProduct}</p><p><input type="text" class="input" placeholder="Nuevo Nombre" name="newName" id="newName"></p></div>
@@ -79,19 +110,16 @@ function loadProducts(items) {
 
 				modalContainer.appendChild(divModal);
 
-					let inputNewUrl = document.getElementById('newUrl')
-					let inputNewName = document.getElementById('newName')
-					let inputNewCode = document.getElementById('newCode')
-					let inputNewPrice = document.getElementById('newPrice')
-					let inputNewStock = document.getElementById('newStock')
-					let inputNewDescription = document.getElementById('newDescription')
-
-
+				let inputNewUrl = document.getElementById('newUrl')
+				let inputNewName = document.getElementById('newName')
+				let inputNewCode = document.getElementById('newCode')
+				let inputNewPrice = document.getElementById('newPrice')
+				let inputNewStock = document.getElementById('newStock')
+				let inputNewDescription = document.getElementById('newDescription')
 				let formUpdateProduct = document.getElementById('submitPut')
-				//let inputIdProduct = document.getElementById('idProduct')
+				
 				formUpdateProduct.addEventListener("click", () => {
 
-					
 					productReceived = {
 						nameProduct: inputNewName.value,
 						descriptionProduct: inputNewDescription.value,
@@ -101,6 +129,8 @@ function loadProducts(items) {
 						stockProduct: inputNewStock.value
 					};
 		
+					// Fetch Method PUT modify any item
+
 					let dataBody = JSON.stringify(productReceived)
 					fetch(`http://localhost:8080/api/productos/${id}`, {
 						method: "PUT",
@@ -108,6 +138,10 @@ function loadProducts(items) {
 							"Content-Type": "application/json"
 						},
 						body: dataBody
+					}).then(response => {return response.text()})
+					  .then(data => {
+						const json = JSON.parse(data);
+						alert(`Error: ${json.error}, Descripcion: ${json.description} `);
 					})
 					setTimeout(() => {
 		
@@ -119,6 +153,7 @@ function loadProducts(items) {
 				
 			}) 
 
+			// Fetch Method Delete to delete any item
 
 			let deleteProduct= document.getElementById(`deleteItem${id}`)
 			deleteProduct.addEventListener("click", () =>{
@@ -130,92 +165,95 @@ function loadProducts(items) {
 						"Content-Type": "application/json"
 					},
 					body: itemToDelete
+
+				}).then(response => {return response.text()})
+				.then(data => {
+				const json = JSON.parse(data);
+				alert(`Error: ${json.error}, Descripcion: ${json.description} `);
 				})
 				
-				
-				location. reload()
-
+				location.reload()
 			})
 
-			
+			let addCart = document.getElementById(`addCart${id}`)
+			addCart.addEventListener("click", () =>{
+				
+				let dataBody = JSON.stringify(product)
+				fetch(`http://localhost:8080/api/carrito/${idCartNow}/productos`,{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: dataBody
+				})
+
+				location.reload()
+			})
+
+
 			//modal
 			let modal = document.getElementById("myModal");
-
-			// Get the button that opens the modal
 			let btn = document.getElementById(`myBtn${id}`);
-
-			// Get the <span> element that closes the modal
-			let span = document.getElementsByClassName("close")[0];
-
-			// When the user clicks the button, open the modal 
+			let span = document.getElementsByClassName("close")[0]; 
 			btn.onclick = function () {
 				modal.style.display = "block";
 			}
-
-			// When the user clicks on <span> (x), close the modal
 			span.onclick = function () {
 				modal.style.display = "none";
 			}
-
-			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function (event) {
 				if (event.target == modal) {
 					modal.style.display = "none";
 				}
 			}
 
-		
-		
 		})//foreach
 	}else
 	containerProduct.innerHTML=`<div class="error">Producto no Existe<div>`
-
 }
 
-fetch('http://localhost:8080/api/productos').then(response => {return response.text()})
-	.then(data => {
-		
-	console.log(data)
+
+// Fetch Method GET, start with DOM for load products Card
+
+fetch('http://localhost:8080/api/productos').then(response => {
+	return response.text()
+}).then(data => {
 	const json = JSON.parse(data);
-	console.log(json);
+
 	loadProducts(json)
 
-}).catch(err=>{
+}).catch(err => {
 	console.log(err)
 });
+
+
+// Fetch Method GET for search products by ID
 
 getProductbyId.addEventListener("keyup", ()=>{
 
 	let inputItemId = getProductbyId.value;
 
-	fetch(`http://localhost:8080/api/productos/${inputItemId}`).then(response => {return response.text()})
-	.then(data => {
-		
-	console.log(data)
-	const json = JSON.parse(data);
-	console.log(json);
-	loadProducts(json)
+	fetch(`http://localhost:8080/api/productos/${inputItemId}`).then(response => {
+		return response.text()
+	}).then(data => {
+
+		const json = JSON.parse(data);
+		loadProducts(json)
 
 	}).catch(err=>{
 		console.log(err)
 	});
 
-
-
-
 })
+
+
+//Fetch Method POST for save Products
 
 formAddProduct.onsubmit= (e) =>{
 
 	e.preventDefault()
-	productReceived = {
-		nameProduct : inputNameProduct.value,
-		descriptionProduct : inputDescriptionProduct.value,
-		codeProduct : inputCodeProduct.value,
-		photoProduct : inputPhotoProduct.value,
-		priceProduct : inputPriceProduct.value,
-		stockProduct : inputStockProduct.value};
-   
+	productReceived = new Products(inputNameProduct.value,inputDescriptionProduct.value, inputCodeProduct.value, inputPhotoProduct.value, inputPriceProduct.value, inputStockProduct.value)
+
 	let dataBody = JSON.stringify(productReceived)
    	fetch("http://localhost:8080/api/productos", {
         method: "POST",
@@ -223,18 +261,49 @@ formAddProduct.onsubmit= (e) =>{
 			"Content-Type": "application/json"
 		},
         body: dataBody
-    })
-    
-	location. reload()
+    }).then(response => {return response.text()})
+		.then(data => {
+		const json = JSON.parse(data);
+		alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+	})
+
+	location.reload()
 }
 
-fetch('*').then(response => {return response.text()})
-	.then(data => {
-		
-	console.log(data)
+//Fetch Method GET for validate and create first cart
+
+fetch('http://localhost:8080/api/carrito/').then(response => {
+	return response.text()
+}).then(data =>{
 	const json = JSON.parse(data);
-	console.log(json);
-	//loadProducts(json)
+	
+	if(json.length === 0){
+
+		cart = new Cart("1",(new Date(Date.now()).toString()),[])
+		let dataBody = JSON.stringify(cart)
+		
+		fetch("http://localhost:8080/api/carrito", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: dataBody
+				
+		}).then(response => {
+			return response.text()
+		})
+		.then(data => {
+			const json = JSON.parse(data);
+			idCartNow=json
+
+			console.log("Carrito creado, ID: ", idCartNow)
+		})
+
+	}else{
+
+		idCartNow=json[(json.length - 1)].idCart
+			
+	}
 
 }).catch(err=>{
 	console.log(err)

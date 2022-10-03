@@ -1,36 +1,42 @@
 [
   {
+    "nameProduct": "Mobile",
+    "descriptionProduct": "Comunicacion inalambrica",
+    "codeProduct": "XY098Y",
+    "photoProduct": "https://cdn2.iconfinder.com/data/icons/electrical-devices-4/60/devices-ultra-029-smart-phone-128.png",
+    "priceProduct": "100",
+    "stockProduct": "15",
+    "id": 1,
+    "timestamp": "Sun Oct 02 2022 18:04:39 GMT-0300 (GMT-03:00)"
+  },
+  {
     "nameProduct": "Laptop",
-    "descriptionProduct": "description",
-    "codeProduct": "X34RT00",
-    "photoProduct": "qwerty",
-    "priceProduct": "666",
-    "stockProduct": "3",
+    "descriptionProduct": "Portatil Personal Computer",
+    "codeProduct": "ABC78",
+    "photoProduct": "https://cdn3.iconfinder.com/data/icons/accommodation-ultra-color/60/004_-_Wifi_Connection-128.png",
+    "priceProduct": "1000",
+    "stockProduct": "20",
     "id": 2,
-    "timeatamp": "Wed Sep 28 2022 00:19:57 GMT-0300 (GMT-03:00)"
+    "timestamp": "Sun Oct 02 2022 18:22:12 GMT-0300 (GMT-03:00)"
   },
   {
-    "nameProduct": "dino",
-    "descriptionProduct": "auto",
-    "codeProduct": "XT600",
-    "photoProduct": "pic",
-    "priceProduct": "3",
-    "stockProduct": "-5",
+    "nameProduct": "Satellite",
+    "descriptionProduct": "Space communication",
+    "codeProduct": "NASA001",
+    "photoProduct": "https://cdn1.iconfinder.com/data/icons/space-ultra-color/60/002_-_Satellite-128.png",
+    "priceProduct": "1000000",
+    "stockProduct": "5",
     "id": 3,
-    "timeatamp": "Wed Sep 28 2022 00:20:20 GMT-0300 (GMT-03:00)"
+    "timestamp": "Sun Oct 02 2022 18:25:33 GMT-0300 (GMT-03:00)"
   },
   {
-    "0": {
-      "tittle": "The lord of the Ring",
-      "price": 20,
-      "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_901405-MLA47207907728_082021-O.webp"
-    },
-    "1": {
-      "tittle": "The lord of the Ring 2",
-      "price": 40,
-      "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_901405-MLA47207907728_082021-O.webp"
-    },
+    "nameProduct": "SmartWatch",
+    "descriptionProduct": "Watch with internet",
+    "codeProduct": "Wa009IU",
+    "photoProduct": "https://cdn2.iconfinder.com/data/icons/electrical-devices-4/60/devices-ultra-006-smart-watch-os-128.png",
+    "priceProduct": "70",
+    "stockProduct": "10",
     "id": 4,
-    "timestamp": "Thu Sep 29 2022 12:33:32 GMT-0300 (GMT-03:00)"
+    "timestamp": "Sun Oct 02 2022 20:29:02 GMT-0300 (GMT-03:00)"
   }
 ]

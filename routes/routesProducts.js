@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-
+const middleware = require('../middleware/middleware')
 let files = require('../files/files.js')
 
 router.get('/', (req,res) => {
@@ -14,32 +14,26 @@ router.get('/:id', (req,res) => {
 	files.getProductbyID(id).then((product) =>{
 
 		(product !== "") ? res.send(product) : res.send("producto no encontrado")
-
 	})
-	
 })
 
-
-router.post('/',(req,res) =>{
+router.post('/', middleware.admin, (req,res) =>{
 
     let productReceived = req.body;
     files.saveProducts(productReceived)
 })
 
-router.put('/:id',(req,res) =>{
+router.put('/:id', middleware.admin,(req,res) =>{
 
 	const { id } = req.params;
 	let productReceived = req.body;
 	files.updateProducts({...productReceived,id})  
 })
 
-router.delete('/:id',(req,res) =>{
+router.delete('/:id', middleware.admin, (req,res) =>{
 
     let productReceived = req.body;
 	files.deleteProducts(productReceived)
-	console.log("confirm delete")
 })
-
-
 
 module.exports = router;
