@@ -5,7 +5,7 @@
     "codeProduct": "XY098Y",
     "photoProduct": "https://cdn2.iconfinder.com/data/icons/electrical-devices-4/60/devices-ultra-029-smart-phone-128.png",
     "priceProduct": "100",
-    "stockProduct": "15",
+    "stockProduct": "20",
     "id": 1,
     "timestamp": "Sun Oct 02 2022 18:04:39 GMT-0300 (GMT-03:00)"
   },

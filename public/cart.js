@@ -42,7 +42,7 @@ loadProducts = (itemsCart) =>{
 
 			let itemToDelete = JSON.stringify(itemsCart)
 			
-			fetch(`http://localhost:8080/api/carrito/${idCartNow}/productos/${id}`,{
+			fetch(`/api/carrito/${idCartNow}/productos/${id}`,{
 			
 				method: "DELETE",
 				headers: {
@@ -70,7 +70,7 @@ loadProducts = (itemsCart) =>{
 	let eventEmptyCart =  document.getElementById("emptyCart")
 	eventEmptyCart.addEventListener("click", ()=>{
 
-		fetch(`http://localhost:8080/api/carrito/${idCartNow}`,{
+		fetch(`/api/carrito/${idCartNow}`,{
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json"
@@ -79,7 +79,7 @@ loadProducts = (itemsCart) =>{
 
 		//After DELETE Method (empty and delete cart), this FETCH POST create a new cart
 
-		fetch(`http://localhost:8080/api/carrito/`,{
+		fetch(`/api/carrito/`,{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -111,7 +111,7 @@ loadProducts = (itemsCart) =>{
 	let eventFinishCart = document.getElementById("finishCart")
 	eventFinishCart.addEventListener('click', () =>{
 
-		fetch(`http://localhost:8080/api/carrito/`,{
+		fetch(`/api/carrito/`,{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -150,7 +150,7 @@ loadCartEmpty= () => {
 
 // Fetch Method Get to Validate if cart exist
 
-fetch('http://localhost:8080/api/carrito/').then(response => {
+fetch('/api/carrito/').then(response => {
 		return response.text()
 	}).then(data =>{
 		const json = JSON.parse(data);
@@ -166,7 +166,7 @@ fetch('http://localhost:8080/api/carrito/').then(response => {
     
 			//Fetch Method Get for load items for the cart
 
-            fetch(`http://localhost:8080/api/carrito/${idCartNow}/productos`).then(response => {
+            fetch(`/api/carrito/${idCartNow}/productos`).then(response => {
             	return response.text()
             }).then(data => {
 

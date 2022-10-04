@@ -132,7 +132,7 @@ function loadProducts(items) {
 					// Fetch Method PUT modify any item
 
 					let dataBody = JSON.stringify(productReceived)
-					fetch(`http://localhost:8080/api/productos/${id}`, {
+					fetch(`/api/productos/${id}`, {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json"
@@ -159,7 +159,7 @@ function loadProducts(items) {
 			deleteProduct.addEventListener("click", () =>{
 
 				let itemToDelete = JSON.stringify(product)
-				fetch(`http://localhost:8080/api/productos/${id}`, {
+				fetch(`/api/productos/${id}`, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json"
@@ -179,7 +179,7 @@ function loadProducts(items) {
 			addCart.addEventListener("click", () =>{
 				
 				let dataBody = JSON.stringify(product)
-				fetch(`http://localhost:8080/api/carrito/${idCartNow}/productos`,{
+				fetch(`/api/carrito/${idCartNow}/productos`,{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -215,7 +215,7 @@ function loadProducts(items) {
 
 // Fetch Method GET, start with DOM for load products Card
 
-fetch('http://localhost:8080/api/productos').then(response => {
+fetch('/api/productos').then(response => {
 	return response.text()
 }).then(data => {
 	const json = JSON.parse(data);
@@ -233,7 +233,7 @@ getProductbyId.addEventListener("keyup", ()=>{
 
 	let inputItemId = getProductbyId.value;
 
-	fetch(`http://localhost:8080/api/productos/${inputItemId}`).then(response => {
+	fetch(`/api/productos/${inputItemId}`).then(response => {
 		return response.text()
 	}).then(data => {
 
@@ -255,7 +255,7 @@ formAddProduct.onsubmit= (e) =>{
 	productReceived = new Products(inputNameProduct.value,inputDescriptionProduct.value, inputCodeProduct.value, inputPhotoProduct.value, inputPriceProduct.value, inputStockProduct.value)
 
 	let dataBody = JSON.stringify(productReceived)
-   	fetch("http://localhost:8080/api/productos", {
+   	fetch("/api/productos", {
         method: "POST",
         headers: {
 			"Content-Type": "application/json"
@@ -272,7 +272,7 @@ formAddProduct.onsubmit= (e) =>{
 
 //Fetch Method GET for validate and create first cart
 
-fetch('http://localhost:8080/api/carrito/').then(response => {
+fetch('/api/carrito/').then(response => {
 	return response.text()
 }).then(data =>{
 	const json = JSON.parse(data);
@@ -282,7 +282,7 @@ fetch('http://localhost:8080/api/carrito/').then(response => {
 		cart = new Cart("1",(new Date(Date.now()).toString()),[])
 		let dataBody = JSON.stringify(cart)
 		
-		fetch("http://localhost:8080/api/carrito", {
+		fetch("/api/carrito", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
