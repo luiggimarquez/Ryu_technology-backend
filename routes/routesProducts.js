@@ -1,39 +1,20 @@
-const {Router} = require('express')
+import {Router} from 'express'
+import '../db/models/productsModel.js'
+import '../db/models/chatsModel.js'
+import { containerProducts } from '../db/db.js'
+
 const router = Router()
-const middleware = require('../middleware/middleware')
-let files = require('../files/files.js')
 
-router.get('/', (req,res) => {
-    
-	res.sendFile('products.txt',  { root: './files/' })
+router.get("/", (req,res) =>{
+
+    res.sendFile('index.html' ,{ root: './public' } )
 })
 
-router.get('/:id', (req,res) => {
+router.post("/",(req,res) =>{
 
-    const { id } = req.params;
-	files.getProductbyID(id).then((product) =>{
-
-		(product !== "") ? res.send(product) : res.send("producto no encontrado")
-	})
+    let received = req.body;
+    containerProducts.saveProducts(received)
+    res.redirect('/')
 })
 
-router.post('/', middleware.admin, (req,res) =>{
-
-    let productReceived = req.body;
-    files.saveProducts(productReceived)
-})
-
-router.put('/:id', middleware.admin,(req,res) =>{
-
-	const { id } = req.params;
-	let productReceived = req.body;
-	files.updateProducts({...productReceived,id})  
-})
-
-router.delete('/:id', middleware.admin, (req,res) =>{
-
-    let productReceived = req.body;
-	files.deleteProducts(productReceived)
-})
-
-module.exports = router;
+export default router;

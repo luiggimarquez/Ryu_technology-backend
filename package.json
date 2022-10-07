@@ -1,11 +1,12 @@
 {
-  "name": "primera_entrega_final",
+  "name": "desafio_8",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,12 @@
   },
   "homepage": "https://github.com/luiggimarquez/Ryu_technology-backend#readme",
   "dependencies": {
-    "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "nodemon": "^2.0.20"
+    "express-handlebars": "^6.0.6",
+    "knex": "^2.3.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.2",
+    "sqlite3": "^5.1.2"
   }
 }

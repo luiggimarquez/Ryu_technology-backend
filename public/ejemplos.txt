@@ -1,0 +1,37 @@
+[
+  {
+    "tittle": "The Lord of the Ring",
+    "price": 20,
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png"
+  },
+  {
+    "tittle": "The Lord of the Ring 2",
+    "price": 40,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/book-36/32/linestyle_svg_general_expand_32px-03-128.png"
+  },
+  {
+    "tittle": "The Lord of the Ring 3",
+    "price": 42,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/book-36/32/linestyle_svg_general_expand_32px-04-128.png"
+  },
+  {
+    "tittle": "Apple pencil",
+    "price": 50,
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png"
+  },
+  {
+    "tittle": "Naruto",
+    "price": 40,
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png"
+  },
+  {
+    "tittle": "Macbook Pro",
+    "price": 2000,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png"
+  },
+  {
+    "tittle": "Macbook Pro bateria",
+    "price": 120,
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png"
+  }
+]

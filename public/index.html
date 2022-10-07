@@ -4,24 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Proyecto Final</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Desafio 8</title>
 </head>
-<body id="body">
+<body>
 
     <header>
-        <div class="headerTitle"><a href="./products.html"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="./cart.html"><img src="./img/cart.png" alt="acceso al carrito"></a></div>
+        <h1>Ryu Technology</h1>
     </header>
 
-    <main class="mainIndex">
+    <main>
 
-        <h1>Primera entrega Final</h1>
-        <h1>Programación Backend</h1>
-        <a href="./products.html"><button class="buttonIndex">Ir a Productos</button></a>
+        <h1 class="tittle">Desafio 8 -  Websocket con DB</h1>
+        <h2 class="tittle">Por favor ingresa un producto</h2>
+
+        <section class="formCenter">
+
+            <form class="form" action="/" method="post" id="formulario">
+
+                <input class="input" type="text" placeholder="Tittle" name="tittle" id="tittle" required >
+                <input class="input" type="number" placeholder="Price" name="price" id="price" required>
+                <input class="input" type="text" placeholder="Thumbnail" name="thumbnail" id="thumbnail" required>
+                <div class="buttonAling">
+                    <button type="submit"> Enviar </button>
+                    <input type="reset" value=" Restablecer ">
+                </div>
+                
+            </form>
+
+        </section>
+        <section id="templateProducts"></section>
+        <section class="formCenter">
+
+            <form class="form2" id="formularioChat">
+                <div class="tituloChat">Servicio de Chat</div>
+                <input class="input" type="email" placeholder="mail" name="name" id="name" required >
+                <textarea placeholder="Escribe tu mensaje" maxlength="1000" name="msg" id="msg" required></textarea>
+                <button class="buttonChat" type="submit"> Enviar </button>
+            </form>
+
+            <section id="templateChat" class="templateChat"></section>
+
+        </section>
 
     </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="./index.js"></script>
 
     <footer class="footer"><h4>Ryu Technology || © All right Reserved</h4></footer>
+    
 </body>
-
 </html>
+
