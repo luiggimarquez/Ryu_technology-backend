@@ -7,8 +7,8 @@ const configMySql = {
 
         host:'localhost',
         user:'root',
-        password:'Venezuela2022',
-        database: 'knex_msql'
+        password:'12345',
+        database: 'knex_mysql'
     }
 }
 
