@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "backendcorderhouse",
+  "private_key_id": "965723567c1be76e713dd5f5ddb0d1eb51a0bbd9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDUZnv65I+gAPDf\nGzNLgH9XebSj5Zn64lOksbtFV3lESSM6gAzSt+jkKnTpcBJN2kYS/ToKRC0Tpsf3\nGqP+k3bra2k4tfE+IC76PYrTnnbRxCbvoquHNIxY2Cc5/vt9kIQs7rLxZdBf5GqV\nwU3zn7gGKRZT8Z9Tw0GReBdFEqo9nRlj8vREx+/HjunWJ3t4ws5nD1/IYFdZT0mf\nVFm63ZpCLOBdKSCawtrvFDRYwHEvVYBR9qfsWUbzg0ekfam0TqZvxD51ByCGBOyr\nHTA2CsfKP17Pty0Wr2xvATYZUNbNQe4ktECMiY/Vkqz1xmY8IdYvxr3wEL2rqZMa\nS9Abz0WxAgMBAAECggEACChdK9Gc+Y8nsS332PcZDPifQ+nk3C0BUOfu8nbDBn4i\nSf7Siez8gczmph5C5GC/2b6w52WJxKwzwxgabdk8k0X8vyvvwCGCJGQk4ZlVD3FE\n8eW8cvTaohaVNRtHuKF1DiO8gDHXSw44Zhg2oKbaWB7lB7mAk3ns71kegwLjQnql\nAweL+vaCwQxgPXHKGE3llwJ2xGc2h2HJ9IAPZeaIP8xSrRVNKk7eU731Xy7ToUAm\nnY4+ufgftCGN8JAYz5dTZb7o6JSLddZmnhOhobsSpq4JDKLGIRYS0dueC4Rvrtox\nJu82FYoLCysxJLR70i/015cBnctaLxKvlvbonX0YhQKBgQDs5fygkc9QNa41KzL7\nsXGNkH3xAJZfoLf1x3/RKHXSxbpvT/vzYZHCG8ND+izYWu2UIlaxaOQjo3dIwYkr\niabNAhF0U7FoRx23pmQbwMJSA6V5HfQkH13Awyh3brllQ+tcUKvLhmUVagb9ICFk\nLCHaY1rjIf67cB37q79qvbRCpQKBgQDlhtAk6e9nyX9G4xOIOBM/2Ppl5zntJqm4\nApQjneE1UcHrEI1OFHbg17HAI26NkzFlm/r10njf/e+p4hQPRaclpALzishCx6jf\n/s6nccMLJ54EtsWX0zOb/6zIwWAapH9lMTvxgsk3BwdWPi80oFvjVXEdKY6kV06a\nUteqoXSFHQKBgDKRAPSxSwQ/ARl+SBqrjKaAEjHwQyjUYJAI7oKR1VyRMjNyakBQ\nMlGxpWOMMihYeF/nWIPz9MaarOqNzR7K+hzGdT1UZAjzLSe3T6UQ5ymkd5y7xRI0\n08lCnw+nRdGUxtdkrNb7r/X7NNSxGA+O0AcSsCLNbddKnkvLJEe/iIu1AoGAceyt\nSXU32CsCWpwBKN60Zz96YbQYY2aKXQQipV8K1l1DRDqN+JBdxRIqbvTnPawum4GF\nWhhi2MMA/zBwxnfLE/rJYDqlVcgmQTAHQMNNjS7X1v0lLEuvVSHdkDOzUOYPOZnr\nZ9+DoiWB9cOdyKBDm53gLBpha57OK/kshMvout0CgYBzBS3Ddl0wAPlsJGV+FexL\nbjkE/nykkvbn72mF458iCRMTbjNrOowYUFqOuv4yCRMOQ2rdi1RTKxiYAmMaJtZF\nD0kDK+9Qt/A/TlPCzYbvePY8LiWIfFyGu8h0Ym6Bc9xa313WHYQ1cNcX6EDAjvtr\nsBFLBrN73HFBK1WtPIqm1Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-7j6xk@backendcorderhouse.iam.gserviceaccount.com",
+  "client_id": "114730368657925422182",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-7j6xk%40backendcorderhouse.iam.gserviceaccount.com"
+}

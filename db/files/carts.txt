@@ -1,0 +1,35 @@
+[
+  {
+    "id": "2",
+    "timestampCart": "Sat Oct 29 2022 22:03:37 GMT-0300 (GMT-03:00)",
+    "products": [
+      {
+        "nameProduct": "Laptop",
+        "descriptionProduct": "Portatil Personal Computer",
+        "codeProduct": "ABC78",
+        "photoProduct": "https://cdn3.iconfinder.com/data/icons/accommodation-ultra-color/60/004_-_Wifi_Connection-128.png",
+        "priceProduct": "1000",
+        "stockProduct": "20",
+        "id": 2,
+        "timestamp": "Sun Oct 02 2022 18:22:12 GMT-0300 (GMT-03:00)",
+        "quantity": 1
+      },
+      {
+        "nameProduct": "Mobile",
+        "descriptionProduct": "Comunicacion inalambrica",
+        "codeProduct": "XY098Y",
+        "photoProduct": "https://cdn2.iconfinder.com/data/icons/electrical-devices-4/60/devices-ultra-029-smart-phone-128.png",
+        "priceProduct": "100",
+        "stockProduct": "20",
+        "id": 1,
+        "timestamp": "Sun Oct 02 2022 18:04:39 GMT-0300 (GMT-03:00)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "timestampCart": "Sat Oct 29 2022 22:03:53 GMT-0300 (GMT-03:00)",
+    "products": []
+  }
+]
