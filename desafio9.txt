@@ -1,0 +1,535 @@
+D:\Users\Luiggi_marquez>mongosh
+Current Mongosh Log ID: 634624bbe48c390ab9ee5310
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2022-10-11T23:21:19.769-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2022-10-11T23:21:19.770-03:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.mensajes.insertMany([{name:"correo@prueba.com", message:"Hola, primer mensaje", date:"7/10/2022 , 16:11:33ecommerce> db.mensajes.insertMany([{name:"correo@prueba.com", message:"Hola, primer mensaje", date:"7/10/2022 , 16:11:33ecommerce> db.mensajes.insertMany([{name:"correo@prueba.com", message:"Hola, primer mensaje", date:"7/10/2022 , 16:11:33"},{name:"correo2@prueba.com", message:"Segundo mensaje",date:"7/10/2022, 16:17:39"},{name:"correo3@prueba.com", message:"Tercer mensaje", date:" 7/10/2022, 16:53:28"},{name:"correo@prueba.com", message:"cuarto mensaje",date:"11/10/2022, 14:31:33"},{name:"correo@prueba.com", message:"quinto mensaje", date:"11/10/2022, 14:32:31"},{name:"correo2@prueba.com", message:"sexto mensaje de prueba",date:"11/10/2022, 14:32:46"},{name:"correo2@prueba.com", message:"hola", date:"11/10/2022, 14:32:58"},{name:"correo2@prueba.com", message:"noveno",date:"11/10/2022, 14:33:06"},{name:"correo3@prueba.com", message:"probando", date:"11/10/2022, 14:33:21"},{name:"correo2@prueba.com", message:"decimo",date:"11/10/2022, 16:29:11"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("634624e627bf13bf165f99c8"),
+    '1': ObjectId("634624e627bf13bf165f99c9"),
+    '2': ObjectId("634624e627bf13bf165f99ca"),
+    '3': ObjectId("634624e627bf13bf165f99cb"),
+    '4': ObjectId("634624e627bf13bf165f99cc"),
+    '5': ObjectId("634624e627bf13bf165f99cd"),
+    '6': ObjectId("634624e627bf13bf165f99ce"),
+    '7': ObjectId("634624e627bf13bf165f99cf"),
+    '8': ObjectId("634624e627bf13bf165f99d0"),
+    '9': ObjectId("634624e627bf13bf165f99d1")
+  }
+}
+ecommerce> db.productos.insertMany([{title: "The Lord of the Ring", price: 120, thumbnail:"https://cdn1.iconfinder.com/decommerce> db.productos.insertMany([{title: "The Lord of the Ring", price: 120, thumbnail:"https://cdn1.iconfinder.com/decommerce> db.productos.insertMany([{title: "The Lord of the Ring", price: 120, thumbnail:"https://cdn1.iconfinder.com/decommerce> db.productos.insertMany([{title: "The Lord of the Ring", price: 120, thumbnail:"https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png"},{title: "The Lord of the Ring 2", price: 580, thumbnail:"https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png"},{title: "The Lord of the Ring 3", price: 900, thumbnail:"https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png"},{title: "Apple pencil", price: 1280, thumbnail:"https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png"},{title: "Naruto", price: 1700, thumbnail:"https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png"},{title: "Macbook Pro bateria", price: 2300, thumbnail:"https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png"},{title: "smartWatch", price: 2860, thumbnail:"https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png"},{title: "Teddy bear", price: 3350, thumbnail:"https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png"},{title: "Iphone", price: 4320, thumbnail:"https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png"},{title: "Macbook Pro", price: 4990, thumbnail:"https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6346250027bf13bf165f99d2"),
+    '1': ObjectId("6346250027bf13bf165f99d3"),
+    '2': ObjectId("6346250027bf13bf165f99d4"),
+    '3': ObjectId("6346250027bf13bf165f99d5"),
+    '4': ObjectId("6346250027bf13bf165f99d6"),
+    '5': ObjectId("6346250027bf13bf165f99d7"),
+    '6': ObjectId("6346250027bf13bf165f99d8"),
+    '7': ObjectId("6346250027bf13bf165f99d9"),
+    '8': ObjectId("6346250027bf13bf165f99da"),
+    '9': ObjectId("6346250027bf13bf165f99db")
+  }
+}
+ecommerce> db.mensajes.find().pretty()
+[
+  {
+    _id: ObjectId("634624e627bf13bf165f99c8"),
+    name: 'correo@prueba.com',
+    message: 'Hola, primer mensaje',
+    date: '7/10/2022 , 16:11:33'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99c9"),
+    name: 'correo2@prueba.com',
+    message: 'Segundo mensaje',
+    date: '7/10/2022, 16:17:39'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99ca"),
+    name: 'correo3@prueba.com',
+    message: 'Tercer mensaje',
+    date: ' 7/10/2022, 16:53:28'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99cb"),
+    name: 'correo@prueba.com',
+    message: 'cuarto mensaje',
+    date: '11/10/2022, 14:31:33'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99cc"),
+    name: 'correo@prueba.com',
+    message: 'quinto mensaje',
+    date: '11/10/2022, 14:32:31'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99cd"),
+    name: 'correo2@prueba.com',
+    message: 'sexto mensaje de prueba',
+    date: '11/10/2022, 14:32:46'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99ce"),
+    name: 'correo2@prueba.com',
+    message: 'hola',
+    date: '11/10/2022, 14:32:58'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99cf"),
+    name: 'correo2@prueba.com',
+    message: 'noveno',
+    date: '11/10/2022, 14:33:06'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99d0"),
+    name: 'correo3@prueba.com',
+    message: 'probando',
+    date: '11/10/2022, 14:33:21'
+  },
+  {
+    _id: ObjectId("634624e627bf13bf165f99d1"),
+    name: 'correo2@prueba.com',
+    message: 'decimo',
+    date: '11/10/2022, 16:29:11'
+  }
+]
+ecommerce> db.productos.find().pretty()
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d2"),
+    title: 'The Lord of the Ring',
+    price: 120,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d3"),
+    title: 'The Lord of the Ring 2',
+    price: 580,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d4"),
+    title: 'The Lord of the Ring 3',
+    price: 900,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d5"),
+    title: 'Apple pencil',
+    price: 1280,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d6"),
+    title: 'Naruto',
+    price: 1700,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d7"),
+    title: 'Macbook Pro bateria',
+    price: 2300,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d8"),
+    title: 'smartWatch',
+    price: 2860,
+    thumbnail: 'https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d9"),
+    title: 'Teddy bear',
+    price: 3350,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99da"),
+    title: 'Iphone',
+    price: 4320,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99db"),
+    title: 'Macbook Pro',
+    price: 4990,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png'
+  }
+]
+ecommerce> db.mensajes.estimatedDocumentCount()
+10
+ecommerce> db.productos.estimatedDocumentCount()
+10
+ecommerce> db.productos.insertOne({title: "Katana", price:5000, thumbnail:"https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6346257427bf13bf165f99dc")
+}
+ecommerce> db.productos.find({price:{$lt:1000}}).pretty()
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d2"),
+    title: 'The Lord of the Ring',
+    price: 120,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d3"),
+    title: 'The Lord of the Ring 2',
+    price: 580,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d4"),
+    title: 'The Lord of the Ring 3',
+    price: 900,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png'
+  }
+]
+ecommerce> db.productos.find({price:{$gt:1000,$lt:3000}})
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d5"),
+    title: 'Apple pencil',
+    price: 1280,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d6"),
+    title: 'Naruto',
+    price: 1700,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d7"),
+    title: 'Macbook Pro bateria',
+    price: 2300,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d8"),
+    title: 'smartWatch',
+    price: 2860,
+    thumbnail: 'https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png'
+  }
+]
+ecommerce> db.productos.find({price:{$gt:3000}})
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d9"),
+    title: 'Teddy bear',
+    price: 3350,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99da"),
+    title: 'Iphone',
+    price: 4320,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png'
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99db"),
+    title: 'Macbook Pro',
+    price: 4990,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png'
+  },
+  {
+    _id: ObjectId("6346257427bf13bf165f99dc"),
+    title: 'Katana',
+    price: 5000,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png'
+  }
+]
+ecommerce> db.productos.find({},{_id:0,price:0,thumbnail:0}).sort({price:1}).limit(1).skip(2)
+[ { title: 'The Lord of the Ring 3' } ]
+ecommerce>
+
+ecommerce> db.productos.updateMany({},{$set:{stock:100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d2"),
+    title: 'The Lord of the Ring',
+    price: 120,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d3"),
+    title: 'The Lord of the Ring 2',
+    price: 580,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d4"),
+    title: 'The Lord of the Ring 3',
+    price: 900,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d5"),
+    title: 'Apple pencil',
+    price: 1280,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d6"),
+    title: 'Naruto',
+    price: 1700,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d7"),
+    title: 'Macbook Pro bateria',
+    price: 2300,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d8"),
+    title: 'smartWatch',
+    price: 2860,
+    thumbnail: 'https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d9"),
+    title: 'Teddy bear',
+    price: 3350,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99da"),
+    title: 'Iphone',
+    price: 4320,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99db"),
+    title: 'Macbook Pro',
+    price: 4990,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346257427bf13bf165f99dc"),
+    title: 'Katana',
+    price: 5000,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png',
+    stock: 100
+  }
+]
+ecommerce> db.productos.updateMany({price:{$gt:4000}},{$set:{stock:0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d2"),
+    title: 'The Lord of the Ring',
+    price: 120,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d3"),
+    title: 'The Lord of the Ring 2',
+    price: 580,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d4"),
+    title: 'The Lord of the Ring 3',
+    price: 900,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/address-book-providers-in-colors/512/macoscontacts-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d5"),
+    title: 'Apple pencil',
+    price: 1280,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d6"),
+    title: 'Naruto',
+    price: 1700,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d7"),
+    title: 'Macbook Pro bateria',
+    price: 2300,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d8"),
+    title: 'smartWatch',
+    price: 2860,
+    thumbnail: 'https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d9"),
+    title: 'Teddy bear',
+    price: 3350,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99da"),
+    title: 'Iphone',
+    price: 4320,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png',
+    stock: 0
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99db"),
+    title: 'Macbook Pro',
+    price: 4990,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png',
+    stock: 0
+  },
+  {
+    _id: ObjectId("6346257427bf13bf165f99dc"),
+    title: 'Katana',
+    price: 5000,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png',
+    stock: 0
+  }
+]
+ecommerce> db.productos.deleteMany({price:{$lt:1000}})
+{ acknowledged: true, deletedCount: 3 }
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("6346250027bf13bf165f99d5"),
+    title: 'Apple pencil',
+    price: 1280,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/flat-pack-1/64/Pencil-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d6"),
+    title: 'Naruto',
+    price: 1700,
+    thumbnail: 'https://cdn2.iconfinder.com/data/icons/pixel-characters-v2/100/avatar-03-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d7"),
+    title: 'Macbook Pro bateria',
+    price: 2300,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/renewable-energy-3/512/battery-storage-electric-renewable-energy-128.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d8"),
+    title: 'smartWatch',
+    price: 2860,
+    thumbnail: 'https://cdn0.iconfinder.com/data/icons/gadgets-3d/256/SMART_WRISTBAND.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99d9"),
+    title: 'Teddy bear',
+    price: 3350,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/baby-stuff/171/20-256.png',
+    stock: 100
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99da"),
+    title: 'Iphone',
+    price: 4320,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/designer/128/12-256.png',
+    stock: 0
+  },
+  {
+    _id: ObjectId("6346250027bf13bf165f99db"),
+    title: 'Macbook Pro',
+    price: 4990,
+    thumbnail: 'https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/leopard.png',
+    stock: 0
+  },
+  {
+    _id: ObjectId("6346257427bf13bf165f99dc"),
+    title: 'Katana',
+    price: 5000,
+    thumbnail: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png',
+    stock: 0
+  }
+]
+ecommerce> use admin
+switched to db admin
+admin> db.createUser({user:"pepe", pwd:"asd456",roles:[{role:"read",db:"ecommerce"}]})
+{ ok: 1 }
+admin>
+
+
+
+D:\Users\Luiggi_marquez>mongosh -u pepe -p asd456
+Current Mongosh Log ID: 6346279044c10827e813fbf5
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> show dbs
+ecommerce  112.00 KiB
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.productos.deleteMany({})
+MongoServerError: not authorized on ecommerce to execute command { delete: "productos", deletes: [ { q: {}, limit: 0 } ], ordered: true, lsid: { id: UUID("4a83f8fd-d4a9-43e2-bb7d-aba82c79791c") }, $db: "ecommerce" }
+ecommerce> db.productos.insertOne({title: "Katana 2", price:6000, thumbnail:"https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png"})
+MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { title: "Katana 2", price: 6000, thumbnail: "https://cdn1.iconfinder.com/data/icons/ninja-things-1/746/katana-simple-256.png", _id: ObjectId('634627f9ce0e7fea2af75f9b') } ], ordered: true, lsid: { id: UUID("4a83f8fd-d4a9-43e2-bb7d-aba82c79791c") }, $db: "ecommerce" }
