@@ -4,24 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Proyecto Final</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+    <title>Desafio 11</title>
+
 </head>
-<body id="body">
+<body>
 
     <header>
-        <div class="headerTitle"><a href="./products.html"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="./cart.html"><img src="./img/cart.png" alt="acceso al carrito"></a></div>
+        <h1>Ryu Technology</h1>
     </header>
 
-    <main class="mainIndex">
+    <main>
 
-        <h1>Segunda entrega Final</h1>
-        <h1>Programación Backend</h1>
-        <a href="./products.html"><button class="buttonIndex">Ir a Productos</button></a>
+        <h1 class="tittle">Desafio 11 -  Mocks y Normalizr</h1>
+        
+        <section id="templateProducts"></section>
+        <section class="formCenter">
+
+            <form class="form" action="/" method="post" id="formulario">
+
+                <h2 class="titleMsg">Centro de Mensajes</h2>
+                <h2 class="titleMsg" id="messageCompresion"></h2>
+            
+            </form>
+
+        </section>
+        <section class="formCenter">
+
+            <form class="form2" id="formularioChat">
+                <div class="tituloChat">Servicio de Chat</div>
+                <input class="input" type="text" placeholder="Name" name="name" id="name" required >
+                <input class="input" type="text" placeholder="Last Name" name="lastname" id="lastName" required >
+                <input class="input" type="number" placeholder="Age" name="age" id="age" required >
+                <input class="input" type="email" placeholder="Mail" name="mail" id="mail" required >
+                <input class="input" type="text" placeholder="Alias" name="name" id="alias" required >
+                <input class="input" type="text" placeholder="Avatar" name="name" id="avatar" required >
+                <textarea placeholder="Escribe tu mensaje" maxlength="1000" name="msg" id="msg" required></textarea>
+                <button class="buttonChat" type="submit"> Enviar </button>
+            </form>
+
+            <section id="templateChat" class="templateChat"></section>
+
+        </section>
 
     </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>var exports = {};</script>
+    <script src="./index.js"></script>
 
-    <footer class="footer"><h4>Ryu Technology || © All right Reserved</h4></footer>
+    <footer class="footer"><h4>Ryu Technology 2022 || © All right Reserved</h4></footer>
+    
 </body>
-
 </html>
+

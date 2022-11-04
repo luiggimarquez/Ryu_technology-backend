@@ -1,0 +1,107 @@
+[
+  {
+    "author": {
+      "id": "Luo@me.com",
+      "name": "Luiggi",
+      "lastName": "Marquez",
+      "age": "34",
+      "alias": "Lu",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/9-Student-64.png",
+      "date": "3/11/2022, 19:17:26"
+    },
+    "text": {
+      "message": "Primer mensaje"
+    },
+    "idPost": 1
+  },
+  {
+    "author": {
+      "id": "prueba@me.com",
+      "name": "Orlando",
+      "lastName": "Marquez",
+      "age": "60",
+      "alias": "Mao",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/40-School_boy-64.png",
+      "date": "3/11/2022, 19:19:14"
+    },
+    "text": {
+      "message": "Segundo mensaje"
+    },
+    "idPost": 2
+  },
+  {
+    "author": {
+      "id": "pv@me.com",
+      "name": "Pancho",
+      "lastName": "Villa",
+      "age": "100",
+      "alias": "Pablo",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/36-Grandfather-64.png",
+      "date": "3/11/2022, 19:20:33"
+    },
+    "text": {
+      "message": "Tercer mensaje"
+    },
+    "idPost": 3
+  },
+  {
+    "author": {
+      "id": "me@me.com",
+      "name": "Maaya",
+      "lastName": "Uchida",
+      "age": "34",
+      "alias": "Taso",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/27-Businesswoman-64.png",
+      "date": "3/11/2022, 21:55:43"
+    },
+    "text": {
+      "message": "Cuarto mensaje"
+    },
+    "idPost": 4
+  },
+  {
+    "author": {
+      "id": "a@a.com",
+      "name": "Pedro",
+      "lastName": "Carrera",
+      "age": "40",
+      "alias": "Pepe",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/40-School_boy-64.png",
+      "date": "3/11/2022, 21:58:44"
+    },
+    "text": {
+      "message": "Quinto Mensaje"
+    },
+    "idPost": 5
+  },
+  {
+    "author": {
+      "id": "w@w.com",
+      "name": "Susan",
+      "lastName": "Black",
+      "age": "25",
+      "alias": "Su",
+      "avatar": "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/28-School_Girl-64.png",
+      "date": "3/11/2022, 22:12:20"
+    },
+    "text": {
+      "message": "Sexto mensaje"
+    },
+    "idPost": 6
+  },
+  {
+    "author": {
+      "id": "Lui@me.com",
+      "name": "Luiggi",
+      "lastName": "Marquez",
+      "age": "34",
+      "alias": "Lu",
+      "avatar": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-64.png",
+      "date": "4/11/2022, 12:01:11"
+    },
+    "text": {
+      "message": "Septimo mensaje"
+    },
+    "idPost": 7
+  }
+]

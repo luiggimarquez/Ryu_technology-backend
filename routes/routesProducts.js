@@ -1,71 +1,46 @@
-import { Router } from 'express'
-import admin from '../middleware/middleware.js'
+import {Router} from 'express'
 import * as dotenv from 'dotenv'
 dotenv.config()
-const router = Router()
-let daoMethods = []
+let daoMethodProducts = []
 
 switch(process.env.db){
 
     case "archivoDb":{
-        let { default : ProductosDaoArchivo } = await import ('../Daos/productos/ProductosDaoArchivo.js')
-        daoMethods = new ProductosDaoArchivo;
-        break;
-    }
-    case "memoriaDb":{
-        let { default : ProductosDaoMemoria} = await import ('../Daos/productos/ProductosDaoMemoria.js')
-        daoMethods = new ProductosDaoMemoria;
-        break;
-    }
-    case "firebaseDb":{
-        let { default : ProductosDaoFirebase} = await import ('../Daos/productos/ProductosDaoFirebase.js')
-        daoMethods = new ProductosDaoFirebase;
+
+        let { default : ProductsDaoFile } = await import ('../Persistencia/DAOS/products/productsDaoFile.js')
+        daoMethodProducts = new ProductsDaoFile;
         break;
     }
     case "mongoDb":{
-        let { default : ProductosDaoMongoDb} = await import ('../Daos/productos/ProductosDaoMongoDb.js')
-        daoMethods = new ProductosDaoMongoDb;
+
+        let { default : ProductsDaoMongoDb } = await import ('../Persistencia/Daos/products/productsDaoMongoDb.js')
+        daoMethodProducts = new ProductsDaoMongoDb;
         break;
+    }
+    case "firebaseDb":{
+
+        let { default : ProductsDaoFirebase } = await import ('../Persistencia/Daos/products/productsDaoFirebase.js')
+        daoMethodProducts = new ProductsDaoFirebase
     }
 }
 
-router.get('/', (req,res) => {
-    
-	daoMethods.getAll().then((products) =>{
+const router = Router()
 
-		(products.length !== 0 ) && res.send(products)
+router.get("/api/productos-test", (req,res) =>{
 
-	})
+    daoMethodProducts.getFaker().then((products) =>{
+
+        let boolean = true;
+        if(products.length === 0){ boolean = false;}
+        res.render('partial', {products,boolean} )
+    })
 })
 
-router.get('/:id', (req,res) => {
+router.post("/",(req,res) =>{
 
-    const { id } = req.params;
-	
-	daoMethods.getById(id).then((product) =>{
-
-		(product !== "") ? res.send(product) : res.send("producto no encontrado")
-	})
-})
-
-router.post('/', admin, (req,res) =>{
-
-    let productReceived = req.body;
-    daoMethods.saveProducts(productReceived)
-})
-
-router.put('/:id', admin,(req,res) =>{
-
-	const { id } = req.params;
-	let productReceived = req.body;
-	daoMethods.updateProducts({...productReceived,id})  
-})
-
-router.delete('/:id', admin, (req,res) =>{
-
-    let productReceived = req.body;
-	daoMethods.deleteItem(productReceived.id)
-    
+    let received = req.body;
+    daoMethodProducts.saveItems(received)
+    res.redirect('/')
 })
 
 export default router;
