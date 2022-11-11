@@ -183,3 +183,27 @@ textarea {
 
     width: 50%;
 }
+
+.templateLogin{
+
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+.templateUserloged {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    color: white;
+    margin: 54px 54px;
+    padding: 20px 20px;
+    width: 100%;
+    background-color: #00008ba1;
+    border-radius: 12px;
+    box-shadow: 3px 4px 15px 5px rgb(15 3 25 / 56%);
+}
+
+.buttonLogout{
+
+    padding: 10px 10px;
+}

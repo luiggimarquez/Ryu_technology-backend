@@ -1,5 +1,7 @@
 import {Router} from 'express'
 import * as dotenv from 'dotenv'
+import {loginUser} from './middleware/loginUser.js'
+
 dotenv.config()
 let daoMethodProducts = []
 
@@ -36,10 +38,27 @@ router.get("/api/productos-test", (req,res) =>{
     })
 })
 
+router.get("/", loginUser, (req,res)=>{
+    
+    const options = { root: './public/index/' , headers:{ 
+        'Access-Control-Expose-Headers': 'name',
+        'name': req.session.name}}
+    
+    res.sendFile('index.html' , options)
+    
+    
+})
+
 router.post("/",(req,res) =>{
 
     let received = req.body;
     daoMethodProducts.saveItems(received)
+    res.redirect('/')
+})
+
+router.post("/login", (req,res)=>{
+
+    req.session.name = req.body.name
     res.redirect('/')
 })
 

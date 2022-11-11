@@ -86,3 +86,55 @@ td {
     display: flex;
     justify-content: center;
 }
+.form, .form2{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 54px 0;
+    width: 242px;
+    background-color: #00008ba1;
+    border-radius: 12px;
+    box-shadow: 3px 4px 15px 5px rgb(15 3 25 / 56%);
+}
+
+.formCenter{
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+
+    margin: 10px 0;
+    padding: 5px 5px;
+}
+
+.buttonAling{
+
+    margin: 10px 10px;
+}
+
+.titleLogout{
+
+    color: white;
+    padding: 15px 15px;
+}
+.submit{
+
+    padding: 5px 5px;
+}
+
+.footer {
+
+    color: white;
+    background-color: darkblue;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

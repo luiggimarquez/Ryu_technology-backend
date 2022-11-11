@@ -9,7 +9,11 @@ class ProductsDaoFirebase extends firebaseContainer{
     }
 
     async getProducts(){
-        return randomProducts
+        for(let i=0;i<=4;i++){
+            let result = mocksProduct()
+            randomProducts.push(result) 
+        }
+        return randomProducts 
     } 
 
     async getFaker(){

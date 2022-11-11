@@ -1,10 +1,13 @@
-import  express from 'express';
-import * as http from 'http';
-import {Server as SocketServer} from 'socket.io'
 import productsRouter from './routes/routesProducts.js'
-import path from 'path';
+import loginRouter from './routes/routesLogin.js'
+import {Server as SocketServer} from 'socket.io'
+import MongoStore from 'connect-mongo';
+import session from 'express-session';
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
+import  express from 'express';
+import * as http from 'http';
+import path from 'path';
 dotenv.config()
 
 const app = express()
@@ -15,9 +18,22 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use('/', productsRouter)
+
 app.set('views', path.join(__dirname, '/public/partials'))
 app.set('view engine','ejs')
+
+app.use(session({
+    secret:'RyuTechKey',
+    resave: true,
+    saveUninitialized:true,
+    rolling:true,
+    store: MongoStore.create({mongoUrl:'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'}),
+    cookie:{maxAge:60000}
+}))
+
+app.use('/', productsRouter)
+app.use(loginRouter)
+
 
 let daoMethodProducts = []
 let daoMethodMessage = []
@@ -50,6 +66,8 @@ switch(process.env.db){
     }
 }
 
+
+
 socketServer.on('connection',(client)=>{
     
     daoMethodProducts.getProducts().then((products) =>{
@@ -78,7 +96,6 @@ socketServer.on('connection',(client)=>{
         })
     })
 
-    
     daoMethodMessage.getAll().then(msg =>{
         const messages = msg
         socketServer.sockets.emit('totalChat',messages)

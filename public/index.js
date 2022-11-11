@@ -45,7 +45,6 @@ function denormalization(items){
 socketClient.on('products', products => {
 
     loadTableProducts(products).then(productsToPrint => {
-
         document.getElementById('templateProducts').innerHTML = productsToPrint
     })
 });
@@ -57,10 +56,10 @@ socketClient.on('totalChat', messages =>{
 })
 
 form.onsubmit = () =>{
-
+    
     socketClient.emit('update')
 }
- 
+
 formChat.onsubmit = (e) =>{
 
     e.preventDefault()
@@ -98,9 +97,20 @@ function loadTableProducts(products) {
     return fetch('partials/partial.hbs')
         .then(response => response.text())
         .then(templateProducts => {
+        const template = Handlebars.compile(templateProducts);
+        const tableProducts = template({products})
+        return tableProducts
+    })  
+}
 
-            const template = Handlebars.compile(templateProducts);
-            const tableProducts = template({products})
+function loadUserLogin(nameLogin) {
+
+    return fetch('partials/templateUserloged.ejs')
+        .then(response => response.text())
+        .then(templateProducts => {
+
+            const template = ejs.compile(templateProducts);
+            const tableProducts = template({nameLogin})
             return tableProducts
         })  
 }
@@ -109,9 +119,9 @@ printMessage = (messages) => {
 
     let main = document.getElementById('templateChat')
     main.innerHTML =[];
-   
+    
     messages.forEach(items =>{
-
+        
         let messagePrinting = document.createElement("div");
         messagePrinting.className="formatPrinting";
         messagePrinting.innerHTML = `<p class="mailColor">${items.author.name}</p><p class="dateColor">[ ${items.author.date} ]</p> <p class="sizeAvatar"><img class="avatarMessage" src="${items.author.avatar}"></p>: <p class="colorMessage"> ${items.text.message} </p>`
@@ -123,3 +133,18 @@ printMessage = (messages) => {
     messagePrintingCompresion.innerHTML = `Porcentaje de compresión: ${compressionPercentage} % `
     compression.insertAdjacentElement("beforeend", messagePrintingCompresion) 
 }
+
+// This fetch load the login name, due to this info is loaded as template compile inside index.HTML
+
+fetch(`/`).then(response => {
+    return response.headers.get('name')
+
+}).then( data =>{
+
+    loadUserLogin(data).then(template =>{
+        document.getElementById('templateLogin').innerHTML = template
+    })
+})
+
+
+
