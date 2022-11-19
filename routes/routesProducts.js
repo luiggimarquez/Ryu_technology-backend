@@ -39,13 +39,15 @@ router.get("/api/productos-test", (req,res) =>{
 })
 
 router.get("/", loginUser, (req,res)=>{
+
+    let name = req.user.userName
+    let email = req.user.email
     
     const options = { root: './public/index/' , headers:{ 
         'Access-Control-Expose-Headers': 'name',
-        'name': req.session.name}}
+        'name': name, 'email': email }}
     
     res.sendFile('index.html' , options)
-    
     
 })
 
@@ -53,12 +55,6 @@ router.post("/",(req,res) =>{
 
     let received = req.body;
     daoMethodProducts.saveItems(received)
-    res.redirect('/')
-})
-
-router.post("/login", (req,res)=>{
-
-    req.session.name = req.body.name
     res.redirect('/')
 })
 

@@ -1,20 +1,51 @@
 import {Router} from 'express'
+import passport from 'passport'
+
 const routerLogin = Router()
 
 routerLogin.get("/login", (req,res)=>{
 
-   res.render('login')
+    req.isAuthenticated() ? res.redirect("/") : res.render('login')
 })
 
 routerLogin.get("/logout", (req,res)=>{
-
-    let name = req.session.name
+    let name = req.user.userName
     res.render('logout',{name})
 })
 
-routerLogin.delete("/logout",(req,res)=>{
+routerLogin.get("/register",(req,res)=>{
+    res.render("register")
 
-    req.session.destroy()
 })
+
+routerLogin.get('/errorRegister', (req,res)=>{
+    res.render('errorRegister')
+})
+
+routerLogin.get('/errorLogin', (req,res)=>{
+    res.render('errorLogin')
+})
+
+
+routerLogin.delete("/logout",(req,res)=>{
+    req.session.destroy()
+    res.json("done")
+})
+
+
+routerLogin.post("/register", passport.authenticate('register',{
+
+    failureRedirect:'/errorRegister',
+    successRedirect: '/'
+}))
+
+routerLogin.post("/login", passport.authenticate('login',{
+
+    failureRedirect: '/errorLogin',
+    successRedirect: '/' 
+}))
+
+
+
 
 export default routerLogin

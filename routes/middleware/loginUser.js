@@ -1,5 +1,6 @@
 export function loginUser(req, res, next) {
-    if (req.session?.name) {
+
+    if (req.isAuthenticated()) {
         next()
     } else {
         res.redirect('/login')

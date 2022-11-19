@@ -103,14 +103,14 @@ function loadTableProducts(products) {
     })  
 }
 
-function loadUserLogin(nameLogin) {
+function loadUserLogin(nameLogin, emailLogin) {
 
     return fetch('partials/templateUserloged.ejs')
         .then(response => response.text())
         .then(templateProducts => {
 
             const template = ejs.compile(templateProducts);
-            const tableProducts = template({nameLogin})
+            const tableProducts = template({nameLogin, emailLogin})
             return tableProducts
         })  
 }
@@ -137,11 +137,12 @@ printMessage = (messages) => {
 // This fetch load the login name, due to this info is loaded as template compile inside index.HTML
 
 fetch(`/`).then(response => {
-    return response.headers.get('name')
+    
+    return response.headers
 
 }).then( data =>{
 
-    loadUserLogin(data).then(template =>{
+    loadUserLogin(data.get('name'), data.get('email')).then(template =>{
         document.getElementById('templateLogin').innerHTML = template
     })
 })

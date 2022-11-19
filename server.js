@@ -1,4 +1,5 @@
 import productsRouter from './routes/routesProducts.js'
+import './routes/middleware/passport/localPassport.js'
 import loginRouter from './routes/routesLogin.js'
 import {Server as SocketServer} from 'socket.io'
 import MongoStore from 'connect-mongo';
@@ -8,6 +9,7 @@ import * as dotenv from 'dotenv'
 import  express from 'express';
 import * as http from 'http';
 import path from 'path';
+import passport from 'passport'
 dotenv.config()
 
 const app = express()
@@ -24,13 +26,15 @@ app.set('view engine','ejs')
 
 app.use(session({
     secret:'RyuTechKey',
-    resave: true,
-    saveUninitialized:true,
+    resave: false,
+    saveUninitialized:false,
     rolling:true,
     store: MongoStore.create({mongoUrl:'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'}),
-    cookie:{maxAge:60000}
+    cookie:{maxAge:600000}
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
 app.use('/', productsRouter)
 app.use(loginRouter)
 
