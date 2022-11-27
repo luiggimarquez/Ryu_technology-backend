@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import config from '../config.js';
 
 (async function (){
 
@@ -10,7 +11,7 @@ import mongoose from 'mongoose'
             console.log(err)  
         })
 
-        const URL = 'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'
+        const URL = config.MONGOSESSION
         let rta = await mongoose.connect(URL,{
             useNewUrlParser: true,
             useUnifiedTopology: true

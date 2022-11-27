@@ -1,16 +1,22 @@
 import productsRouter from './routes/routesProducts.js'
 import './routes/middleware/passport/localPassport.js'
 import loginRouter from './routes/routesLogin.js'
+import infoRouter from './routes/routesInfo.js'
+import randomRouter from './routes/routerRandom.js'
 import {Server as SocketServer} from 'socket.io'
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
+import config from './config.js';
+import passport from 'passport'
 import  express from 'express';
 import * as http from 'http';
 import path from 'path';
-import passport from 'passport'
 dotenv.config()
+
+
+import info from './utils/info.js';
 
 const app = express()
 const httpServer = http.createServer(app)
@@ -29,7 +35,7 @@ app.use(session({
     resave: false,
     saveUninitialized:false,
     rolling:true,
-    store: MongoStore.create({mongoUrl:'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'}),
+    store: MongoStore.create({mongoUrl:config.MONGOSESSION}),
     cookie:{maxAge:600000}
 }))
 
@@ -37,12 +43,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use('/', productsRouter)
 app.use(loginRouter)
-
+app.use(infoRouter)
+app.use('/api/randoms',randomRouter)
 
 let daoMethodProducts = []
 let daoMethodMessage = []
 
-switch(process.env.db){
+switch(config.DB){
 
     case "archivoDb":{
         let { default : MessagesDaoFile } = await import('./Persistencia/Daos/messages/messagesDaoFile.js');
@@ -107,7 +114,7 @@ socketServer.on('connection',(client)=>{
     }) 
 })
 
-const PORT = process.env.PORT || 3003;
+const PORT = config.PORT //process.env.PORT || 3003;
 httpServer.listen(PORT, () =>{
     console.log(`Servidor escuchando al puerto ${PORT}`)
 })

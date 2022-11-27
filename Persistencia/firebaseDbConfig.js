@@ -1,8 +1,8 @@
 import * as admin from 'firebase-admin/app';
 import {getFirestore}  from 'firebase-admin/firestore';
-import { promises as fs } from 'fs';
+import config from '../config.js'
 
-let key = await fs.readFile('./Persistencia/files/firebaseKeys.json', 'utf8')
+let key = JSON.stringify(config.FIREBASESESSION)
 let serviceAccount = JSON.parse(key)
 let app = admin.initializeApp({
   credential: admin.cert(serviceAccount),   

@@ -91,7 +91,7 @@ td {
     display: flex;
     justify-content: center;
 }
-.form, .form2{
+.form, .form2, .formInfo{
 
     display: flex;
     justify-content: center;
@@ -102,6 +102,17 @@ td {
     background-color: #00008ba1;
     border-radius: 12px;
     box-shadow: 3px 4px 15px 5px rgb(15 3 25 / 56%);
+}
+
+.formInfo{
+
+    width: 80%;
+    align-items: flex-start;
+}
+
+.formInfo h2{
+
+    text-align: left;
 }
 
 .formCenter{
