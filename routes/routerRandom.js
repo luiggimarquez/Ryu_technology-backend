@@ -1,9 +1,7 @@
 import { Router } from "express";
 import { fork } from 'child_process'
 
-
 const routerRandom = Router()
-
 
 routerRandom.get('/',(req,res)=>{
     
@@ -13,13 +11,9 @@ routerRandom.get('/',(req,res)=>{
     childProcess.send(cant)
     childProcess.on('message', result =>{
     
-        //result = JSON.stringify(result)
-        
-        //res.render('randomNumbers',{result})
         res.json(result)
     }) 
     
 })
-
 
 export default routerRandom

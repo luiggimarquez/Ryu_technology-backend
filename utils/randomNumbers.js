@@ -1,4 +1,3 @@
-
 function randomNumbers(numbersRamdon) {
     
     let resultRandom = []
@@ -21,8 +20,6 @@ function randomNumbers(numbersRamdon) {
     return  resultCount
 }
 
-
-
 process.on('message', (numbers) => {
 
     console.log("Inicio Subproceso: ");
@@ -32,10 +29,3 @@ process.on('message', (numbers) => {
     process.exit()
     
 });
-
-
-
-
-
-
-
