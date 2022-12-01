@@ -12,6 +12,7 @@ import config from './config.js';
 import passport from 'passport'
 import  express from 'express';
 import * as http from 'http';
+import cluster from 'cluster'
 import path from 'path';
 dotenv.config()
 
@@ -114,8 +115,20 @@ socketServer.on('connection',(client)=>{
     }) 
 })
 
-const PORT = config.PORT //process.env.PORT || 3003;
-httpServer.listen(PORT, () =>{
-    console.log(`Servidor escuchando al puerto ${PORT}`)
-})
-httpServer.on("error", error => console.log(`Error en servidor ${error}`))
+if(cluster.isPrimary){
+
+    console.log("proceso maestro: ", process.pid)
+    for(let i=0; i<4; i++){
+
+        cluster.fork()
+    }
+
+}else{
+
+    const PORT = config.PORT
+    httpServer.listen(PORT, () =>{
+        console.log(`Servidor escuchando al puerto ${PORT} - PID ${process.pid}`)
+    })
+    httpServer.on("error", error => console.log(`Error en servidor ${error}`))
+
+}

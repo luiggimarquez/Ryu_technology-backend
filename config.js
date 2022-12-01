@@ -1,6 +1,6 @@
 import yargs from "yargs"
 
-const PORT_YARGS = yargs(process.argv.slice(2)).default({PORT:8080}).argv
+const MODE_YARGS = yargs(process.argv.slice(2)).default({MODE:'FORK'}).argv
 
 const config = {
 
@@ -18,7 +18,8 @@ const config = {
         auth_provider_x509_cert_url : process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
         client_x509_cert_url : process.env.FIREBASE_CLIENT_X509_CERT_URL
     },
-    PORT : PORT_YARGS.PORT
+    MODE : MODE_YARGS.MODE,
+    PORT : process.env.PORT
 
 }
 

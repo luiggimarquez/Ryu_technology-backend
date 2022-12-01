@@ -1,6 +1,7 @@
 import yargs from "yargs";
 import {inspect} from 'util'
 import util from 'util'
+import os from 'os'
 
 
 
@@ -13,7 +14,8 @@ const info = {
     rss : util.inspect(process.memoryUsage()),
     execpath :  process.execPath,
     pid : process.pid,
-    folder :  process.cwd()
+    folder :  process.cwd(),
+    cpu: os.cpus().length
 }
 
 export default info

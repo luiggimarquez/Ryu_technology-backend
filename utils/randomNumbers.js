@@ -1,7 +1,7 @@
 function randomNumbers(numbersRamdon) {
     
     let resultRandom = []
-    let numbers= numbersRamdon || 100000000
+    let numbers= numbersRamdon || 100
 
     console.log('calculando : ',numbers)
 
