@@ -1,6 +1,6 @@
 import yargs from "yargs"
 
-const MODE_YARGS = yargs(process.argv.slice(2)).default({MODE:'FORK'}).argv
+const MODE_YARGS = yargs(process.argv).default({MODE:'FORK'}).argv
 
 const config = {
 
@@ -22,5 +22,6 @@ const config = {
     PORT : process.env.PORT
 
 }
+
 
 export default config

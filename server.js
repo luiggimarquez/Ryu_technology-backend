@@ -115,7 +115,7 @@ socketServer.on('connection',(client)=>{
     }) 
 })
 
-if(cluster.isPrimary){
+if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
 
     console.log("proceso maestro: ", process.pid)
     for(let i=0; i<4; i++){

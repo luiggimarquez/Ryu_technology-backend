@@ -15,17 +15,17 @@ routerRandom.get('/',(req,res)=>{
         const childProcess = fork('./utils/randomNumbers.js')
         childProcess.send(cant)
         childProcess.on('message', result =>{
-        
+            console.log("Proceso: ",process.pid)
             res.json(result)
         }) 
     }else if (config.MODE === "CLUSTER"){
 
         console.log("Modo Cluster Activado")
-
         const childProcess = fork('./utils/randomNumbers.js')
         childProcess.send(cant)
         childProcess.on('message', result =>{
             
+            console.log("Proceso: ",process.pid)
             res.json(result)
         })
 
