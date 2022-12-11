@@ -1,7 +1,5 @@
 import yargs from "yargs"
 
-console.log(process.argv)
-
 const MODE_YARGS = yargs(process.argv[2]).default({MODE:'FORK'}).argv
 const PORT_YARGS = yargs(process.argv[3]).default({PORT:'8081'}).argv
 

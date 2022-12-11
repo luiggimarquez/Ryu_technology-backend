@@ -18,4 +18,9 @@ const info = {
     cpu: os.cpus().length
 }
 
-export default info
+console.log("Inicio Subproceso Info");
+process.send(info);
+process.exit()
+
+
+//export default info

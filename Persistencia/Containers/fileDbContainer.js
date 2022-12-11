@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import { normalizer } from '../../utils/normalizr.js'
+import { logger, loggerError } from '../../utils/logger.js';
 
 class fileContainer{
 
@@ -16,23 +17,31 @@ class fileContainer{
             return resultNormalized
 
         } catch (err) {
-          console.log(err)
+          logger.info(err)
+          loggerError.error(err)
         }
     }
 
     async saveItems(item){
         
-        const readItems = await fs.readFile(this.path, 'utf8')
-        let Items = JSON.parse(readItems)
+        try{
+            const readItems = await fs.readFile(this.path, 'utf8')
+            let Items = JSON.parse(readItems)
+            let lastId = Math.max(...Items.map(maxItem => maxItem.idPost))
+            if (lastId === -Infinity) {lastId = 0};
+            let FileToSave = {...item, idPost: (lastId + 1) }
+            Items.push(FileToSave)
+            let saveItemsToFile = JSON.stringify(Items, null, 2)
+            fs.writeFile(this.path, saveItemsToFile)
+            let resultNormalized = normalizer(saveItemsToFile)
+            
+            return resultNormalized
 
-        let lastId = Math.max(...Items.map(maxItem => maxItem.idPost))
-        if (lastId === -Infinity) {lastId = 0};
-        let FileToSave = {...item, idPost: (lastId + 1) }
-        Items.push(FileToSave)
-        let saveItemsToFile = JSON.stringify(Items, null, 2)
-        fs.writeFile(this.path, saveItemsToFile)
-        let resultNormalized = normalizer(saveItemsToFile)
-        return resultNormalized
+        }catch(err){
+
+            logger.info(err)
+            loggerError.error(err)
+        }
     } 
 }
 

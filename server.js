@@ -6,6 +6,7 @@ import randomRouter from './routes/routerRandom.js'
 import {Server as SocketServer} from 'socket.io'
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
+import { logger, loggerError, loggerWarn } from './utils/logger.js'
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
 import config from './config.js';
@@ -17,7 +18,7 @@ import path from 'path';
 dotenv.config()
 
 
-import info from './utils/info.js';
+//import info from './utils/info.js';
 
 const app = express()
 const httpServer = http.createServer(app)
@@ -115,9 +116,14 @@ socketServer.on('connection',(client)=>{
     }) 
 })
 
+app.all('*', (req, res)=>{
+
+    res.json({"error" : "Ruta no Exite"})
+})
+
 if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
 
-    console.log("proceso maestro: ", process.pid)
+    logger.info("proceso maestro: ", process.pid)
     for(let i=0; i<4; i++){
 
         cluster.fork()
@@ -127,8 +133,12 @@ if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
 
     const PORT = config.PORT
     httpServer.listen(PORT, () =>{
-        console.log(`Servidor escuchando al puerto ${PORT} - PID ${process.pid}`)
+        logger.info(`Servidor escuchando al puerto ${PORT} - PID ${process.pid}`)
+  
     })
-    httpServer.on("error", error => console.log(`Error en servidor ${error}`))
+    httpServer.on("error", error =>{
+        logger.error(`Error en servidor ${error}`)
+    
+    })
 
 }

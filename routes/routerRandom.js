@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { fork } from 'child_process'
 import  config  from '../config.js';
+import { logger } from "../utils/logger.js";
 import cluster from 'cluster'
 
 const routerRandom = Router()
@@ -8,30 +9,29 @@ const routerRandom = Router()
 routerRandom.get('/',(req,res)=>{
     
     const cant  = req.query
+    logger.info("Request Received: Route: /api/randoms Method: GET")
    
-   if(config.MODE === 'FORK'){
+  /*  if(config.MODE === 'FORK'){
 
-        console.log("Modo Fork Activado")
+        logger.info("Modo Fork Activado")
         const childProcess = fork('./utils/randomNumbers.js')
         childProcess.send(cant)
         childProcess.on('message', result =>{
-            console.log("Proceso: ",process.pid)
+            logger.info("Proceso: ",process.pid)
             res.json(result)
         }) 
     }else if (config.MODE === "CLUSTER"){
 
-        console.log("Modo Cluster Activado")
+        logger.info("Modo Cluster Activado")
         const childProcess = fork('./utils/randomNumbers.js')
         childProcess.send(cant)
         childProcess.on('message', result =>{
             
-            console.log("Proceso: ",process.pid)
+            logger.info("Proceso: ",process.pid)
             res.json(result)
         })
 
-
-
-    }
+    } */
 
 })
 

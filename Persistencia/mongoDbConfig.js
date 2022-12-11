@@ -1,14 +1,16 @@
 import mongoose from 'mongoose'
 import config from '../config.js';
+import { logger, loggerError } from '../utils/logger.js';
 
 (async function (){
 
     try { 
         mongoose.connection.on("open", () =>{
-            console.log("Base de datos MongoDb conectada")  
+            logger.info("Base de datos MongoDb conectada")  
         })
         mongoose.connection.on("error", (err) =>{
-            console.log(err)  
+            logger.info(err)
+            loggerError.error(err)
         })
 
         const URL = config.MONGOSESSION
@@ -18,6 +20,7 @@ import config from '../config.js';
         })
 
     } catch (error){
-        console.log(error)
+        logger.info(error)
+        loggerError.error(error)
     }
 })();

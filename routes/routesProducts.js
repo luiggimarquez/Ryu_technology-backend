@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import * as dotenv from 'dotenv'
+import { logger } from '../utils/logger.js'
 import {loginUser} from './middleware/loginUser.js'
 
 dotenv.config()
@@ -30,6 +31,8 @@ const router = Router()
 
 router.get("/api/productos-test", (req,res) =>{
 
+    logger.info("Request Received: Route: /api/productos-test Method: GET")
+
     daoMethodProducts.getFaker().then((products) =>{
 
         let boolean = true;
@@ -39,7 +42,8 @@ router.get("/api/productos-test", (req,res) =>{
 })
 
 router.get("/", loginUser, (req,res)=>{
-
+    
+    logger.info("Request Received: Route: / Method: GET")
     let name = req.user.userName
     let email = req.user.email
     
@@ -53,9 +57,12 @@ router.get("/", loginUser, (req,res)=>{
 
 router.post("/",(req,res) =>{
 
+    logger.info("Request Received: Route: / Method: POST")
     let received = req.body;
     daoMethodProducts.saveItems(received)
     res.redirect('/')
 })
+
+
 
 export default router;
