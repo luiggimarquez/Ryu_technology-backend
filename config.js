@@ -20,7 +20,7 @@ const config = {
         client_x509_cert_url : process.env.FIREBASE_CLIENT_X509_CERT_URL
     },
     MODE : MODE_YARGS.MODE,
-    PORT : PORT_YARGS.PORT
+    PORT : process.env.PORT
 
 }
 
