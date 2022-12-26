@@ -1,6 +1,5 @@
 import { firestoreDb } from "../db/firebaseConfig.js";
-import { firebaseModel} from "../db/models/firebase/firebaseModel.js"
-
+import { firebaseModel} from "../models/firebase/firebaseModel.js"
 
 class ContenedorFirebase{
 
@@ -32,8 +31,6 @@ class ContenedorFirebase{
             return result
         })
     }
-
-
 }
 
 export default ContenedorFirebase;

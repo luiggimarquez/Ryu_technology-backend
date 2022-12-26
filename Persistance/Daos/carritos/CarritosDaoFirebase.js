@@ -1,5 +1,6 @@
 import ContenedorFirebase from '../../Contenedores/ContenedorFirebase.js'
-import { firestoreDb } from '../../db/firebaseConfig.js';
+import { firestoreDb } from '../../Persistance/db/firebaseConfig.js.js';
+import {loggerError} from '../../../utils/logger.js'
 
 class CarritosDaoFirebase extends ContenedorFirebase{
 
@@ -21,7 +22,7 @@ class CarritosDaoFirebase extends ContenedorFirebase{
 
         } catch (error) {
 
-            console.log(error) 
+            loggerError.error(error) 
         }
     }
 

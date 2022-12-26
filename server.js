@@ -1,9 +1,19 @@
 import productsRoutes from './routes/routesProducts.js'
+import { logger, loggerError } from './utils/logger.js'
+import './middleware/localpassport.js'
 import productsCart from './routes/routesCart.js'
+import loginRouter from './routes/routesLogin.js'
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
 import  express from 'express';
 import path from 'path';
+import  passport from 'passport';
+import session  from 'express-session';
+import MongoStore from 'connect-mongo';
+import cluster from 'cluster';
+import config from './config.js'
+import os from 'os'
+
 const app = express()
 const PORT = process.env.PORT || 8080;
 dotenv.config()
@@ -11,29 +21,45 @@ dotenv.config()
 switch (process.env.db){
 
     case "mongoDb":{
-        await import ('./db/mongoConfig.js')
+        await import ('./Persistance/db/mongoConfig.js')
         break;
     }
     case "firebaseDb":{
-        await import('./db/firebaseConfig.js')
+        await import('./Persistance/db/firebaseConfig.js.js')
         break;
     }
 }  
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use('/api/productos', productsRoutes)
-app.use('/api/carrito',productsCart)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.set('views','./public/ejs/src/views/')
 app.set('view engine','ejs')
 
-app.get("/", (req,res) =>{
+app.use(session({
+    secret: 'RyuTechTerceraEntrega',
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    store: MongoStore.create({mongoUrl:'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'}),
+    cookie:{maxAge:600000}
+}))
 
-    res.sendFile('index.html')
-})
+app.use(passport.initialize())
+app.use(passport.session())
+app.use('/api/productos', productsRoutes)
+app.use('/api/carrito',productsCart)
+app.use(loginRouter)
+
+
+
+app.get("/", async (req,res) =>{
+
+    req.isAuthenticated() ? res.sendFile(__dirname+'/public/index/index.html') : res.render('pages/login')
+
+}) 
 
 app.all('*', (req, res) =>{
     let response = {
@@ -43,7 +69,18 @@ app.all('*', (req, res) =>{
     res.render('pages/index', {response} )
 })
 
-const server = app.listen(PORT, () => {
-    console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
-})
-server.on("error", error => console.log(`Error en servidor ${error}`))
+if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
+
+    logger.info("proceso maestro: ", process.pid)
+    for(let i=0; i<(os.cpus().length); i++){
+        cluster.fork()
+    }
+
+}else{
+
+    const server = app.listen(PORT, () => {
+        logger.info(`Servidor http escuchando en el puerto ${server.address().port}`)
+    })
+    server.on("error", error => loggerError.error(`Error en servidor ${error}`))
+
+}

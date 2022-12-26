@@ -280,7 +280,7 @@ formAddProduct.onsubmit= (e) =>{
 }).then(data =>{
 	const json = JSON.parse(data);
 	
-	if(json.length === 0){
+	if(json.length == 0){
 
 		cart = new Cart("1",(new Date(Date.now()).toString()),[])
 		let dataBody = JSON.stringify(cart)
@@ -304,7 +304,28 @@ formAddProduct.onsubmit= (e) =>{
 
 	}else{
 
-		idCartNow=json[(json.length - 1)].id
+		// if cart exist and it is still active, this idCartNow hold the actual Cart
+		if(json[0].id){
+			idCartNow=json[0].id
+		}else{
+
+			// This POST method create a new car when first car already exist and it is finished
+			idCartNow=JSON.parse(json)+1
+			cart = new Cart(idCartNow,(new Date(Date.now()).toString()),[])
+			let dataBody = JSON.stringify(cart)
+		
+		fetch("/api/carrito", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: dataBody})
+
+			console.log(idCartNow)
+
+		}
+		
+		
 			
 	}
 

@@ -8,22 +8,22 @@ let daoMethods = []
 switch(process.env.db){
 
     case "archivoDb":{
-        let { default : ProductosDaoArchivo } = await import ('../Daos/productos/ProductosDaoArchivo.js')
+        let { default : ProductosDaoArchivo } = await import ('../Persistance/Daos/productos/ProductosDaoArchivo.js')
         daoMethods = new ProductosDaoArchivo;
         break;
     }
     case "memoriaDb":{
-        let { default : ProductosDaoMemoria} = await import ('../Daos/productos/ProductosDaoMemoria.js')
+        let { default : ProductosDaoMemoria} = await import ('../Persistance/Daos/productos/ProductosDaoMemoria.js')
         daoMethods = new ProductosDaoMemoria;
         break;
     }
     case "firebaseDb":{
-        let { default : ProductosDaoFirebase} = await import ('../Daos/productos/ProductosDaoFirebase.js')
+        let { default : ProductosDaoFirebase} = await import ('../Persistance/Daos/productos/ProductosDaoFirebase.js')
         daoMethods = new ProductosDaoFirebase;
         break;
     }
     case "mongoDb":{
-        let { default : ProductosDaoMongoDb} = await import ('../Daos/productos/ProductosDaoMongoDb.js')
+        let { default : ProductosDaoMongoDb} = await import ('../Persistance/Daos/productos/ProductosDaoMongoDb.js')
         daoMethods = new ProductosDaoMongoDb;
         break;
     }
@@ -34,7 +34,6 @@ router.get('/', (req,res) => {
 	daoMethods.getAll().then((products) =>{
 
 		(products.length !== 0 ) && res.send(products)
-
 	})
 })
 

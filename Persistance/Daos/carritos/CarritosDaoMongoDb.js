@@ -1,5 +1,5 @@
-import ContenedorMongoDb from "../../Contenedores/ContenedorMongoDb.js"
-import { cartsModel } from '../../db/models/mongo/cartModel.js';
+import ContenedorMongoDb from "../../Contenedores/ContenedorMongoDb.js";
+import { cartsModel } from '../../models/mongoDb/cartModel.js';
 
 class CarritosDaoMongoDb extends ContenedorMongoDb{
 
@@ -8,9 +8,12 @@ class CarritosDaoMongoDb extends ContenedorMongoDb{
         super(cartsModel)
     }
 
-    async createCart(cart){
+    async createCart(cart, email){
 
         cart.id = cart.id.toString()
+        console.log("mail aqui", email)
+        cart.active = true;
+        cart = {...cart, email}
         const cartsSaveModel = new cartsModel(cart)
         await cartsSaveModel.save()
     }
@@ -18,7 +21,7 @@ class CarritosDaoMongoDb extends ContenedorMongoDb{
     async addItemCar(product,id){
 
         let result = await cartsModel.updateOne({id:id, "products.id":product.id},{$inc: {"products.$.quantity":1}})
-     
+
         if(result.matchedCount === 0){ 
             await cartsModel.updateOne({id:id},{ $addToSet:{  products: {... product,quantity:1} } })
         }
@@ -28,6 +31,12 @@ class CarritosDaoMongoDb extends ContenedorMongoDb{
     
         await cartsModel.updateOne({id:id},{$pull:{ products:{id:id_prod} }})
     }
+
+    async finishCart(id){
+        
+        await cartsModel.updateOne({id:id},{$set: {active:false}})
+    }
+
 }
 
 export default CarritosDaoMongoDb;

@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import {loggerError} from '../../utils/logger.js'
 
 class ContenedorArchivo{
 
@@ -15,7 +16,7 @@ class ContenedorArchivo{
             return readProductsParse
 
         } catch (err) {
-          console.log(err)
+          loggerError.error(err)
         }
     }
 

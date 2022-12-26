@@ -1,22 +1,26 @@
 import mongoose from 'mongoose'
+import config from '../../config.js';
+import { logger, loggerError} from '../../utils/logger.js'
 
 (async function (){
 
     try { 
         mongoose.connection.on("open", () =>{
-            console.log("Base de datos MongoDb conectada")  
+            logger.info("Base de datos MongoDb conectada")  
         })
         mongoose.connection.on("error", (err) =>{
-            console.log(err)  
+            logger.info(err)
+            loggerError.error(err)  
         })
 
-        const URL = 'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'
+        const URL = config.MONGOSESSION
         let rta = await mongoose.connect(URL,{
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
 
     } catch (error){
-        console.log(error)
+        logger.info(error)
+        loggerError.error(error)
     }
 })();

@@ -2,6 +2,7 @@ let idCartNow = []
 let containerProduct = document.getElementById('bodyCart')
 let containerDeleteCart = document.getElementById('buttonEmpty')
 
+
 loadProducts = (itemsCart) =>{
     
     containerProduct.innerHTML="";
@@ -77,10 +78,39 @@ loadProducts = (itemsCart) =>{
 			}
 		})
 
-		//After DELETE Method (empty and delete cart), this FETCH POST create a new cart
+		location.href = '/products'
+	
+	})
 
-	setTimeout(()=>{
-		fetch(`/api/carrito/`,{
+	
+	// After Finish Cart, this Fetch (POST) save the data from actual cart and make a new Cart
+
+	filename = {
+		id:(parseInt(idCartNow)+1).toString(),
+		timestampCart:new Date(Date.now()).toString(),
+		products:[]
+	}
+
+	/* fetch(`/api/carrito/${idCartNow}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json"
+		}
+	}) */
+
+	let dataBody = JSON.stringify(filename)
+
+	let eventFinishCart = document.getElementById("finishCart")
+	eventFinishCart.addEventListener('click', () =>{
+
+		fetch(`/api/carrito/${idCartNow}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then(()=>{
+
+			fetch(`/api/carrito/`,{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -93,44 +123,10 @@ loadProducts = (itemsCart) =>{
 				const json = JSON.parse(data);
 				console.log("Carrito creado, ID: ",json)
 			})
-
-			location.reload();
-		
-		},1000)	
-		
-	})
-
+		})
 	
-	// After Finish Cart, this Fetch (POST) save the data from actual cart and make a new Cart
-
-	filename = {
-		id:(parseInt(idCartNow)+1).toString(),
-		timestampCart:new Date(Date.now()).toString(),
-		products:[]
-	}
-
-	let dataBody = JSON.stringify(filename)
-
-	let eventFinishCart = document.getElementById("finishCart")
-	eventFinishCart.addEventListener('click', () =>{
-
-		fetch(`/api/carrito/`,{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-			body: dataBody
-		}).then(response => {
-			return response.text()
-		})
-		.then(data => {
-			const json = JSON.parse(data);
-			console.log("Carrito creado, ID: ",json)
-		})
-
-		
-			
-		location.reload();
+		//location.reload();
+		location.href = '/'
         
 	})	
 }
@@ -145,7 +141,7 @@ loadCartEmpty= () => {
 				
 				<img src="./img/carritovacio.png" alt="imagen carrito de compras vacio">
                 <h2> Carrito se encuentra vacío </h2>
-                <a href="./products.html"><button>Ir a productos</button></a>
+                <a href="/products"><button>Ir a productos</button></a>
 				
 			</div>`;
 	containerProduct.appendChild(div);
@@ -154,37 +150,38 @@ loadCartEmpty= () => {
 // Fetch Method Get to Validate if cart exist
 
 fetch('/api/carrito/').then(response => {
-		return response.text()
+	return response.text()
 	}).then(data =>{
 		const json = JSON.parse(data);
-		if(json.length === 0){
+		if(json.length == 0){
 
 			loadCartEmpty();
 
 		}else{
 
-			// ID from last cart
-			idCartNow=json[(json.length - 1 )].id
+			// ID from actual user cart
+			if(json[0].id){idCartNow=json[0].id}
+			else{ idCartNow=JSON.parse(json)+1 }
 			
+		}
     
 			//Fetch Method Get for load items for the cart
 
-            fetch(`/api/carrito/${idCartNow}/productos`).then(response => {
-            	return response.text()
-            }).then(data => {
+        fetch(`/api/carrito/${idCartNow}/productos`).then(response => {
+            return response.text()
+        }).then(data => {
 
-				
-            	const itemsCart = JSON.parse(data);
-            	if (itemsCart[0].products.length === 0) {
+            const itemsCart = JSON.parse(data);
 
-            		loadCartEmpty();
-            	} else {
-
-            		loadProducts(itemsCart[0].products)
-            	}
-            })
-		}
-
+            if (itemsCart[0].products.length === 0) {
+            	loadCartEmpty();
+            } else {
+            	loadProducts(itemsCart[0].products)
+            }
+        }).catch(err=>{
+			console.log(err)
+		})
+		
 	}).catch(err=>{
 	    console.log(err)
 	});

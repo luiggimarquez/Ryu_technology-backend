@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body id="body">
 
     <header>
-        <div class="headerTitle"><a href="./products.html"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="./cart.html"><img src="./img/cart.png" alt="acceso al carrito"></a></div>
+        <div class="headerTitle"><a href="/products"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="/cart"><img src="./img/cart.png" alt="acceso al carrito"></a></div>
+        <div class="templateUserloged"> <img class="iconAvatar" src=<%= img %>><h2>Bienvenido: --- <%= name %>  --- <%= email %></h2><button class="buttonLogout" onclick="location.href='/logout'">Logout</button></div>
     </header>
     <main>
     <section class="card" id="card"></section>
@@ -48,7 +49,7 @@
     </main>
     <footer class="footer"><h4>Ryu Technology || © All right Reserved</h4></footer>
 
-    <script type="module" src="../products.js"></script>
+    <script type="module" src="/products.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/template.css">
+    <title>Desafio_13</title>
+</head>
+<body>
+    <header>
+        <a href="/"><h1 class="h1">Ryu Technology</h1></a>
+    </header>
+    
+    <h2>Register</h2>
+
+    <section class="formCenter">
+
+        <form class="form" action="/register" method="post" id="formulario" enctype="multipart/form-data">
+
+            <input class="input" type="text" placeholder="Name" name="userName" id="userName" required >
+            <input class="input" type="mail" placeholder="Email" name="email" id="email" required >
+            <input class="input" type="text" placeholder="Password" name="password" id="password" required >
+            <input class="input" type="text" placeholder="Age" name="age" id="age" required >
+            <input class="input" type="text" placeholder="Address" name="address" id="address" required >
+            <input class="input" type="number" placeholder="Phone" name="phone" id="phone" required >
+            <input type="file" name="avatar" />
+            <div class="buttonAling">
+                <button class="submit" type="submit"> Enviar </button>
+            </div>
+  
+        </form>
+        
+        <div class="registro">
+            <h2>Volver a Login</h2>
+            
+            <button class="submit" onclick="location.href='/login'"> Login </button>
+            
+        </div>
+
+
+    </section>
+
+    <footer class="footer"><h4>Ryu Technology || © All right Reserved</h4></footer>
+   
+    
+</body>
+
+</html>
