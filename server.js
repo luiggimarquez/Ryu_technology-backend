@@ -14,7 +14,6 @@ import cluster from 'cluster';
 import config from './config.js'
 import os from 'os'
 import userLogged from './utils/userLogged.js'
-import sendEmail from './utils/email.js'
 
 const app = express()
 const PORT = 8081;
@@ -63,11 +62,6 @@ app.get("/", async (req,res) =>{
         res.sendFile('index.html', options)
     }else res.render('pages/login')  
 }) 
-
-app.get("/send-email", async(req, res) => {
-    sendEmail("nf_snake@hotmail.com", "Welcome message","Welcome message content");
-    res.send("send email success");
-});
 
 app.all('*', (req, res) =>{
     let response = {
