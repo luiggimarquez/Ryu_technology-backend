@@ -148,8 +148,6 @@ function loadProducts(items) {
 						location.reload()
 					}, 1000)
 				})
-
-
 				
 			}) 
 
@@ -247,7 +245,6 @@ getProductbyId.addEventListener("keyup", ()=>{
 
 })
 
-
 //Fetch Method POST for save Products
 
 formAddProduct.onsubmit= (e) =>{
@@ -322,11 +319,7 @@ formAddProduct.onsubmit= (e) =>{
 				body: dataBody})
 
 			console.log(idCartNow)
-
-		}
-		
-		
-			
+		}	
 	}
 
 }).catch(err=>{

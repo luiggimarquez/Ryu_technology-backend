@@ -164,7 +164,6 @@ fetch('/api/carrito/').then(response => {
         }).then(data => {
 
             const itemsCart = JSON.parse(data);
-			console.log()
             if (itemsCart.error === 'producto no encontrado' || itemsCart[0].products.length === 0) {
             	loadCartEmpty();
             } else {

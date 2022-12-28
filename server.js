@@ -17,7 +17,7 @@ import userLogged from './utils/userLogged.js'
 import sendEmail from './utils/email.js'
 
 const app = express()
-const PORT = process.env.PORT || 8080;
+const PORT = 8081;
 dotenv.config()
 
 switch (process.env.db){

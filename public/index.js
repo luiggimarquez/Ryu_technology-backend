@@ -13,12 +13,10 @@ function loadUserLogin(nameLogin, emailLogin, pictureLogin) {
 
 
 fetch(`/`).then(response => {
-    console.log(response.headers)
     return response.headers
     
 }).then( data =>{
 
-        console.log(data)
     loadUserLogin(data.get('name'), data.get('email'), data.get('picture')).then(template =>{
         document.getElementById('templateLogin').innerHTML = template
     })

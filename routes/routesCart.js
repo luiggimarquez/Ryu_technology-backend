@@ -87,9 +87,9 @@ router.put('/:id', async(req,res)=>{
     await twilioClient.messages.create({
         body:`RyuTech: nuevo pedido de: ${req.user.userName} - ${req.user.email}, su pedido ha sido recibido y se encuentra en proceso - RyuTechnology`, 
         from:'whatsapp:+14155238886',
-        to:'whatsapp:+5491156432778'
+        to:`whatsapp:+${req.user.phone}`
     })
-    //daoMethods.finishCart(id)
+    daoMethods.finishCart(id)
 })
 
 export default router;
