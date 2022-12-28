@@ -55,7 +55,7 @@ header{
 }
 
 .iconCart img {
-    width: 10%;
+    width: 30%;
 }
 
 .footer {
@@ -182,53 +182,52 @@ main{
     margin: 15px 0px;
 }
 .itemIdAlining{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
 }
-
 
 .itemId{
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 20%;
 }
 
 .error{
 
-  display:flex;
-  justify-content: center;
-  align-content: center;
-  margin-top: 30px;
-  font-size: larger;
+	display:flex;
+	justify-content: center;
+	align-content: center;
+	margin-top: 30px;
+	font-size: larger;
 }
 
 .errorBody{
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .titleError{
   
-  font-weight: 900;
-  margin: 250px 0 100px 0;
+	font-weight: 900;
+	margin: 250px 0 100px 0;
 }
 
 .messageContainer{
 
-  display: flex;
-  width: 70%;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	width: 70%;
+	justify-content: center;
+	align-items: center;
 }
 .messageContainer h2{
 

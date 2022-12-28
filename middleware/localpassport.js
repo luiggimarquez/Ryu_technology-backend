@@ -1,7 +1,9 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { usersEcommerceModel } from '../Persistance/models/mongoDb/userMongoDbModels.js'
+import config from "../config.js";
 import bcrypt from 'bcrypt'
+import sendEmail from '../utils/email.js'
 
 passport.use('register', new LocalStrategy({
 
@@ -15,6 +17,9 @@ passport.use('register', new LocalStrategy({
             return done(null,false)
         }else{
 
+            let content = [JSON.parse(JSON.stringify(req.body))]
+
+            sendEmail(config.ADMINMAIL,`RyuTech: nuevo usuario: ${req.body.userName} - ${req.body.email}`,content, 'Tenemos un nuevo usuario registrado en RyuTechnology');
             const user = new usersEcommerceModel()
             const saltRounds = 10;
             bcrypt.hash(password, saltRounds, function(err,hash){

@@ -11,7 +11,6 @@ class CarritosDaoMongoDb extends ContenedorMongoDb{
     async createCart(cart, email){
 
         cart.id = cart.id.toString()
-        console.log("mail aqui", email)
         cart.active = true;
         cart = {...cart, email}
         const cartsSaveModel = new cartsModel(cart)

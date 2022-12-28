@@ -91,13 +91,6 @@ loadProducts = (itemsCart) =>{
 		products:[]
 	}
 
-	/* fetch(`/api/carrito/${idCartNow}`, {
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json"
-		}
-	}) */
-
 	let dataBody = JSON.stringify(filename)
 
 	let eventFinishCart = document.getElementById("finishCart")
@@ -107,7 +100,8 @@ loadProducts = (itemsCart) =>{
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
-			}
+			},
+			body: JSON.stringify(itemsCart)
 		}).then(()=>{
 
 			fetch(`/api/carrito/`,{
@@ -125,9 +119,7 @@ loadProducts = (itemsCart) =>{
 			})
 		})
 	
-		//location.reload();
-		location.href = '/'
-        
+		location.href = '/'  
 	})	
 }
 
@@ -172,8 +164,8 @@ fetch('/api/carrito/').then(response => {
         }).then(data => {
 
             const itemsCart = JSON.parse(data);
-
-            if (itemsCart[0].products.length === 0) {
+			console.log()
+            if (itemsCart.error === 'producto no encontrado' || itemsCart[0].products.length === 0) {
             	loadCartEmpty();
             } else {
             	loadProducts(itemsCart[0].products)

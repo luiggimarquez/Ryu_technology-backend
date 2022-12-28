@@ -1,4 +1,7 @@
 import { Router } from 'express'
+import sendEmail from '../utils/email.js'
+import config from '../config.js'
+import { twilioClient } from '../utils/twilio.js'
 const router = Router()
 let daoMethods = []
 
@@ -34,8 +37,6 @@ router.get('/', (req,res) => {
         
         actualCart = products.filter(activeCart => (activeCart.active === true && req.user.email === activeCart.email))
         let totalLength = products.length
-        console.log("total",totalLength)
-        console.log("revision si esta actual", actualCart)
 		actualCart.length !== 0 ? res.send(actualCart) : res.send([totalLength])
 	})
 })
@@ -76,10 +77,19 @@ router.delete('/:id/productos/:id_prod',(req,res) =>{
     daoMethods.deleteItemCart(id,id_prod)
 })
 
-router.put('/:id', (req,res)=>{
+router.put('/:id', async(req,res)=>{
 
     const {id} = req.params;
-    daoMethods.finishCart(id)
+   
+    let content = JSON.parse(JSON.stringify(req.body))
+    sendEmail(config.ADMINMAIL,`RyuTech: nuevo pedido de: ${req.user.userName} - ${req.user.email}`, content, `Tenemos una nueva orden ID: 000${id}`);
+    
+    await twilioClient.messages.create({
+        body:`RyuTech: nuevo pedido de: ${req.user.userName} - ${req.user.email}, su pedido ha sido recibido y se encuentra en proceso - RyuTechnology`, 
+        from:'whatsapp:+14155238886',
+        to:'whatsapp:+5491156432778'
+    })
+    //daoMethods.finishCart(id)
 })
 
 export default router;

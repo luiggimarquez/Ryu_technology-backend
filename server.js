@@ -13,6 +13,8 @@ import MongoStore from 'connect-mongo';
 import cluster from 'cluster';
 import config from './config.js'
 import os from 'os'
+import userLogged from './utils/userLogged.js'
+import sendEmail from './utils/email.js'
 
 const app = express()
 const PORT = process.env.PORT || 8080;
@@ -33,7 +35,7 @@ switch (process.env.db){
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.set('views','./public/ejs/src/views/')
 app.set('view engine','ejs')
@@ -53,13 +55,19 @@ app.use('/api/productos', productsRoutes)
 app.use('/api/carrito',productsCart)
 app.use(loginRouter)
 
-
-
 app.get("/", async (req,res) =>{
 
-    req.isAuthenticated() ? res.sendFile(__dirname+'/public/index/index.html') : res.render('pages/login')
-
+    let options = []
+    if(req.isAuthenticated()){
+        options = userLogged(req.user.userName, req.user.email, req.user.picture)
+        res.sendFile('index.html', options)
+    }else res.render('pages/login')  
 }) 
+
+app.get("/send-email", async(req, res) => {
+    sendEmail("nf_snake@hotmail.com", "Welcome message","Welcome message content");
+    res.send("send email success");
+});
 
 app.all('*', (req, res) =>{
     let response = {
@@ -68,6 +76,7 @@ app.all('*', (req, res) =>{
     };
     res.render('pages/index', {response} )
 })
+
 
 if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
 

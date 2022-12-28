@@ -19,7 +19,11 @@ const config = {
         client_x509_cert_url : process.env.FIREBASE_CLIENT_X509_CERT_URL
     },
     MODE : MODE_YARGS.MODE,
-    PORT : process.env.PORT
+    PORT : process.env.PORT,
+    CODE : process.env.CODE,
+    ADMINMAIL : process.env.ADMINMAIL,
+    TWILIOSID : process.env.TWILIOSID,
+    TWILIOTOKEN : process.env.TWILIOTOKEN
 }
 
 export default config

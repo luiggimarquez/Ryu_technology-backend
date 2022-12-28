@@ -45,7 +45,14 @@ routerLogin.get('/products',(req,res)=>{
 
 routerLogin.get('/cart',(req,res)=>{
 
-    req.isAuthenticated() ?  res.render('pages/cart') : res.render('pages/login')
+    if(req.isAuthenticated()){
+
+        let name = req.user.userName
+        let email = req.user.email
+        let img = req.user.picture
+        res.render('pages/cart',{name,email,img})
+    }else{ res.render('pages/login')}
+    
 })
 
 routerLogin.delete('/logout', async (req,res)=>{
