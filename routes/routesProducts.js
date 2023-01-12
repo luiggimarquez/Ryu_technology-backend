@@ -1,70 +1,11 @@
-import { Router } from 'express'
-import admin from '../middleware/middleware.js'
-import * as dotenv from 'dotenv'
-dotenv.config()
+import {Router} from 'express'
+import { getProductsTest, getRoot, postRoot } from '../Controllers/products.js'
+import {loginUser} from '../middleware/loginUser.js'
+
 const router = Router()
-let daoMethods = []
 
-switch(process.env.db){
-
-    case "archivoDb":{
-        let { default : ProductosDaoArchivo } = await import ('../Persistance/Daos/productos/ProductosDaoArchivo.js')
-        daoMethods = new ProductosDaoArchivo;
-        break;
-    }
-    case "memoriaDb":{
-        let { default : ProductosDaoMemoria} = await import ('../Persistance/Daos/productos/ProductosDaoMemoria.js')
-        daoMethods = new ProductosDaoMemoria;
-        break;
-    }
-    case "firebaseDb":{
-        let { default : ProductosDaoFirebase} = await import ('../Persistance/Daos/productos/ProductosDaoFirebase.js')
-        daoMethods = new ProductosDaoFirebase;
-        break;
-    }
-    case "mongoDb":{
-        let { default : ProductosDaoMongoDb} = await import ('../Persistance/Daos/productos/ProductosDaoMongoDb.js')
-        daoMethods = new ProductosDaoMongoDb;
-        break;
-    }
-}
-
-router.get('/', (req,res) => {
-    
-	daoMethods.getAll().then((products) =>{
-
-		(products.length !== 0 ) && res.send(products)
-	})
-})
-
-router.get('/:id', (req,res) => {
-
-    const { id } = req.params;
-	
-	daoMethods.getById(id).then((product) =>{
-
-		(product !== "") ? res.send(product) : res.send("producto no encontrado")
-	})
-})
-
-router.post('/', admin, (req,res) =>{
-
-    let productReceived = req.body;
-    daoMethods.saveProducts(productReceived)
-})
-
-router.put('/:id', admin,(req,res) =>{
-
-	const { id } = req.params;
-	let productReceived = req.body;
-	daoMethods.updateProducts({...productReceived,id})  
-})
-
-router.delete('/:id', admin, (req,res) =>{
-
-    let productReceived = req.body;
-	daoMethods.deleteItem(productReceived.id)
-    
-})
+router.get("/api/productos-test", getProductsTest)
+router.get("/", loginUser, getRoot)
+router.post("/", postRoot)
 
 export default router;

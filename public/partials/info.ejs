@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/template.css">
+    <title>Desafio_14 Info</title>
+</head>
+<body>
+    <header>
+        <a href="/"><h1 class="h1">Ryu Technology</h1></a>
+    </header>
+    
+    <h2>General Info</h2>
+
+    <section class="formCenter">
+
+        <div class="formInfo">
+
+            
+            <h2 class="titleLogout">Arguments: {
+                </br></br>
+                <% info.args.forEach(x =>{ %>
+                    
+                        <%= x %>
+                    </br>
+                <%})%>
+                
+                <h2 class="titleLogout">}</h2> 
+            </h2>
+
+            <h2 class="titleLogout">Plataform: <%= info.plataform %> / Architecture:  <%= info.arq %> / OS:  <%= info.os %></h2>
+            <h2 class="titleLogout">Node Version: <%= info.node %></h2>
+            <h2 class="titleLogout">RSS ( Resident Set Size ): <%= info.rss%></h2>
+            <h2 class="titleLogout">Execution path <%= info.execpath %></h2>
+            <h2 class="titleLogout">Process ID:  <%= info.pid %></h2>
+            <h2 class="titleLogout">Folder project: <%= info.folder %></h2>
+            <h2 class="titleLogout">CPU's numbers:  <%= info.cpu %></h2>
+
+        </div>
+     
+
+    </section>
+
+   
+    
+</body>
+
+</html>

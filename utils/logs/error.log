@@ -1,439 +1,68 @@
-[2022-12-26T00:43:46.388] [ERROR] archivoError - MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-    at NativeConnection.Connection.openUri (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\connection.js:694:11)
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:381:10
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
-    at new Promise (<anonymous>)
-    at promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
-    at Mongoose._promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:1234:10)
-    at Mongoose.connect (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:380:20)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:17:34
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:26:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:185:25)
-[2022-12-26T00:43:51.175] [ERROR] archivoError - MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-    at NativeConnection.Connection.openUri (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\connection.js:694:11)
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:381:10
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
-    at new Promise (<anonymous>)
-    at promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
-    at Mongoose._promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:1234:10)
-    at Mongoose.connect (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:380:20)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:17:34
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:26:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:185:25)
-[2022-12-26T00:43:51.403] [ERROR] archivoError - MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-    at NativeConnection.Connection.openUri (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\connection.js:694:11)
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:381:10
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
-    at new Promise (<anonymous>)
-    at promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
-    at Mongoose._promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:1234:10)
-    at Mongoose.connect (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:380:20)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:17:34
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:26:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:185:25)
-[2022-12-26T00:43:52.336] [ERROR] archivoError - MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-    at NativeConnection.Connection.openUri (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\connection.js:694:11)
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:381:10
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
-    at new Promise (<anonymous>)
-    at promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
-    at Mongoose._promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:1234:10)
-    at Mongoose.connect (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:380:20)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:17:34
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:26:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:185:25)
-[2022-12-26T00:43:52.363] [ERROR] archivoError - MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-    at NativeConnection.Connection.openUri (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\connection.js:694:11)
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:381:10
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
-    at new Promise (<anonymous>)
-    at promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
-    at Mongoose._promiseOrCallback (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:1234:10)
-    at Mongoose.connect (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\mongoose\lib\index.js:380:20)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:17:34
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/Persistance/db/mongoConfig.js:26:3
-    at ModuleJob.run (node:internal/modules/esm/module_job:185:25)
-[2022-12-26T21:28:52.782] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pages/sendMail'
-}
-[2022-12-26T21:29:50.264] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pages/sendMail'
-}
-[2022-12-26T21:35:50.697] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pages/sendMail'
-}
-[2022-12-26T21:38:42.863] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pages/sendMail'
-}
-[2022-12-26T21:39:25.821] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pagssdses/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pagssdses/sendMail'
-}
-[2022-12-26T21:39:27.541] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pagssdses/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pagssdses/sendMail'
-}
-[2022-12-26T21:39:28.033] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pagssdses/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:17:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pagssdses/sendMail'
-}
-[2022-12-26T21:39:59.006] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pagssdses/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pagssdses/sendMail'
-}
-[2022-12-26T21:41:23.798] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'pagssdses/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: 'pagssdses/sendMail'
-}
-[2022-12-26T21:43:29.261] [ERROR] archivoError - Error: ENOENT: no such file or directory, open '/ejs/src/views/pages/'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: '/ejs/src/views/pages/'
-}
-[2022-12-26T21:44:24.437] [ERROR] archivoError - Error: ENOENT: no such file or directory, open '.public/ejs/src/views/pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: '.public/ejs/src/views/pages/sendMail'
-}
-[2022-12-26T21:44:26.351] [ERROR] archivoError - Error: ENOENT: no such file or directory, open '.public/ejs/src/views/pages/sendMail'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: '.public/ejs/src/views/pages/sendMail'
-}
-[2022-12-26T21:44:41.503] [ERROR] archivoError - Error: ENOENT: no such file or directory, open '.public/ejs/src/views/pages/sendMail.ejs'
-    at Object.openSync (node:fs:585:3)
-    at Object.readFileSync [as fileLoader] (node:fs:453:35)
-    at fileLoader (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:293:18)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:233:16)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/server.js:68:5
-    at Layer.handle [as handle_request] (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\express\lib\router\route.js:144:13) {
-  errno: -4058,
-  syscall: 'open',
-  code: 'ENOENT',
-  path: '.public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T00:31:49.656] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:3
-    1| <div style="margin: 0 auto; max-width: 720px; padding: 30px 0; font-family: Arial">
-    2|     <h3>Hello, <%= receiver %></h3>
- >> 3|     <p><%= content %></p>
-    4| </div>
-    5| 
-
-Cannot convert object to primitive value
-    at String (<anonymous>)
-    at exports.escapeXML (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\utils.js:99:7)
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:15:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:20:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T00:35:03.377] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:3
-    1| <div style="margin: 0 auto; max-width: 720px; padding: 30px 0; font-family: Arial">
-    2|     <h3>Hello, <%= receiver %></h3>
- >> 3|     <!-- <p><%= content %></p> -->
-    4|     <p>prueba</p>
-    5| </div>
-    6| 
-
-Cannot convert object to primitive value
-    at String (<anonymous>)
-    at exports.escapeXML (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\utils.js:99:7)
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:15:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:20:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T15:59:12.659] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:12
-    10| 
-    11|     <ul>
- >> 12|         <% content.forEach(x =>{ %>
-    13|             <li> x </li>
-    14|         <% }); %> 
-    15|     </ul>
-
-content.forEach is not a function
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:19:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:20:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T16:02:30.135] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:12
-    10| 
-    11|     <ul>
- >> 12|         <% content.forEach(x =>{ %>
-    13|             <li> x </li>
-    14|         <% }); %> 
-    15|     </ul>
-
-content.forEach is not a function
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:20:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T17:09:14.311] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:12
-    10| 
-    11|     <ul>
- >> 12|         <% content.forEach(x =>{ %>
-    13|             <li> x </li>
-    14|         <% }); %> 
-    15|     </ul>
-
-content.forEach is not a function
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T17:15:11.276] [ERROR] archivoError - TypeError: D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs:12
-    10| 
-    11|     <ul>
- >> 12|         <% content.forEach(x =>{ %>
-    13|             <li> x </li>
-    14|         <% }); %> 
-    15|     </ul>
-
-content.forEach is not a function
-    at eval (eval at compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
-    at sendMail (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:703:17)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:36)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  path: 'D:\\Users\\Luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs'
-}
-[2022-12-27T17:32:45.240] [ERROR] archivoError - SyntaxError: missing ) after argument list in D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs while compiling ejs
-
-If the above error is not helpful, you may want to try EJS-Lint:
-https://github.com/RyanZim/EJS-Lint
-Or, if you meant to create an async function, pass `async: true` as an option.
-    at new Function (<anonymous>)
-    at Template.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12)
-    at Object.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:398:16)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:235:18)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[2022-12-27T17:34:00.793] [ERROR] archivoError - Error: Could not find matching close tag for "<%=".
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:752:19
-    at Array.forEach (<anonymous>)
-    at Template.generateSource (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:742:15)
-    at Template.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:587:12)
-    at Object.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:398:16)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:235:18)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-[2022-12-27T17:35:59.646] [ERROR] archivoError - SyntaxError: missing ) after argument list in D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs while compiling ejs
-
-If the above error is not helpful, you may want to try EJS-Lint:
-https://github.com/RyanZim/EJS-Lint
-Or, if you meant to create an async function, pass `async: true` as an option.
-    at new Function (<anonymous>)
-    at Template.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12)
-    at Object.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:398:16)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:235:18)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[2022-12-27T17:50:48.129] [ERROR] archivoError - Error: Could not find matching close tag for "<%=".
-    at D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:752:19
-    at Array.forEach (<anonymous>)
-    at Template.generateSource (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:742:15)
-    at Template.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:587:12)
-    at Object.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:398:16)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:235:18)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-[2022-12-27T17:51:29.124] [ERROR] archivoError - SyntaxError: Unexpected token 'for' in D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final/public/ejs/src/views/pages/sendMail.ejs while compiling ejs
-
-If the above error is not helpful, you may want to try EJS-Lint:
-https://github.com/RyanZim/EJS-Lint
-Or, if you meant to create an async function, pass `async: true` as an option.
-    at new Function (<anonymous>)
-    at Template.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:673:12)
-    at Object.compile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:398:16)
-    at handleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:235:18)
-    at tryHandleCache (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:274:16)
-    at Object.exports.renderFile (D:\Users\Luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_18_Tercera_entrega_final\node_modules\ejs\lib\ejs.js:491:10)
-    at sendEmail (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/utils/email.js:22:6)
-    at Strategy._verify (file:///D:/Users/Luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_18_Tercera_entrega_final/middleware/localpassport.js:22:13)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[2022-12-28T00:50:27.350] [ERROR] archivoError - Error en servidor Error: listen EADDRINUSE: address already in use :::8081
+[2022-12-09T11:47:31.151] [ERROR] archivoError - Servidor escuchando al puerto 8081 - PID 29408
+[2022-12-09T11:50:22.843] [ERROR] archivoError - Servidor escuchando al puerto 8081 - PID 1120
+[2023-01-11T17:02:39.637] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:37:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:14)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)
+[2023-01-11T17:03:43.643] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:37:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:14)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)
+[2023-01-11T17:06:29.043] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:37:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:14)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)
+[2023-01-11T17:08:07.007] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:37:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:14)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)
+[2023-01-11T17:08:43.890] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:37:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:14)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)
+[2023-01-11T17:09:36.724] [ERROR] archivoError - ReferenceError: res is not defined
+    at loginServices.deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Services/login.js:36:13)
+    at deleteLogout (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Desafio_19/Controllers/login.js:38:22)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Desafio_19\node_modules\express\lib\router\index.js:175:3)

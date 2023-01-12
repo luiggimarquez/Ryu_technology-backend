@@ -1,89 +1,142 @@
-import productsRoutes from './routes/routesProducts.js'
-import { logger, loggerError } from './utils/logger.js'
-import './middleware/localpassport.js'
-import productsCart from './routes/routesCart.js'
+import productsRouter from './routes/routesProducts.js'
+import './middleware/passport/localPassport.js'
 import loginRouter from './routes/routesLogin.js'
+import infoRouter from './routes/routesInfo.js'
+import randomRouter from './routes/routerRandom.js'
+import {Server as SocketServer} from 'socket.io'
+import MongoStore from 'connect-mongo';
+import session from 'express-session';
+import { logger, loggerError, loggerWarn } from './utils/logger.js'
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
+import config from './config.js';
+import passport from 'passport'
 import  express from 'express';
-import path from 'path';
-import  passport from 'passport';
-import session  from 'express-session';
-import MongoStore from 'connect-mongo';
-import cluster from 'cluster';
-import config from './config.js'
 import os from 'os'
-import userLogged from './utils/userLogged.js'
-
-const app = express()
-const PORT = 8081;
+import * as http from 'http';
+import cluster from 'cluster'
+import path from 'path';
 dotenv.config()
 
-switch (process.env.db){
-
-    case "mongoDb":{
-        await import ('./Persistance/db/mongoConfig.js')
-        break;
-    }
-    case "firebaseDb":{
-        await import('./Persistance/db/firebaseConfig.js.js')
-        break;
-    }
-}  
-
+const app = express()
+const httpServer = http.createServer(app)
+const socketServer = new SocketServer(httpServer)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-const __filename = fileURLToPath(import.meta.url);
-export const __dirname = path.dirname(__filename);
-app.use(express.static(__dirname+ '/public'));
-app.set('views','./public/ejs/src/views/')
+
+app.set('views', path.join(__dirname, '/public/partials'))
 app.set('view engine','ejs')
 
 app.use(session({
-    secret: 'RyuTechTerceraEntrega',
+    secret:'RyuTechKey',
     resave: false,
-    saveUninitialized: false,
-    rolling: true,
-    store: MongoStore.create({mongoUrl:'mongodb+srv://luiggimarquez:LuiggiMarquez@backendcordercourse.el27giy.mongodb.net/ecommerce?retryWrites=true&w=majority'}),
+    saveUninitialized:false,
+    rolling:true,
+    store: MongoStore.create({mongoUrl:config.MONGOSESSION}),
     cookie:{maxAge:600000}
 }))
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use('/api/productos', productsRoutes)
-app.use('/api/carrito',productsCart)
+app.use('/', productsRouter)
 app.use(loginRouter)
+app.use(infoRouter)
+app.use('/api/randoms',randomRouter)
 
-app.get("/", async (req,res) =>{
+let daoMethodProducts = []
+let daoMethodMessage = []
 
-    let options = []
-    if(req.isAuthenticated()){
-        options = userLogged(req.user.userName, req.user.email, req.user.picture)
-        res.sendFile('index.html', options)
-    }else res.render('pages/login')  
-}) 
+switch(config.DB){
 
-app.all('*', (req, res) =>{
-    let response = {
-		error : -2,
-		description : `Ruta: ${req.path}   Metodo: ${req.method}  No implementada`
-    };
-    res.render('pages/index', {response} )
+    case "archivoDb":{
+        let { default : MessagesDaoFile } = await import('./Persistencia/Daos/messages/messagesDaoFile.js');
+        let { default : ProductsDaoFile }= await import ('./Persistencia/DAOS/products/productsDaoFile.js')
+        daoMethodMessage = new MessagesDaoFile
+        daoMethodProducts =  new ProductsDaoFile
+        break;
+    }
+    case "mongoDb":{
+        let { default : ProductsDaoMongoDb } = await import ('./Persistencia/Daos/products/productsDaoMongoDb.js')
+        let { default : MessagesDaoMongoDb } = await import ('./Persistencia/Daos/messages/messagesDaoMongoDb.js')
+        daoMethodMessage = new MessagesDaoMongoDb
+        daoMethodProducts =  new ProductsDaoMongoDb
+        await import ("./Persistencia/mongoDbConfig.js")
+        break;
+    }
+    case "firebaseDb":{
+
+        let { default : MessagesDaoFirebaseDb } = await import ('./Persistencia/Daos/messages/messagesDaoFirebase.js')
+        let { default : ProductsDaoFirebaseDb } = await import ('./Persistencia/Daos/products/productsDaoFirebase.js')
+        daoMethodMessage = new MessagesDaoFirebaseDb
+        daoMethodProducts =  new ProductsDaoFirebaseDb
+        await import ("./Persistencia/firebaseDbConfig.js")
+        break;
+    }
+}
+
+
+
+socketServer.on('connection',(client)=>{
+    
+    daoMethodProducts.getProducts().then((products) =>{
+        
+        if(products.length !== 0){
+            socketServer.sockets.emit('products', products)
+        }
+    })
+
+    client.on('update', () => {
+
+        setTimeout(() => {
+
+            daoMethodProducts.getProducts().then((products) =>{
+               socketServer.sockets.emit('products', products)
+            })
+
+        }, 1000)
+    })
+
+    client.on('messageChat', (message) =>{
+
+        let result = daoMethodMessage.saveItems(message)
+        result.then((chats)=>{
+            socketServer.sockets.emit('totalChat', chats)
+        })
+    })
+
+    daoMethodMessage.getAll().then(msg =>{
+        const messages = msg
+        socketServer.sockets.emit('totalChat',messages)
+      
+    }) 
 })
 
+app.all('*', (req, res)=>{
+
+    res.json({"error" : "Ruta no Exite"})
+})
 
 if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
 
     logger.info("proceso maestro: ", process.pid)
     for(let i=0; i<(os.cpus().length); i++){
+
         cluster.fork()
     }
 
 }else{
 
-    const server = app.listen(PORT, () => {
-        logger.info(`Servidor http escuchando en el puerto ${server.address().port}`)
+    const PORT = config.PORT
+    httpServer.listen(PORT, () =>{
+        logger.info(`Servidor escuchando al puerto ${PORT} - PID ${process.pid}`)
+  
     })
-    server.on("error", error => loggerError.error(`Error en servidor ${error}`))
+    httpServer.on("error", error =>{
+        logger.error(`Error en servidor ${error}`)
+    
+    })
 
 }

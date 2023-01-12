@@ -1,80 +1,15 @@
-import { Router } from 'express'
-import passport from 'passport';
-import upload from '../utils/upload.js'
-import {loggerError} from '../utils/logger.js'
+import {Router} from 'express'
+import { getLogin, getLogout, getRegister, getErrorRegister, getErrorLogin, deleteLogout, postRegister, postLogin } from '../Controllers/login.js'
 
-let routerLogin = Router();
+const routerLogin = Router()
 
-routerLogin.get('/login', (req,res)=>{
-
-    req.isAuthenticated() ? res.redirect("/") : res.render('pages/login')
-})
-
-routerLogin.get('/logout', (req,res)=>{
-
-    let name=[]
-    req.isAuthenticated() ? (name = req.user.userName , res.render('pages/logout',{name})) : res.render('pages/login')
-})
-
-routerLogin.get('/register', (req,res)=>{
-
-    res.render('pages/register')
-})
-
-routerLogin.get('/errorRegister', (req,res)=>{
-
-    res.render('pages/errorRegister')
-})
-
-routerLogin.get('/errorLogin', (req,res)=>{
-
-    res.render('pages/errorLogin')
-})
-
-routerLogin.get('/products',(req,res)=>{
-
-    if(req.isAuthenticated()){
-
-        let name = req.user.userName
-        let email = req.user.email
-        let img = req.user.picture
-        res.render('pages/products', {name,email,img})
-
-    }else{ res.render('pages/login') }
-})
-
-routerLogin.get('/cart',(req,res)=>{
-
-    if(req.isAuthenticated()){
-
-        let name = req.user.userName
-        let email = req.user.email
-        let img = req.user.picture
-        res.render('pages/cart',{name,email,img})
-    }else{ res.render('pages/login')}
-    
-})
-
-routerLogin.delete('/logout', async (req,res)=>{
-
-    try{
-        req.session.destroy()
-        return res.json("done")
-    }catch(err){
-        loggerError.error(err)
-    }
-})
-
-routerLogin.post('/register',upload, passport.authenticate('register',{
-
-    failureRedirect:'/errorRegister',
-    successRedirect: '/'
-}))
-
-routerLogin.post('/login', passport.authenticate('login',{
-
-    failureRedirect:'/errorLogin',
-    successRedirect:'/'
-}))
+routerLogin.get("/login", getLogin)
+routerLogin.get("/logout", getLogout)
+routerLogin.get("/register", getRegister)
+routerLogin.get('/errorRegister', getErrorRegister)
+routerLogin.get('/errorLogin', getErrorLogin)
+routerLogin.delete("/logout", deleteLogout)
+routerLogin.post("/register", postRegister)
+routerLogin.post("/login", postLogin)
 
 export default routerLogin
