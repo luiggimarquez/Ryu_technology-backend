@@ -1,9 +1,12 @@
-import mongoDbContainer from "../../Containers/mongoDbContainer.js";
+import mongoDbContainer from "../../Repository/mongoDbContainer.js";
 import { productsModel } from "../../Models/MongoDbModel/productsMongoDbModel.js";
 import { mocksProduct } from "../../../utils/mocks.js"
 const randomProducts=[]
+ 
 
 class ProductsDaoMongoDb extends mongoDbContainer{
+
+    static instance;
 
     constructor(){
         super(productsModel)
@@ -23,6 +26,15 @@ class ProductsDaoMongoDb extends mongoDbContainer{
             randomProducts.push(result) 
         }
         return randomProducts 
+    }
+
+    static getInstance(){
+
+        if(!this.instance){
+            this.instance = new ProductsDaoMongoDb()
+        } 
+        
+        return this.instance
     }
 }
 

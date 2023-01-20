@@ -1,4 +1,7 @@
 import { normalizer } from '../../utils/normalizr.js'
+import userDto from '../DTOs/userDTO.js'
+export let arrayDto=[]
+let i= 0
 
 class mongoDbContainer{
 
@@ -8,10 +11,17 @@ class mongoDbContainer{
 
     async getAll(){
 
+
         let itemsRead = await (this.collection).find({},{_id:0})
+        itemsRead.forEach(dto => {
+            arrayDto[i]= new userDto(dto)
+            i++;
+        });
         itemsRead = JSON.stringify(itemsRead)
         itemsRead = JSON.parse(itemsRead)
         let result = normalizer(itemsRead)
+
+        console.log(arrayDto)
         return result
     }
 

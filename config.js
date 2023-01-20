@@ -1,6 +1,9 @@
 import yargs from "yargs"
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-const MODE_YARGS = yargs(process.argv[2]).default({MODE:'FORK'}).argv
+//const MODE_YARGS = yargs(process.argv[2]).default({MODE:'FORK'}).argv
+const DAO_YARGS = yargs(process.argv[2]).default({DAO:'mongoDb'}).argv
 const PORT_YARGS = yargs(process.argv[3]).default({PORT:'8081'}).argv
 
 const config = {
@@ -19,10 +22,9 @@ const config = {
         auth_provider_x509_cert_url : process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
         client_x509_cert_url : process.env.FIREBASE_CLIENT_X509_CERT_URL
     },
-    MODE : MODE_YARGS.MODE,
+    DAO : DAO_YARGS.DAO,
     PORT : PORT_YARGS.PORT
 
 }
-
 
 export default config

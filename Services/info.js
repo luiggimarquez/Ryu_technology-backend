@@ -1,5 +1,6 @@
 import { logger } from "../utils/logger.js";
 import { fork } from 'child_process'
+import { arrayDto } from "../Persistencia/Repository/mongoDbContainer.js";
 
 class infoServices{
 
@@ -9,7 +10,7 @@ class infoServices{
         const childProcess = fork('./utils/info.js')
         childProcess.on('message', info =>{
             logger.info("Fin subproceso")
-            res.render('info',{info})
+            res.render('info',{info, arrayDto})
         }) 
     }
 }

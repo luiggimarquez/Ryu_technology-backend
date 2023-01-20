@@ -1,3 +1,5 @@
+import config from './config.js';
+import { daoMethodMessage, daoMethodProducts } from './Persistencia/Daos/factory.js'
 import productsRouter from './routes/routesProducts.js'
 import './middleware/passport/localPassport.js'
 import loginRouter from './routes/routesLogin.js'
@@ -9,7 +11,6 @@ import session from 'express-session';
 import { logger, loggerError, loggerWarn } from './utils/logger.js'
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
-import config from './config.js';
 import passport from 'passport'
 import  express from 'express';
 import os from 'os'
@@ -17,6 +18,20 @@ import * as http from 'http';
 import cluster from 'cluster'
 import path from 'path';
 dotenv.config()
+
+switch(config.DAO){
+
+    case "mongoDb":{
+
+        await import ("./Persistencia/mongoDbConfig.js")
+        break;
+    }
+    case "firebaseDb":{
+
+        await import ("./Persistencia/firebaseDbConfig.js")
+        break;
+    }
+}
 
 const app = express()
 const httpServer = http.createServer(app)
@@ -45,39 +60,6 @@ app.use('/', productsRouter)
 app.use(loginRouter)
 app.use(infoRouter)
 app.use('/api/randoms',randomRouter)
-
-let daoMethodProducts = []
-let daoMethodMessage = []
-
-switch(config.DB){
-
-    case "archivoDb":{
-        let { default : MessagesDaoFile } = await import('./Persistencia/Daos/messages/messagesDaoFile.js');
-        let { default : ProductsDaoFile }= await import ('./Persistencia/DAOS/products/productsDaoFile.js')
-        daoMethodMessage = new MessagesDaoFile
-        daoMethodProducts =  new ProductsDaoFile
-        break;
-    }
-    case "mongoDb":{
-        let { default : ProductsDaoMongoDb } = await import ('./Persistencia/Daos/products/productsDaoMongoDb.js')
-        let { default : MessagesDaoMongoDb } = await import ('./Persistencia/Daos/messages/messagesDaoMongoDb.js')
-        daoMethodMessage = new MessagesDaoMongoDb
-        daoMethodProducts =  new ProductsDaoMongoDb
-        await import ("./Persistencia/mongoDbConfig.js")
-        break;
-    }
-    case "firebaseDb":{
-
-        let { default : MessagesDaoFirebaseDb } = await import ('./Persistencia/Daos/messages/messagesDaoFirebase.js')
-        let { default : ProductsDaoFirebaseDb } = await import ('./Persistencia/Daos/products/productsDaoFirebase.js')
-        daoMethodMessage = new MessagesDaoFirebaseDb
-        daoMethodProducts =  new ProductsDaoFirebaseDb
-        await import ("./Persistencia/firebaseDbConfig.js")
-        break;
-    }
-}
-
-
 
 socketServer.on('connection',(client)=>{
     
@@ -138,5 +120,4 @@ if(cluster.isPrimary && (config.MODE === 'CLUSTER')){
         logger.error(`Error en servidor ${error}`)
     
     })
-
 }

@@ -1,4 +1,4 @@
-import firebaseContainer from "../../Containers/firebaseDbContainer.js";
+import firebaseContainer from "../../Repository/firebaseDbContainer.js";
 import { mocksProduct } from "../../../utils/mocks.js";
 const randomProducts=[]
 
@@ -23,6 +23,15 @@ class ProductsDaoFirebase extends firebaseContainer{
             randomProducts.push(result) 
         }
         return randomProducts 
+    }
+
+    static getInstance(){
+
+        if(!this.instance){
+            this.instance = new ProductsDaoFirebase()
+        } 
+        
+        return this.instance
     }
 }
 

@@ -1,4 +1,4 @@
-import fileContainer from "../../Containers/fileDbContainer.js";
+import fileContainer from "../../Repository/fileDbContainer.js";
 import { mocksProduct } from "../../../utils/mocks.js";
 import daoMethod from "../messages/messagesDaoFile.js";
 
@@ -26,6 +26,15 @@ class ProductsDaoFile extends fileContainer{
             randomProducts.push(result) 
         }
         return randomProducts 
+    }
+
+    static getInstance(){
+
+        if(!this.instance){
+            this.instance = new ProductsDaoFile()
+        } 
+        
+        return this.instance
     }
 }
 
