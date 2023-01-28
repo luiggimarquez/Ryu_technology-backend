@@ -8,5 +8,7 @@ export function mocksProduct(){
         price:faker.commerce.price(100, 200, 0),
         thumbnail:faker.image.abstract(600,600,true) 
     }
+
+
     return products
 }

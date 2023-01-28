@@ -1,12 +1,12 @@
 {
-  "name": "desafio_8",
+  "name": "desafio_21",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",
+    "chai": "^4.3.7",
     "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
@@ -42,6 +43,7 @@
     "session-file-store": "^1.5.0",
     "socket.io": "^4.5.2",
     "sqlite3": "^5.1.2",
+    "supertest": "^6.3.3",
     "yargs": "^17.6.2"
   },
   "devDependencies": {

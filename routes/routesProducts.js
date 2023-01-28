@@ -1,11 +1,25 @@
 import {Router} from 'express'
-import { getProductsTest, getRoot, postRoot } from '../Controllers/products.js'
+import controllers from '../Controllers/controllerProducts.js'
 import {loginUser} from '../middleware/loginUser.js'
 
 const router = Router()
 
-router.get("/api/productos-test", getProductsTest)
-router.get("/", loginUser, getRoot)
-router.post("/", postRoot)
+class RouterProducts{
 
-export default router;
+    constructor(){
+
+        this.controllersMethod= controllers
+    }
+
+    init(){
+
+        router.get("/api/productos-test", this.controllersMethod.getProductsTest)
+        router.get("/", loginUser, this.controllersMethod.getRoot)
+        router.post("/", this.controllersMethod.postRoot)
+
+        return router
+    }
+}
+
+let routerProducts = new RouterProducts 
+export default routerProducts;

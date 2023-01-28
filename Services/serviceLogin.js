@@ -1,6 +1,6 @@
 import { logger, loggerError } from '../utils/logger.js'
 
-class loginServices {
+class LoginServices {
 
     getLogin(){
 
@@ -40,5 +40,5 @@ class loginServices {
     }
 }
 
-const services =  new loginServices
+const services =  new LoginServices
 export default services

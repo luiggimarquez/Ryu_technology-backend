@@ -20,8 +20,6 @@ class mongoDbContainer{
         itemsRead = JSON.stringify(itemsRead)
         itemsRead = JSON.parse(itemsRead)
         let result = normalizer(itemsRead)
-
-        console.log(arrayDto)
         return result
     }
 

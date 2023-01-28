@@ -1,6 +1,6 @@
 import config from './config.js';
 import { daoMethodMessage, daoMethodProducts } from './Persistencia/Daos/factory.js'
-import productsRouter from './routes/routesProducts.js'
+import routerProducts from './routes/routesProducts.js'
 import './middleware/passport/localPassport.js'
 import loginRouter from './routes/routesLogin.js'
 import infoRouter from './routes/routesInfo.js'
@@ -56,10 +56,10 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use('/', productsRouter)
-app.use(loginRouter)
-app.use(infoRouter)
-app.use('/api/randoms',randomRouter)
+app.use('/', routerProducts.init())
+app.use(loginRouter.init())
+app.use(infoRouter.init())
+app.use('/api/randoms',randomRouter.init())
 
 socketServer.on('connection',(client)=>{
     

@@ -2,7 +2,7 @@ import yargs from "yargs"
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-//const MODE_YARGS = yargs(process.argv[2]).default({MODE:'FORK'}).argv
+const MODE_YARGS = yargs(process.argv[2]).default({MODE:'FORK'}).argv
 const DAO_YARGS = yargs(process.argv[2]).default({DAO:'mongoDb'}).argv
 const PORT_YARGS = yargs(process.argv[3]).default({PORT:'8081'}).argv
 

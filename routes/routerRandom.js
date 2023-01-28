@@ -1,6 +1,22 @@
 import { Router } from "express";
-import random from "../Controllers/random.js";
+import controllers from "../Controllers/controllerRandom.js";
 
 const routerRandom = Router()
-routerRandom.get('/', random)
-export default routerRandom
+
+class RandomRouter{
+
+    constructor(){
+
+        this.controllersMethod = controllers
+    }
+
+    init(){
+ 
+        routerRandom.get('/', this.controllersMethod.random)
+        return routerRandom
+    }
+
+}
+
+let randomRouter = new RandomRouter
+export default randomRouter

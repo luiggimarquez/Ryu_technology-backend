@@ -1,15 +1,31 @@
 import {Router} from 'express'
-import { getLogin, getLogout, getRegister, getErrorRegister, getErrorLogin, deleteLogout, postRegister, postLogin } from '../Controllers/login.js'
+import controllers from '../Controllers/controllerLogin.js'
 
 const routerLogin = Router()
 
-routerLogin.get("/login", getLogin)
-routerLogin.get("/logout", getLogout)
-routerLogin.get("/register", getRegister)
-routerLogin.get('/errorRegister', getErrorRegister)
-routerLogin.get('/errorLogin', getErrorLogin)
-routerLogin.delete("/logout", deleteLogout)
-routerLogin.post("/register", postRegister)
-routerLogin.post("/login", postLogin)
 
-export default routerLogin
+class LoginRouter{
+
+    constructor(){
+
+        this.controllersMethod = controllers
+    }
+
+    init(){
+
+        routerLogin.get("/login", this.controllersMethod.getLogin)
+        routerLogin.get("/logout", this.controllersMethod.getLogout)
+        routerLogin.get("/register", this.controllersMethod.getRegister)
+        routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
+        routerLogin.get('/errorLogin', this.controllersMethod.getErrorLogin)
+        routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
+        routerLogin.post("/register", this.controllersMethod.postRegister)
+        routerLogin.post("/login", this.controllersMethod.postLogin)
+
+        return routerLogin
+    }
+}
+
+
+let loginRouter = new LoginRouter
+export default loginRouter

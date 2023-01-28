@@ -1,9 +1,23 @@
 import {Router} from 'express'
-import compression from 'compression'
-import { getInfo } from '../Controllers/info.js'
+import controllers from '../Controllers/controllerInfo.js'
+
 
 const routerInfo = Router()
 
-routerInfo.get('/info', getInfo )
+class InfoRouter{
 
-export default routerInfo
+    constructor(){
+
+        this.controllersMethod = controllers
+    }
+
+    init(){
+
+        routerInfo.get('/info', this.controllersMethod.getInfo )
+        return routerInfo
+    }
+}
+
+
+let infoRouter = new InfoRouter
+export default infoRouter
