@@ -19,8 +19,8 @@ class mongoDbContainer{
         });
         itemsRead = JSON.stringify(itemsRead)
         itemsRead = JSON.parse(itemsRead)
-        let result = normalizer(itemsRead)
-        return result
+        //let result = normalizer(itemsRead)
+        return itemsRead
     }
 
     async saveItems(item){
@@ -33,9 +33,23 @@ class mongoDbContainer{
         let readAll = await (this.collection).find({},{_id:0})
         readAll = JSON.stringify(readAll)
         readAll = JSON.parse(readAll)
-        let result = normalizer(readAll)
-        return result
+        //let result = normalizer(readAll)
+        console.log(readAll)
+        return readAll
     } 
+
+    async deleteOneItem(id){
+
+        console.log("input ___>", id)
+
+        
+        const itemToDelete = await this.collection.find({idPost:id})
+        await this.collection.find({idPost:id}).deleteOne()
+        return itemToDelete
+
+
+
+    }
 }
 
 export default mongoDbContainer;

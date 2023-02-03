@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/luiggimarquez/Ryu_technology-backend#readme",
   "dependencies": {
+    "@graphql-tools/schema": "^9.0.14",
     "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",
     "chai": "^4.3.7",
@@ -28,6 +29,7 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "firebase": "^9.13.0",

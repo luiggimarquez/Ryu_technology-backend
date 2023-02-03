@@ -7,21 +7,21 @@ class ProductControllers{
         this.servicesMethod = services
     }
 
-    getProductsTest = (req, res) => {
+    getProductsTest = () => {
 
-        this.servicesMethod.getProductsTest(res)
+        return this.servicesMethod.getProductsTest()
     }
 
     getRoot = (req, res) => {
 
         const options = this.servicesMethod.getRoot(req)
-        res.sendFile('index.html', options)
+        //res.sendFile('index.html', options)
     }
 
     postRoot = (req, res) => {
 
         this.servicesMethod.postRoot(req)
-        res.redirect('/')
+        //res.redirect('/')
     }
      
 }

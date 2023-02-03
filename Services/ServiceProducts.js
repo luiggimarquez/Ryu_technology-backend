@@ -3,15 +3,17 @@ import { daoMethodProducts } from '../Persistencia/Daos/factory.js';
 
 class productsService{
 
-    getProductsTest(res){
+    getProductsTest(){
 
         logger.info("Request Received: Route: /api/productos-test Method: GET")
 
-        daoMethodProducts.getFaker().then((products) =>{
+        return daoMethodProducts.getFaker().then((products) =>{
     
             let boolean = true;
             if(products.length === 0){ boolean = false;}
-            res.render('partial', {products,boolean} )
+            //res.render('partial', {products,boolean} )
+           // console.log(products)
+            return products
         })
     }
 

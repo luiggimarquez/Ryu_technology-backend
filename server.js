@@ -1,8 +1,8 @@
 import config from './config.js';
 import { daoMethodMessage, daoMethodProducts } from './Persistencia/Daos/factory.js'
-import routerProducts from './routes/routesProducts.js'
-import './middleware/passport/localPassport.js'
-import loginRouter from './routes/routesLogin.js'
+//import routerProducts from './routes/routesProducts.js'
+//import './middleware/passport/localPassport.js'
+//import loginRouter from './routes/routesLogin.js'
 import infoRouter from './routes/routesInfo.js'
 import randomRouter from './routes/routerRandom.js'
 import {Server as SocketServer} from 'socket.io'
@@ -11,12 +11,13 @@ import session from 'express-session';
 import { logger, loggerError, loggerWarn } from './utils/logger.js'
 import {fileURLToPath} from 'url';
 import * as dotenv from 'dotenv'
-import passport from 'passport'
+//import passport from 'passport'
 import  express from 'express';
 import os from 'os'
 import * as http from 'http';
 import cluster from 'cluster'
 import path from 'path';
+import graphqlFunction  from './graphQL/index.js';
 dotenv.config()
 
 switch(config.DAO){
@@ -33,6 +34,7 @@ switch(config.DAO){
     }
 }
 
+
 const app = express()
 const httpServer = http.createServer(app)
 const socketServer = new SocketServer(httpServer)
@@ -42,6 +44,7 @@ app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('/graphql', graphqlFunction)
 app.set('views', path.join(__dirname, '/public/partials'))
 app.set('view engine','ejs')
 
@@ -54,12 +57,12 @@ app.use(session({
     cookie:{maxAge:600000}
 }))
 
-app.use(passport.initialize())
-app.use(passport.session())
-app.use('/', routerProducts.init())
-app.use(loginRouter.init())
-app.use(infoRouter.init())
-app.use('/api/randoms',randomRouter.init())
+//app.use(passport.initialize())
+//app.use(passport.session())
+//app.use('/', routerProducts.init())
+//app.use(loginRouter.init())
+//app.use(infoRouter.init())
+//app.use('/api/randoms',randomRouter.init())
 
 socketServer.on('connection',(client)=>{
     
