@@ -22,7 +22,6 @@ export class ProductController {
     @Get('/')
     async getProducts(@Res() res){
         const products = await this.productService.getProducts();
-        //console.log(products)
         return res.status(HttpStatus.OK).json({
             products
         })
@@ -33,14 +32,12 @@ export class ProductController {
     async getProduct(@Res() res, @Param('productID') productID){
         const product = await this.productService.getProduct(productID);
         if (product.length === 0)throw new NotFoundException('Product does not exists');
-        console.log(product)
         return res.status(HttpStatus.OK).json({"products": product})
     }
 
     @Delete('/:productID')
     async deleteProduct(@Res() res, @Param('productID') productID){
         const product =  await this.productService.deleteProduct(productID)
-        console.log(product)
         if (product.length === 0)throw new NotFoundException('Product does not exists');
         return res.status(HttpStatus.OK).json(product);
 
@@ -50,7 +47,6 @@ export class ProductController {
     @Put('/:productID')
     async updateProduct(@Res() res, @Body() createProductDTO: CreateProductDTO, @Param('productID') productID){
         const product =  await this.productService.updateProduct(productID, createProductDTO)
-        console.log(product)
         if (product.length === 0)throw new NotFoundException('Product does not exists');
         return res.status(HttpStatus.OK).json(product);
 

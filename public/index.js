@@ -25,7 +25,6 @@ let modalContainer = document.getElementById('itemModal')
 function loadProducts(items) {
 
 	containerProduct.innerHTML="";
-	console.log(items)
 	if(items.error !== ("Not Found")){
 
 		items.products.forEach(product => {
@@ -114,7 +113,6 @@ function loadProducts(items) {
 					}).then(response => {return response.text()})
 					  .then(data => {
 						const json = JSON.parse(data);
-						alert(`Error: ${json.error}, Descripcion: ${json.description} `);
 					})
 					setTimeout(() => {
 		
@@ -174,7 +172,6 @@ function loadProducts(items) {
                     return response.text()
                 }).then(data => {
                     const json = JSON.parse(data);
-                    console.log(json)
                     loadProducts(json)
                     
                 }).catch(err => {
@@ -190,7 +187,6 @@ function loadProducts(items) {
                     }).then(data => {
                 
                         const json = JSON.parse(data);
-						console.log(json)
                         loadProducts(json)
                 
                     }).catch(err=>{

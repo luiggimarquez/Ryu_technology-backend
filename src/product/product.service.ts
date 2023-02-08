@@ -37,7 +37,6 @@ export class ProductService{
     
     async updateProduct(productID: string, createProductDTO: CreateProductDTO): Promise<any>{
         const findProduct = await this.productModule.find({id: productID})
-        console.log(findProduct[0].id)
         const updateProduct = await this.productModule.updateOne({id:findProduct[0].id},{
             $set: {
                 name: createProductDTO.name,
@@ -48,7 +47,6 @@ export class ProductService{
             }
 
         },{new: true})
-        console.log(updateProduct)
         return updateProduct;
 
     }
