@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/template.css">
+    <title>Desafio_20</title>
+</head>
+<body>
+    <header>
+        <a href="/"><h1 class="h1">Ryu Technology</h1></a>
+    </header>
+    
+    <h2>Register</h2>
+
+    <section class="formCenter">
+
+        <form class="form" action="/register" method="post" id="formulario">
+
+            <input class="input" type="text" placeholder="Name" name="userName" id="userName" required >
+            <input class="input" type="mail" placeholder="Email" name="email" id="email" required >
+            <input class="input" type="text" placeholder="Password" name="password" id="password" required >
+            <div class="buttonAling">
+                <button class="submit" type="submit"> Enviar </button>
+            </div>
+            
+        </form>
+        
+        <div class="registro">
+            <h2>Volver a Login</h2>
+            
+            <button class="submit" onclick="location.href='/login'"> Login </button>
+            
+        </div>
+
+
+    </section>
+
+   
+    
+</body>
+
+</html>
