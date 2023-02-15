@@ -7,6 +7,7 @@ import config from './config.js'
 import { logger, loggerError } from "./utils/log.js";
 import loginRouter from "./src/routes/loginRoutes.js";
 import routerProducts from "./src/routes/productsRoute.js";
+import infoRouter from "./src/routes/infoRoute.js"
 import MongoStore from 'connect-mongo'
 import session from 'express-session'
 import path from 'path';
@@ -20,10 +21,14 @@ const app = express()
 const httpServer = http.createServer(app)
 const socketServer = new SocketServer(httpServer)
 const __filename = fileURLToPath(import.meta.url);
-export const  __dirname = path.dirname(__filename);
+const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+app.set('views', path.join(__dirname, '/public/views/ejs'))
+app.set('view engine','ejs')
+
 app.use(cookieParser());
 
 app.use(session({
@@ -38,13 +43,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(loginRouter.init())
+app.use(infoRouter.init())
 app.use('/', loginValidator, passport.authenticate('jwt', {session: false}), routerProducts.init())
-app.use('/info', passport.authenticate('jwt', {session: false}),(req,res) => {
-
-    res.json("nueva ruta")
-})
-app.set('views', './public/views/ejs')
-app.set('view engine','ejs')
 
 const PORT = config.PORT || 8080
     httpServer.listen(PORT, () =>{

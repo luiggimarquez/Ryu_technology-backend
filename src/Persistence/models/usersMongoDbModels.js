@@ -8,6 +8,16 @@ const usersSchema = new mongoose.Schema({
         require: true,
         max: 100
     },
+    userLastName:{
+        type: String,
+        require: true,
+        max: 100
+    },
+    phone:{
+        type: Number,
+        require: true,
+        max: 100
+    },
     email: {
         type: String,
         require: true,
@@ -17,6 +27,9 @@ const usersSchema = new mongoose.Schema({
         type: String,
         require: true,
         max: 100
+    },
+    isAdmin:{
+        type: Boolean
     }
 })
 

@@ -14,19 +14,19 @@ class LoginServices {
 
     getRegister(){
 
-        logger.info("Request Received: Route: /register Method: GET")
+        return logger.info("Request Received: Route: /register Method: GET")
     }
 
-    /* getErrorRegister(){
+     getErrorRegister(){
 
         logger.info("Request Received: Route: /errorRegister Method: GET") 
-    }*/
+    }
 
     getErrorLogin(){
 
         logger.info("Request Received: Route: /errorLogin Method: GET")
     }
-    /*
+    
     async deleteLogout(req){
 
         try {
@@ -37,7 +37,7 @@ class LoginServices {
         } catch (error) {
             loggerError.error(error)
         }
-    } */
+    }
 }
 
 const services =  new LoginServices

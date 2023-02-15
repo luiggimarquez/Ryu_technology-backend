@@ -15,13 +15,13 @@ class LoginRouter{
     init(){
 
         routerLogin.get("/login", this.controllersMethod.getLogin)
-        //routerLogin.get("/logout", this.controllersMethod.getLogout)
+        routerLogin.get("/logout", this.controllersMethod.getLogout)
         routerLogin.get("/register", this.controllersMethod.getRegister)
-        //routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
-        //ksrouterLogin.get('/errorLogin', this.controllersMethod.getErrorLogin)
-        //routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
-        routerLogin.post("/register", this.controllersMethod.postRegister)
+        routerLogin.get('/errorLogin', this.controllersMethod.getErrorLogin)
+        routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
+        routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
         routerLogin.post("/login", this.controllersMethod.postLoginMiddleware, this.controllersMethod.postLoginCallBack)
+        routerLogin.post("/register", this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
         return routerLogin
     }
 }
