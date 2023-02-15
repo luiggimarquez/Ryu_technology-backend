@@ -1,9 +1,8 @@
 import { Router } from "express";
-import { loginValidator } from "../middleware/loginValidate.js";
+import uploadImg from "../../utils/uploadImg.js"
 import controllers from "../controllers/loginController.js";
 
 const routerLogin = Router()
-
 
 class LoginRouter{
 
@@ -21,11 +20,10 @@ class LoginRouter{
         routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
         routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
         routerLogin.post("/login", this.controllersMethod.postLoginMiddleware, this.controllersMethod.postLoginCallBack)
-        routerLogin.post("/register", this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
+        routerLogin.post("/register", uploadImg, this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
         return routerLogin
     }
 }
-
 
 let loginRouter = new LoginRouter
 export default loginRouter

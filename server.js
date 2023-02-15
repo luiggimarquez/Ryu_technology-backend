@@ -28,7 +28,6 @@ app.use(express.urlencoded({extended: true}))
 
 app.set('views', path.join(__dirname, '/public/views/ejs'))
 app.set('view engine','ejs')
-
 app.use(cookieParser());
 
 app.use(session({
@@ -54,5 +53,4 @@ const PORT = config.PORT || 8080
     httpServer.on("error", error =>{
         logger.error(`Error en servidor ${error}`)
         loggerError.error(`Error en servidor ${error}`)
-    
     })

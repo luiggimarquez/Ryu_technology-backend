@@ -3,11 +3,12 @@ import { logger } from '../../utils/log.js'
 
 class productsService{
 
-    getProductsTest(res){
+    getProductsTest(req, res){
 
-        res.render("products")
-
-        
+        console.log(req.user)
+        let name = req.user.userName
+        let email =  req.user.email
+        res.render("products", {name, email})
     }
 
     /* getRoot(req){

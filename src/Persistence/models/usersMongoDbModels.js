@@ -15,8 +15,7 @@ const usersSchema = new mongoose.Schema({
     },
     phone:{
         type: Number,
-        require: true,
-        max: 100
+        require: true
     },
     email: {
         type: String,
@@ -29,7 +28,14 @@ const usersSchema = new mongoose.Schema({
         max: 100
     },
     isAdmin:{
-        type: Boolean
+        type: Boolean,
+        require: true
+    },
+    img:{ 
+        type: String,
+        require: true,
+        max: 300
+        
     }
 })
 

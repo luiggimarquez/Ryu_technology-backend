@@ -9,7 +9,7 @@ class ProductControllers{
 
     getProductsTest = (req, res) => {
 
-        this.servicesMethod.getProductsTest(res)
+        this.servicesMethod.getProductsTest(req,res)
     }
 
     getRoot = (req, res) => {

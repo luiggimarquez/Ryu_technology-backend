@@ -13,32 +13,29 @@ class LoginControllers{
         this.servicesMethod.getLogin()
         req.isAuthenticated() ? res.redirect("/products"): res.sendFile('./index.html',  {root:'./public/index'})
     }
+    
     getLogout = (req,res)=>{
     
         this.servicesMethod.getLogout()
-        let name = req.user.userName
-        res.render('logout',{name})
+        let name = []
+        req.isAuthenticated() ? (name = req.user.userName, res.render('logout',{name})) : res.redirect("/login")
     }
     
     getRegister = (req,res)=>{
     
         this.servicesMethod.getRegister()
-        res.render("register") //res.redirect("/products")
+        res.render("register")
     }
     
     getErrorRegister = (req,res)=>{
     
         this.servicesMethod.getErrorRegister()
-        console.log("Error registro")
-        res.render("errorRegister")
-        //res.render('products')
-  
+        res.render("errorRegister")  
     }
     
     getErrorLogin = (req,res)=>{
     
         this.servicesMethod.getErrorLogin()
-        console.log("se produjo error en el login")
         res.render("errorLogin")
     }
     
@@ -46,36 +43,30 @@ class LoginControllers{
     
         this.servicesMethod.deleteLogout(req.session)
         return res.json("done")
-    
     }
     
     postLoginMiddleware = passport.authenticate('login',{
 
         failureRedirect:'/errorLogin',
     })
+
     postRegister =  passport.authenticate('register',{
     
         failureRedirect:'/errorRegister',
-        //successRedirect: '/'
     })
     
-
     postLoginCallBack = (req,res,next)=>{
 
         res.cookie('token', req.user.token, { httpOnly: true });
-        console.log("entre al postlogin")
-        //res.json(req.user)
+        console.log("usuario: ", req.user)
         res.redirect("/products")
     }
 
     postRegisterCallBack = (req,res,next)=>{
-        console.log("entro registro")
 
         res.cookie('token', req.user.token, { httpOnly: true });
         res.redirect("/products")
     }
-         
-    
 }
 
 let controllers = new LoginControllers

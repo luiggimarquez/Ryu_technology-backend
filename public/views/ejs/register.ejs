@@ -27,14 +27,15 @@
 
     <section class="formCenter">
 
-        <form class="form" method="post" action="/register"  id="formulario" onsubmit ="return verifyPassword()">
+        <form class="form" method="post" action="/register"  id="formulario" onsubmit ="return verifyPassword()" enctype="multipart/form-data" >
 
             <input class="input" type="text" placeholder="Name" name="name" id="name" required >
             <input class="input" type="text" placeholder="Last name" name="lastname" id="lastname" required >
-            <input class="input" type="tel" placeholder="Phone Number" name="phone" id="phone" required >
+            <input class="input" type="tel" placeholder="Phone Number" name="phone" id="phone"  title="Incluir código internacional sin el '+' seguido del código del operador y el número" required >
             <input class="input" type="mail" placeholder="Email" name="email" id="email" required >
             <input class="input" type="password" placeholder="Password" name="password" id="password" required autocomplete="off">
             <input class="input" type="password" placeholder="Repeat Password" name="password2" id="password2" required autocomplete="off"><span id = "message" style="color:white"> </span> <br><br>
+            <input type="file" name="avatar" accept=".jpg, .png, .gif" title="&nbsp;"/>
             <div class="buttonAling">
                 <button class="submit" type="submit" id="submit"> Enviar </button>
             </div>
@@ -48,14 +49,7 @@
             
         </div>
 
-
     </section>
-   
-
-
-    </script>
-    <script src="../../register.js"></script>
-   
     
 </body>
 

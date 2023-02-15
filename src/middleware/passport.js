@@ -4,6 +4,7 @@ import { usersModel } from "../Persistence/models/usersMongoDbModels.js";
 import bcrypt from "bcrypt";
 import { Strategy as JWTStrategy} from 'passport-jwt'
 import jsonwebtoken from 'jsonwebtoken'
+let img=[]
 
 passport.use('register', new LocalStrategy({
 
@@ -14,9 +15,13 @@ passport.use('register', new LocalStrategy({
     }, async(req, email, password, done)=>{
 
         let userDb = await usersModel.find({email})
+        console.log(userDb)
         if(userDb.length > 0){
             return done(null,false)
         }else{
+
+            console.log("aqui registro")
+            if(!req.body.avatar){( img = `/img/pictures-registers/avatar.jpg`)}else{ (img =  `/img/pictures-registers/${req.body.email}.jpg`)}
             let user =  new usersModel();
             const saltRounds = 10;
             bcrypt.hash(password, saltRounds, function(err,hash){
@@ -27,12 +32,12 @@ passport.use('register', new LocalStrategy({
                 user.email = email
                 user.password = hash
                 user.isAdmin = false
+                user.img = img
                 user.save()
             });
             userDb = [user]
             const token =jsonwebtoken.sign({userDb} ,'your_jwt_secret');
             done(null,{userDb, token})
-            
         }
     })
 )
@@ -64,9 +69,6 @@ passport.use('login', new LocalStrategy({
 
 const cookieExtractor = req => {
     let jwt
-    /* if (req && req.cookies) { 
-        jwt = req.cookies['token']
-    } */
     (req && req.cookies) && (jwt = req.cookies['token'])
     return jwt
 }
@@ -89,15 +91,10 @@ passport.use(new JWTStrategy({
 ))
 
 passport.serializeUser((user,done)=>{
-    //console.log("serial: ",user)
-    //console.log("serial: ",user.userDb[0].id)
-
     done(null, user.userDb[0].id)
-    
 })
 
 passport.deserializeUser(async(id, done)=>{
     const userDb = await usersModel.findById(id)
-   // console.log("deserial: ",userDb)
     done(null, userDb)
 })
