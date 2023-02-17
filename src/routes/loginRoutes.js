@@ -1,5 +1,5 @@
 import { Router } from "express";
-import uploadImg from "../../utils/uploadImg.js"
+import { uploadImgUsers } from "../../utils/uploadImg.js"
 import controllers from "../controllers/loginController.js";
 
 const routerLogin = Router()
@@ -20,7 +20,7 @@ class LoginRouter{
         routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
         routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
         routerLogin.post("/login", this.controllersMethod.postLoginMiddleware, this.controllersMethod.postLoginCallBack)
-        routerLogin.post("/register", uploadImg, this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
+        routerLogin.post("/register",uploadImgUsers, this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
         return routerLogin
     }
 }

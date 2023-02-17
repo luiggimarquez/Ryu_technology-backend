@@ -7,9 +7,14 @@ class ProductControllers{
         this.servicesMethod = services
     }
 
-    getProductsTest = (req, res) => {
+    getProducts = (req, res) => {
 
-        this.servicesMethod.getProductsTest(req,res)
+        this.servicesMethod.getProducts(req,res)
+    }
+
+    getProductById = (req, res) =>{
+
+        this.servicesMethod.getProduct(req,res)
     }
 
     getRoot = (req, res) => {
@@ -25,10 +30,10 @@ class ProductControllers{
 
     postRoot = (req, res) => {
 
-        //this.servicesMethod.postRoot(req)
+        this.servicesMethod.postRoot(req,res)
         //console.log(req)
         //res.send(req.user.token)
-        //res.redirect('/products', res.user.token)
+        res.redirect('/products')
     }
      
 }

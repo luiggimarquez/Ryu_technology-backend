@@ -36,7 +36,7 @@ passport.use('register', new LocalStrategy({
                 user.save()
             });
             userDb = [user]
-            const token =jsonwebtoken.sign({userDb} ,'your_jwt_secret');
+            const token =jsonwebtoken.sign({userDb} ,'your_jwt_secret', {expiresIn:"4h"});
             done(null,{userDb, token})
         }
     })

@@ -1,0 +1,333 @@
+class Products{
+
+	constructor(name,description, price, stock, category){
+
+		this.name = name;
+		this.description = description
+		this.price = price
+		this.stock = stock
+		this.category = category
+	}
+}
+
+class Cart{
+
+	constructor(id, timestampCart, products){
+
+		this.id = id;
+		this.timestampCart = timestampCart;
+		this.products = products;
+
+	}
+}
+
+let cart =[]
+let idCartNow =[]
+let productReceived = []
+let formAddProduct = document.getElementById("form")
+let inputNameProduct = document.getElementById("name")
+let inputDescriptionProduct = document.getElementById("description")
+let inputPriceProduct = document.getElementById("price")
+//let inputPhotoProduct = document.getElementById("thumbnail")
+let inputCategoryProduct= document.getElementById("category")
+let inputStockProduct = document.getElementById("stock")
+let containerProduct = document.getElementById('card')
+let modalContainer = document.getElementById('itemModal')
+let getProductbyId = document.getElementById("itemId")
+
+function loadProducts(items) {
+
+	containerProduct.innerHTML="";
+	if(items.Error !== "Producto no encontrado"){
+
+		items.forEach(product => {
+
+			let { name,description,price,category,stock,thumbnail,id } = product;
+
+			let div = document.createElement('div');
+			div.classList.add('item1');
+			div.setAttribute("id","item1");
+			div.innerHTML = `
+					<div class="alineadorContenido">
+				
+						<img src="${thumbnail}" alt="">
+						<div class="datosBoton">
+								<span class=textCard>${name}</span>
+								<button id="addCart${id}"> Add to Cart</button>
+						</div>
+
+						<div class="dataBase">
+
+							<p>ID Producto: ${id}</p></br>
+							<p>Category: ${category}</p></br>
+							<p>Precio: ${price}</p></br>
+							<p>Disponibles: ${stock}</p></br>
+							<p>Descripcion: ${description}</p></br>
+							
+						</div>
+						<div class="aliningButtons">
+							<button  id="myBtn${id}">Editar</button>
+							<button id="deleteItem${id}">Borrar</button>
+						</div>
+
+					</div>`;
+			containerProduct.appendChild(div);
+
+
+			//Modal - Popup Window for show form to modify items
+
+			let modifyItem = document.getElementById(`myBtn${id}`)
+			modifyItem.addEventListener(('click'), ()=>{
+
+				modalContainer.innerHTML="";
+				let divModal = document.createElement('div');
+				divModal.classList.add('modal1');
+				divModal.setAttribute("id","modal1");
+				divModal.innerHTML=`
+				
+				<div class="alineadorContenido">
+				
+					<div class="dataBase">
+
+						<div class="tittleFormEdit">Formulario para editar productos</div>
+						<div class="dataModal"><p>ID: ${id}</p><p><input type="number" class="input" value=${id} name="idProduct" id="idProduct" readonly></p></div>
+						<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="text" class="input" placeholder="Nuevo URL" name="newUrl" id="newUrl"></p></div>
+						<div class="dataModal"><p>Nombre: ${name}</p><p><input type="text" class="input" placeholder="Nuevo Nombre" name="newName" id="newName"></p></div>
+						<div class="dataModal"><p>Codigo: ${category}</p><p><input type="text" class="input" placeholder="Nueva Categoria" name="newCategory" id="newCategory"></p></div>
+						<div class="dataModal"><p>Precio: ${price}</p><p><input type="number" class="input" placeholder="Nuevo Precio" name="newPrice" id="newPrice"></p></div>
+						<div class="dataModal"><p>Disponibles: ${stock}</p><p><input type="number" class="input" placeholder="Nuevo Valor" name="newStock" id="newStock"></p></div>
+						<div class="dataModal"><p>Descripcion: ${description}</p><p><input type="text" class="input" placeholder="Nuevo Valor" name="newDescription" id="newDescription"></p></div>
+						
+					</div>
+					<div class="aliningButtons">
+						<button id="submitPut">Guardar modificación</button>
+					</div>
+					
+				</div>`;
+
+				modalContainer.appendChild(divModal);
+
+				let inputNewUrl = document.getElementById('newUrl')
+				let inputNewName = document.getElementById('newName')
+				let inputNewCode = document.getElementById('newCategory')
+				let inputNewPrice = document.getElementById('newPrice')
+				let inputNewStock = document.getElementById('newStock')
+				let inputNewDescription = document.getElementById('newDescription')
+				let formUpdateProduct = document.getElementById('submitPut')
+				
+				formUpdateProduct.addEventListener("click", () => {
+
+					productReceived = {
+						name: inputNewName.value,
+						descriptionProduct: inputNewDescription.value,
+						codeProduct: inputNewCategory.value,
+						photoProduct: inputNewUrl.value,
+						priceProduct: inputNewPrice.value,
+						stockProduct: inputNewStock.value
+					};
+		
+					// Fetch Method PUT modify any item
+
+					let dataBody = JSON.stringify(productReceived)
+					fetch(`/api/productos/${id}`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: dataBody
+					}).then(response => {return response.text()})
+					  .then(data => {
+						const json = JSON.parse(data);
+						alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+					})
+					setTimeout(() => {
+		
+						location.reload()
+					}, 1000)
+				})
+				
+			}) 
+
+			// Fetch Method Delete to delete any item
+
+			let deleteProduct= document.getElementById(`deleteItem${id}`)
+			deleteProduct.addEventListener("click", () =>{
+
+				let itemToDelete = JSON.stringify(product)
+				fetch(`/api/productos/${id}`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: itemToDelete
+
+				}).then(response => {return response.text()})
+				.then(data => {
+				const json = JSON.parse(data);
+				alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+				})
+				
+				location.reload()
+			})
+
+			let addCart = document.getElementById(`addCart${id}`)
+			addCart.addEventListener("click", () =>{
+				
+				let dataBody = JSON.stringify(product)
+				fetch(`/api/carrito/${idCartNow}/productos`,{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: dataBody
+				})
+
+				location.reload()
+			})
+
+
+			//modal
+			let modal = document.getElementById("myModal");
+			let btn = document.getElementById(`myBtn${id}`);
+			let span = document.getElementsByClassName("close")[0]; 
+			btn.onclick = function () {
+				modal.style.display = "block";
+			}
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+
+		})//foreach
+	}else{
+	containerProduct.innerHTML=`<div class="error">Producto no Existe<div>`}
+
+}
+
+
+// Fetch Method GET, start with DOM for load products Card
+
+fetch('/products').then(response => {
+	console.log(response)
+	return response.text()
+}).then(data => {
+	//console.log(data)
+	//const json = JSON.parse(data);
+	
+	//loadProducts(json)
+
+}).catch(err => {
+	console.log(err)
+});
+
+
+//Fetch Method GET for search products by ID
+
+getProductbyId.addEventListener("keyup", ()=>{
+
+	let inputItemId = getProductbyId.value;
+	console.log("hola: ",inputItemId)
+
+	fetch(`/products/${inputItemId}`).then(response => {
+		return response.text()
+	}).then(data => {
+
+		
+		const json = JSON.parse(data)
+		loadProducts(json)
+
+	}).catch(err=>{
+		console.log(err)
+	});
+
+})
+ 
+
+//Fetch Method POST for save Products
+/* formAddProduct.onsubmit= (e) =>{
+
+	e.preventDefault()
+	productReceived = new Products(inputNameProduct.value,inputDescriptionProduct.value, inputPriceProduct.value,   inputStockProduct.value, inputCategoryProduct.value)
+
+	let dataBody = JSON.stringify(productReceived)
+
+   	fetch("/", {
+        method: "POST",
+        headers: {
+			'Content-Type': 'multipart/form-data'
+		},
+        body: dataBody
+    }).then(response => {return response.text()})
+		.then(data => {
+		const json = JSON.parse(data);
+		
+		alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+	})
+
+	setTimeout(()=>{
+		location.reload()}, 1000)
+}
+ */
+//Fetch Method GET for validate and create first cart
+
+	/* fetch('/api/carrito/').then(response => {
+	return response.text()
+}).then(data =>{
+	const json = JSON.parse(data);
+	
+	if(json.length == 0){
+
+		cart = new Cart("1",(new Date(Date.now()).toString()),[])
+		let dataBody = JSON.stringify(cart)
+		
+		fetch("/api/carrito", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: dataBody
+				
+		}).then(response => {
+			return response.text()
+		})
+		.then(data => {
+			const json = JSON.parse(data);
+			idCartNow=json
+
+			console.log("Carrito creado, ID: ", idCartNow)
+		})
+
+	}else{
+
+		// if cart exist and it is still active, this idCartNow hold the actual Cart
+		if(json[0].id){
+			idCartNow=json[0].id
+		}else{
+
+			// This POST method create a new car when first car already exist and it is finished
+			idCartNow=JSON.parse(json)+1
+			cart = new Cart(idCartNow,(new Date(Date.now()).toString()),[])
+			let dataBody = JSON.stringify(cart)
+		
+		fetch("/api/carrito", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: dataBody})
+
+			console.log(idCartNow)
+		}	
+	}
+
+}).catch(err=>{
+	console.log(err)
+});
+
+location.reload()
+
+ */

@@ -1,6 +1,7 @@
 import {Router} from 'express'
 import passport from 'passport'
 import { loginValidator } from "../middleware/loginValidate.js";
+import { uploadImgProducts } from '../../utils/uploadImg.js';
 import controllers from '../Controllers/productsController.js'
 
 
@@ -15,9 +16,10 @@ class RouterProducts{
 
     init(){
 
-        router.get('/products', loginValidator, this.controllersMethod.getProductsTest)
+        router.get('/products', loginValidator, this.controllersMethod.getProducts)
         router.get("/", this.controllersMethod.getRoot)
-        router.post("/", this.controllersMethod.postRoot)
+        router.get("/products/:id", this.controllersMethod.getProductById)
+        router.post("/", uploadImgProducts, this.controllersMethod.postRoot)
 
         return router
     }
