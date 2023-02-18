@@ -42,7 +42,7 @@ function loadProducts(items) {
 
 		items.forEach(product => {
 
-			let { name,description,price,category,stock,thumbnail,id } = product;
+			let { name,description,price,category,stock,thumbnail,_id } = product;
 
 			let div = document.createElement('div');
 			div.classList.add('item1');
@@ -53,12 +53,12 @@ function loadProducts(items) {
 						<img src="${thumbnail}" alt="">
 						<div class="datosBoton">
 								<span class=textCard>${name}</span>
-								<button id="addCart${id}"> Add to Cart</button>
+								<button id="addCart${_id}"> Add to Cart</button>
 						</div>
 
 						<div class="dataBase">
 
-							<p>ID Producto: ${id}</p></br>
+							<p>ID Producto: ${_id}</p></br>
 							<p>Category: ${category}</p></br>
 							<p>Precio: ${price}</p></br>
 							<p>Disponibles: ${stock}</p></br>
@@ -66,8 +66,8 @@ function loadProducts(items) {
 							
 						</div>
 						<div class="aliningButtons">
-							<button  id="myBtn${id}">Editar</button>
-							<button id="deleteItem${id}">Borrar</button>
+							<button  id="myBtn${_id}">Editar</button>
+							<button id="deleteItem${_id}">Borrar</button>
 						</div>
 
 					</div>`;
@@ -76,7 +76,7 @@ function loadProducts(items) {
 
 			//Modal - Popup Window for show form to modify items
 
-			let modifyItem = document.getElementById(`myBtn${id}`)
+			let modifyItem = document.getElementById(`myBtn${_id}`)
 			modifyItem.addEventListener(('click'), ()=>{
 
 				modalContainer.innerHTML="";
@@ -90,10 +90,9 @@ function loadProducts(items) {
 					<div class="dataBase">
 
 						<div class="tittleFormEdit">Formulario para editar productos</div>
-						<div class="dataModal"><p>ID: ${id}</p><p><input type="number" class="input" value=${id} name="idProduct" id="idProduct" readonly></p></div>
-						<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="text" class="input" placeholder="Nuevo URL" name="newUrl" id="newUrl"></p></div>
+						<div class="dataModal"><p>ID: ${_id}</p><p><input type="text" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>
 						<div class="dataModal"><p>Nombre: ${name}</p><p><input type="text" class="input" placeholder="Nuevo Nombre" name="newName" id="newName"></p></div>
-						<div class="dataModal"><p>Codigo: ${category}</p><p><input type="text" class="input" placeholder="Nueva Categoria" name="newCategory" id="newCategory"></p></div>
+						<div class="dataModal"><p>Category: ${category}</p><p><input type="text" class="input" placeholder="Nueva Categoria" name="newCategory" id="newCategory"></p></div>
 						<div class="dataModal"><p>Precio: ${price}</p><p><input type="number" class="input" placeholder="Nuevo Precio" name="newPrice" id="newPrice"></p></div>
 						<div class="dataModal"><p>Disponibles: ${stock}</p><p><input type="number" class="input" placeholder="Nuevo Valor" name="newStock" id="newStock"></p></div>
 						<div class="dataModal"><p>Descripcion: ${description}</p><p><input type="text" class="input" placeholder="Nuevo Valor" name="newDescription" id="newDescription"></p></div>
@@ -102,6 +101,18 @@ function loadProducts(items) {
 					<div class="aliningButtons">
 						<button id="submitPut">Guardar modificación</button>
 					</div>
+
+					<div class="dataBase">
+						<form id="form" class="formCards" method="post" action="/products/imageUpdate" enctype="multipart/form-data" >
+						<div class="dataModal"><p><input  type="hidden" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>	
+						<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="file" class="input" name="imgProductUpdate" required></p></div>
+							
+							<div class="aliningButtons">
+								<button id="submitPhoto">Guardar foto</button>
+							</div>
+						</form>
+					</div>
+					
 					
 				</div>`;
 
@@ -109,7 +120,7 @@ function loadProducts(items) {
 
 				let inputNewUrl = document.getElementById('newUrl')
 				let inputNewName = document.getElementById('newName')
-				let inputNewCode = document.getElementById('newCategory')
+				let inputNewCategory = document.getElementById('newCategory')
 				let inputNewPrice = document.getElementById('newPrice')
 				let inputNewStock = document.getElementById('newStock')
 				let inputNewDescription = document.getElementById('newDescription')
@@ -119,17 +130,16 @@ function loadProducts(items) {
 
 					productReceived = {
 						name: inputNewName.value,
-						descriptionProduct: inputNewDescription.value,
-						codeProduct: inputNewCategory.value,
-						photoProduct: inputNewUrl.value,
-						priceProduct: inputNewPrice.value,
-						stockProduct: inputNewStock.value
+						description: inputNewDescription.value,
+						category: inputNewCategory.value,
+						price: inputNewPrice.value,
+						stock: inputNewStock.value
 					};
 		
 					// Fetch Method PUT modify any item
 
 					let dataBody = JSON.stringify(productReceived)
-					fetch(`/api/productos/${id}`, {
+					fetch(`/products/${_id}`, {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json"
@@ -150,11 +160,11 @@ function loadProducts(items) {
 
 			// Fetch Method Delete to delete any item
 
-			let deleteProduct= document.getElementById(`deleteItem${id}`)
+			let deleteProduct= document.getElementById(`deleteItem${_id}`)
 			deleteProduct.addEventListener("click", () =>{
 
 				let itemToDelete = JSON.stringify(product)
-				fetch(`/api/productos/${id}`, {
+				fetch(`/products/${_id}`, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json"
@@ -170,7 +180,7 @@ function loadProducts(items) {
 				location.reload()
 			})
 
-			let addCart = document.getElementById(`addCart${id}`)
+			let addCart = document.getElementById(`addCart${_id}`)
 			addCart.addEventListener("click", () =>{
 				
 				let dataBody = JSON.stringify(product)
@@ -188,7 +198,7 @@ function loadProducts(items) {
 
 			//modal
 			let modal = document.getElementById("myModal");
-			let btn = document.getElementById(`myBtn${id}`);
+			let btn = document.getElementById(`myBtn${_id}`);
 			let span = document.getElementsByClassName("close")[0]; 
 			btn.onclick = function () {
 				modal.style.display = "block";
@@ -212,13 +222,13 @@ function loadProducts(items) {
 // Fetch Method GET, start with DOM for load products Card
 
 fetch('/products').then(response => {
-	console.log(response)
+	
 	return response.text()
 }).then(data => {
-	//console.log(data)
-	//const json = JSON.parse(data);
 	
-	//loadProducts(json)
+	const json = JSON.parse(data);
+	console.log(json)
+	loadProducts(json)
 
 }).catch(err => {
 	console.log(err)
@@ -230,8 +240,6 @@ fetch('/products').then(response => {
 getProductbyId.addEventListener("keyup", ()=>{
 
 	let inputItemId = getProductbyId.value;
-	console.log("hola: ",inputItemId)
-
 	fetch(`/products/${inputItemId}`).then(response => {
 		return response.text()
 	}).then(data => {
@@ -247,31 +255,6 @@ getProductbyId.addEventListener("keyup", ()=>{
 })
  
 
-//Fetch Method POST for save Products
-/* formAddProduct.onsubmit= (e) =>{
-
-	e.preventDefault()
-	productReceived = new Products(inputNameProduct.value,inputDescriptionProduct.value, inputPriceProduct.value,   inputStockProduct.value, inputCategoryProduct.value)
-
-	let dataBody = JSON.stringify(productReceived)
-
-   	fetch("/", {
-        method: "POST",
-        headers: {
-			'Content-Type': 'multipart/form-data'
-		},
-        body: dataBody
-    }).then(response => {return response.text()})
-		.then(data => {
-		const json = JSON.parse(data);
-		
-		alert(`Error: ${json.error}, Descripcion: ${json.description} `);
-	})
-
-	setTimeout(()=>{
-		location.reload()}, 1000)
-}
- */
 //Fetch Method GET for validate and create first cart
 
 	/* fetch('/api/carrito/').then(response => {

@@ -16,36 +16,37 @@
 
 
     <main>
+        <section class="itemIdAlining">
+            <div class="itemId">
+                <p>Consulta por ID</p>
+                <input type="text" class="input" placeholder="Ingresa ID" name="itemId" id="itemId">
+            </div>
+        </section>
+
     <section class="card" id="card"></section>
 
-    <section class="cardSpace" >
-        <form id="form" class="formCards" method="post" action="/" enctype="multipart/form-data" >
-            <div class="tittleForm">Formulario para agregar productos</div>
-            <input type="text" class="input" placeholder="Nombre" name="name" id="name" required >
-            <input type="text" class="input" placeholder="Descripción" name="description" id="description" required >
-            <input type="number" class="input" placeholder="Precio" name="price" id="price" required >
-            <input type="text" class="input" placeholder="Categoria" name="category" id="category" required >
-            <input type="number" class="input" placeholder="Stock" name="stock" id="stock" required >
-            <input type="file" class="input" name="imgProduct" accept=".jpg, .png, .gif" required >
-        
-            <button type="submit">Enviar</button>
-        </form>
+        <section class="cardSpace" >
+            <form id="form" class="formCards" method="post" action="/" enctype="multipart/form-data" >
+                <div class="tittleForm">Formulario para agregar productos</div>
+                <input type="text" class="input" placeholder="Nombre" name="name" id="name" required >
+                <input type="text" class="input" placeholder="Descripción" name="description" id="description" required >
+                <input type="number" class="input" placeholder="Precio" name="price" id="price" required >
+                <input type="text" class="input" placeholder="Categoria" name="category" id="category" required >
+                <input type="number" class="input" placeholder="Stock" name="stock" id="stock" required >
+                <input type="file" class="input" name="imgProduct" accept=".jpg, .png, .gif" required >
+            
+                <button type="submit">Enviar</button>
+            </form>
 
-    </section>
+        </section>
 
-    <section class="itemIdAlining">
-        <div class="itemId">
-            <p>Consulta por ID</p>
-            <input type="text" class="input" placeholder="Ingresa ID" name="itemId" id="itemId">
+
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="modal-content">
+                <span class="close">&times;</span>
+                <div class="itemModal" id="itemModal"></div>
+            </div>
         </div>
-    </section>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content" id="modal-content">
-            <span class="close">&times;</span>
-            <div class="itemModal" id="itemModal"></div>
-        </div>
-    </div>
 
     </main>
 

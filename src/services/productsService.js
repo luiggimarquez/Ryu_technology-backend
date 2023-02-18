@@ -1,4 +1,5 @@
 import { logger } from '../../utils/log.js'
+import { promises as fs, rename } from 'fs';
 import productsDaoMethods from '../Persistence/DAO/products/ProductsDaoMongoDb.js'
 
 
@@ -6,9 +7,10 @@ class productsService{
 
     getProducts(req, res){
 
-        let name = req.user.userName
-        let email =  req.user.email
-        res.render("products", {name, email})
+        productsDaoMethods.getAll().then((products) =>{
+
+            (products.length !== 0 ) && res.send(products)
+        })
     }
 
     getProduct(req, res){
@@ -16,12 +18,17 @@ class productsService{
         const { id }= req.params
         console.log("id de busqueda: ", id)
 
-        productsDaoMethods.getById(id).then((product) =>{
+        if(id !== ""){
+            
+            if(id.match(/^[0-9a-fA-F]{24}$/)){
 
-            //if(product !== ""){res.send(product)}else{res.send({ error : "producto no encontrado"}) }
-            (product !== "") ? res.send(product) : res.send("NOT FOUND")
-        })
-
+                productsDaoMethods.getById(id).then((product) =>{
+                    res.send(product)
+                })
+            }else{
+                res.send({Error : "Producto no encontrado"})
+            }
+        }
     }
 
     /* getRoot(req){
@@ -53,6 +60,20 @@ class productsService{
         console.log(a)
         await productsDaoMethods.updateImg(a)
     } 
+
+    async updateImageProduct(id){
+        
+        let renameImg = ()=>{
+
+            console.log('File deleted!');
+                fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
+                    if (err) throw err;
+                    console.log('File Renamed.');
+            });
+        } 
+
+        fs.unlink(`./public/images/products/${id}.jpg`, renameImg());
+    }
 }
 
 let services = new productsService

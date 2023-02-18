@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import passport from 'passport'
 import { loginValidator } from "../middleware/loginValidate.js";
-import { uploadImgProducts } from '../../utils/uploadImg.js';
+import { uploadImgProducts, uploadImgProductUpdate } from '../../utils/uploadImg.js';
 import controllers from '../Controllers/productsController.js'
 
 
@@ -16,10 +16,14 @@ class RouterProducts{
 
     init(){
 
+        router.get('/', this.controllersMethod.getRoot)
         router.get('/products', loginValidator, this.controllersMethod.getProducts)
-        router.get("/", this.controllersMethod.getRoot)
-        router.get("/products/:id", this.controllersMethod.getProductById)
-        router.post("/", uploadImgProducts, this.controllersMethod.postRoot)
+        router.get('/productos',loginValidator, this.controllersMethod.getPageProducts)
+        router.get('/products/:id', this.controllersMethod.getProductById)
+        router.post('/', uploadImgProducts, this.controllersMethod.postRoot)
+        router.post('/products/imageUpdate', uploadImgProductUpdate, this.controllersMethod.updateImage)
+        router.put('/products/:id', loginValidator, this.controllersMethod.modifyProduct)
+        router.delete('/products/:id',loginValidator, this.controllersMethod.deleteProduct)
 
         return router
     }

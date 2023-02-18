@@ -17,28 +17,32 @@ class ProductsDaoMongoDb extends MongoDbContainer{
         
     }
 
-    async updateproducts(product){
+    async updateProducts(product, id){
+
+        console.log(product)
 
         this.getAll().then(async (allProducts) =>{
-
+         
             allProducts.forEach(async productsSaved=> {
-                if (productsSaved.id.toString() === product.id) {
 
-                    if (product.name !== "")(productsSaved.name = product.nameProduct)
-                    if (product.description !== "")(productsSaved.description = product.descriptionProduct)
+                
+                if ((productsSaved._id.toString()) === id) {
+                    
+                    console.log(productsSaved)
+                    if (product.name !== "")(productsSaved.name = product.name)
+                    if (product.description !== "")(productsSaved.description = product.description)
                     if (product.price !== "")(productsSaved.price = product.price)
-                    if (product.thumbnail !== "")(productsSaved.thumbnail = product.thumbnail)
                     if (product.stock !== "")(productsSaved.stock = product.stock)
-                    if (product.category !== "")(productsSaved.category = product.categorty)
+                    if (product.category !== "")(productsSaved.category = product.category)
 
+                    console.log(productsSaved)
                     await productsModel.updateOne({
-                        id: product.id
+                        _id: id
                     }, {
                         $set: {
                             name: productsSaved.name,
                             description: productsSaved.description,
                             price: productsSaved.price,
-                            thumbnail: productsSaved.thumbnail,
                             stock: productsSaved.stock,
                             category: productsSaved.category
                         }
@@ -52,7 +56,7 @@ class ProductsDaoMongoDb extends MongoDbContainer{
 
         console.log(typeof(id))
         console.log("aqui llego el id ", id )
-        let modify = await productsModel.findByIdAndUpdate({_id:id},{thumbnail: `./public/images/products/${id}`})
+        let modify = await productsModel.findByIdAndUpdate({_id:id},{thumbnail: `/images/products/${id}.jpg`})
        fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
             if (err) throw err;
             console.log('File Renamed.');

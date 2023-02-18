@@ -1,3 +1,4 @@
+import productsDaoMethods from '../Persistence/DAO/products/ProductsDaoMongoDb.js'
 import services from '../services/productsService.js'
 
 class ProductControllers{
@@ -18,24 +19,43 @@ class ProductControllers{
     }
 
     getRoot = (req, res) => {
-
-        //const options = this.servicesMethod.getRoot(req)
-        //res.sendFile('index.html', options)
-        //res.render('products', req.user)
-        /* res.set({'Authorization' :'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGIiOlt7Il9pZCI6IjYzZTY4M2NjNjgzZTE4ZjFiNjg3ODY5ZiIsInVzZXJOYW1lIjoiYSIsImVtYWlsIjoiYUBhLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJG9ra3JUUkpwSTZjQTIwOUFtTmJmaXU3ZW9jWVRDSmoxVGxuT0xMUk00djNzMmlkdVZqNmouIiwiX192IjowfV0sImlhdCI6MTY3NjIzMzE1Nn0.L27nuMg_rHrQqJlo1yPYTq5JX3UmJg5mL9h_9ILoQNg'})
-        res.json({message : "aqui va products"}) */
-        //res.set({'Authorization' :'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGIiOlt7Il9pZCI6IjYzZTY4M2NjNjgzZTE4ZjFiNjg3ODY5ZiIsInVzZXJOYW1lIjoiYSIsImVtYWlsIjoiYUBhLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJG9ra3JUUkpwSTZjQTIwOUFtTmJmaXU3ZW9jWVRDSmoxVGxuT0xMUk00djNzMmlkdVZqNmouIiwiX192IjowfV0sImlhdCI6MTY3NjIzMzE1Nn0.L27nuMg_rHrQqJlo1yPYTq5JX3UmJg5mL9h_9ILoQNg'})
-        req.isAuthenticated() ? res.redirect("/products") : res.redirect("/login")
+        
+        req.isAuthenticated() ? res.redirect("/productos") : res.redirect("/login")
     }
 
     postRoot = (req, res) => {
 
         this.servicesMethod.postRoot(req,res)
-        //console.log(req)
-        //res.send(req.user.token)
-        res.redirect('/products')
+        res.redirect('/')
     }
-     
+    
+    getPageProducts = (req,res) =>{
+        
+        let name = req.user.userName
+        let email =  req.user.email
+        res.render("products", {name, email})        
+    }
+
+    modifyProduct = (req,res) => {
+
+        const { id } = req.params;
+        const product = req.body;
+        productsDaoMethods.updateProducts(product,id)
+    }
+
+    updateImage = (req,res) =>{
+
+        const id = req.body.idProduct
+        console.log("img loaded: ", id)
+        this.servicesMethod.updateImageProduct(id)
+        res.redirect("/productos")
+    }
+
+    deleteProduct = (req,res) => {
+
+        const { id } = req.params;
+        productsDaoMethods.deleteItem(id)
+    }
 }
 
 let controllers = new ProductControllers

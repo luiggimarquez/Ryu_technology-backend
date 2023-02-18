@@ -11,7 +11,7 @@ class LoginControllers{
     getLogin = (req,res)=>{
 
         this.servicesMethod.getLogin()
-        req.isAuthenticated() ? res.redirect("/products"): res.sendFile('./index.html',  {root:'./public/index'})
+        req.isAuthenticated() ? res.redirect("/"): res.sendFile('./index.html',  {root:'./public/index'})
     }
     
     getLogout = (req,res)=>{
@@ -59,13 +59,13 @@ class LoginControllers{
 
         res.cookie('token', req.user.token, { httpOnly: true });
         console.log("usuario: ", req.user)
-        res.redirect("/products")
+        res.redirect("/")
     }
 
     postRegisterCallBack = (req,res,next)=>{
 
         res.cookie('token', req.user.token, { httpOnly: true });
-        res.redirect("/products")
+        res.redirect("/")
     }
 }
 

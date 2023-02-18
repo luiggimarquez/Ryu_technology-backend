@@ -13,24 +13,14 @@ class MongoDbContainer{
 
     async getById(idItemSearch){
 
-        while(idItemSearch !== ""){
-            
-            if (idItemSearch.match(/^[0-9a-fA-F]{24}$/)) {
-
-                let result = await (this.collection).find({ _id: idItemSearch }).exec().catch(error => { return error })
-                if (result.length === 0) { (result = { Error: `Producto no encontrado` }) }
-                return result
-
-            } else {
-
-                return { Error: `Producto no encontrado` }
-            }
-        }
+        let result = await (this.collection).find({ _id: idItemSearch }).exec().catch(error => { return error })
+        if (result.length === 0) { (result = { Error: `Producto no encontrado` }) }
+        return result
     }
 
     async deleteItem(idItemSearch){
 
-        await (this.collection).deleteOne({id:idItemSearch})
+        await (this.collection).deleteOne({_id:idItemSearch})
     }
 }
 export default MongoDbContainer;
