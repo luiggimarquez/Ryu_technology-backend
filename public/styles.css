@@ -289,3 +289,14 @@ main{
 	
 }
 
+.divCategory {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-select {
+    display: flex;
+    width: 50% !important;
+    text-align-last: center;
+}

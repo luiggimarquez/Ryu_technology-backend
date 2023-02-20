@@ -5,11 +5,11 @@ import productsDaoMethods from '../Persistence/DAO/products/ProductsDaoMongoDb.j
 
 class productsService{
 
-    getProducts(req, res){
-
-        productsDaoMethods.getAll().then((products) =>{
-
-            (products.length !== 0 ) && res.send(products)
+    getProducts(){
+        let result=[]
+        return productsDaoMethods.getAll().then((products) =>{
+            (products.length !== 0) && (result=products)
+            return result
         })
     }
 
@@ -22,11 +22,13 @@ class productsService{
             
             if(id.match(/^[0-9a-fA-F]{24}$/)){
 
-                productsDaoMethods.getById(id).then((product) =>{
-                    res.send(product)
+                return productsDaoMethods.getById(id).then((product) =>{
+                    //res.send(product)
+                    return product
                 })
             }else{
-                res.send({Error : "Producto no encontrado"})
+                //res.send({Error : "Producto no encontrado"})
+                return {Error : "Producto no encontrado"}
             }
         }
     }
@@ -73,6 +75,19 @@ class productsService{
         } 
 
         fs.unlink(`./public/images/products/${id}.jpg`, renameImg());
+    }
+
+     getProductsCategory = (category) =>{
+
+        console.log("resultado: --- ",category)
+        if(category !== "0"){
+            return productsDaoMethods.getByCategory(category).then((products)=>{
+                return products
+            })
+        }else{
+
+            return ""
+        }
     }
 }
 

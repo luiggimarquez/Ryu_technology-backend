@@ -34,6 +34,7 @@ let inputStockProduct = document.getElementById("stock")
 let containerProduct = document.getElementById('card')
 let modalContainer = document.getElementById('itemModal')
 let getProductbyId = document.getElementById("itemId")
+let getCategory = document.getElementById("category")
 
 function loadProducts(items) {
 
@@ -118,7 +119,7 @@ function loadProducts(items) {
 
 				modalContainer.appendChild(divModal);
 
-				let inputNewUrl = document.getElementById('newUrl')
+				//let inputNewUrl = document.getElementById('newUrl')
 				let inputNewName = document.getElementById('newName')
 				let inputNewCategory = document.getElementById('newCategory')
 				let inputNewPrice = document.getElementById('newPrice')
@@ -180,11 +181,13 @@ function loadProducts(items) {
 				location.reload()
 			})
 
+			// Fetch Method POST to add  items to cart
+
 			let addCart = document.getElementById(`addCart${_id}`)
 			addCart.addEventListener("click", () =>{
 				
 				let dataBody = JSON.stringify(product)
-				fetch(`/api/carrito/${idCartNow}/productos`,{
+				fetch(`/carrito/${idCartNow}/productos`,{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -228,6 +231,7 @@ fetch('/products').then(response => {
 	
 	const json = JSON.parse(data);
 	console.log(json)
+	loadMenuCategory(json)
 	loadProducts(json)
 
 }).catch(err => {
@@ -254,10 +258,50 @@ getProductbyId.addEventListener("keyup", ()=>{
 
 })
  
+//Category Menu
+
+let loadMenuCategory = (products) => {
+
+	//divCateg.innerHTML = "";
+	
+	let hash = {};
+	products = products.filter(product => hash[product.category] ? false : hash[product.category] = true);
+	
+	console.log(hash)
+	console.log(products)
+	
+	let divCateg = document.getElementById("category")
+	
+	products.forEach( categoriesMenu => {
+	divCateg.innerHTML += `
+	
+	<option value="${categoriesMenu.category}">${categoriesMenu.category}</option>			
+	`
+})
+}
+
+getCategory.addEventListener("change", ()=>{
+
+	let getInputCategory = document.getElementById("category")
+	console.log(getInputCategory.value)
+	let inputItemCategory = getInputCategory.value;
+	fetch(`/productos/category/${inputItemCategory}`).then(response => {
+		return response.text()
+	}).then(data => {
+		
+		const json = JSON.parse(data)
+		loadProducts(json)
+		
+	}).catch(err=>{
+		console.log(err)
+	}); 
+
+})
+
 
 //Fetch Method GET for validate and create first cart
 
-	/* fetch('/api/carrito/').then(response => {
+fetch('/carrito').then(response => {
 	return response.text()
 }).then(data =>{
 	const json = JSON.parse(data);
@@ -267,7 +311,7 @@ getProductbyId.addEventListener("keyup", ()=>{
 		cart = new Cart("1",(new Date(Date.now()).toString()),[])
 		let dataBody = JSON.stringify(cart)
 		
-		fetch("/api/carrito", {
+		fetch("/carrito", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -296,7 +340,7 @@ getProductbyId.addEventListener("keyup", ()=>{
 			cart = new Cart(idCartNow,(new Date(Date.now()).toString()),[])
 			let dataBody = JSON.stringify(cart)
 		
-		fetch("/api/carrito", {
+		fetch("/carrito", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -310,7 +354,3 @@ getProductbyId.addEventListener("keyup", ()=>{
 }).catch(err=>{
 	console.log(err)
 });
-
-location.reload()
-
- */

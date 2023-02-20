@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Cart</title>
+</head>
+<body>
+    <header>
+        <div class="headerTitle"><a href="./products"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="/cartPreview"><img src="../images/cart.png" alt="acceso al carrito"></a></div>
+        <div class="templateUserloged"> <img class="iconAvatar" src=<%= %>><h2>Bienvenido: --- <%= name %>  --- <%= email %></h2><button class="buttonLogout" onclick="location.href='/logout'">Logout</button></div>
+    </header>
+    
+    <a href="/products"></a>
+
+    <section id="bodyCart" Class="bodyCart"></section>
+    <div id="buttonEmpty"></div>
+  
+
+    <footer class="footer"><h4>Ryu Technology || © All right Reserved</h4></footer>
+
+    <script src="/cart.js"></script>
+    
+</body>
+
+</html>

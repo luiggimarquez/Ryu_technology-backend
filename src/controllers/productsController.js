@@ -8,14 +8,17 @@ class ProductControllers{
         this.servicesMethod = services
     }
 
-    getProducts = (req, res) => {
+    getProducts = async(req, res) => {
 
-        this.servicesMethod.getProducts(req,res)
+        let result = await this.servicesMethod.getProducts(req,res)
+        res.send(result)
     }
 
-    getProductById = (req, res) =>{
+    getProductById = async (req, res) =>{
 
-        this.servicesMethod.getProduct(req,res)
+       let result = await this.servicesMethod.getProduct(req,res)
+       console.log(result)
+       res.send(result)
     }
 
     getRoot = (req, res) => {
@@ -55,6 +58,14 @@ class ProductControllers{
 
         const { id } = req.params;
         productsDaoMethods.deleteItem(id)
+    }
+
+    getProductsbyCategory = async (req,res) =>{
+
+        const { category } = req.params
+        let products = await this.servicesMethod.getProductsCategory(category)
+        if(products !== ""){res.send(products)}else{this.getProducts(req,res)}
+        //res.send(products)
     }
 }
 

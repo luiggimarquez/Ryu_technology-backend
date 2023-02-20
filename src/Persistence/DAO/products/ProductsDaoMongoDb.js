@@ -65,6 +65,15 @@ class ProductsDaoMongoDb extends MongoDbContainer{
         console.log(modify)
 
     }
+
+    getByCategory = async(category) =>{
+
+        let result = await productsModel.find({ category: category }).exec().catch(error => { return error })
+        if (result.length === 0) { (result = { Error: `Producto no encontrado` }) }
+        console.log(result)
+        return result
+
+    }
 }
 
 let productsDaoMethods = new ProductsDaoMongoDb;
