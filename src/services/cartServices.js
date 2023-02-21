@@ -1,10 +1,8 @@
 import { logger, loggerError } from '../../utils/log.js'
 import cartsDaoMethods from '../Persistence/DAO/cart/cartsDaoMongoDb.js'
 
-
 class CartServices {
 
-    
      getActualCart = async(req, res) =>{
         
         return await cartsDaoMethods.getAll().then((products) =>{
@@ -14,7 +12,8 @@ class CartServices {
     
     saveCart = async(req, res) =>{
         
-        cartsDaoMethods.createCart(req.body, req.user.email)
+        let result = await cartsDaoMethods.createCart(req.body, req.user.email)
+        return result
     } 
 
     getLengthCart = async() =>{
@@ -35,6 +34,22 @@ class CartServices {
         })
     }
 
+    deleteItemCart = async(req,res)=>{
+
+        const {id, id_prod} = req.params
+        cartsDaoMethods.deleteItemCart(id,id_prod)
+    }
+
+    deleteCart = async(req,res) =>{
+
+        const{ id } = req.params;
+        cartsDaoMethods.deleteItem(id)
+    }
+
+    finishCart = async(req,res) =>{
+        const {id} = req.params;
+        return await cartsDaoMethods.finishCart(id)
+    }
 }
 
 let services = new CartServices

@@ -12,12 +12,10 @@ class Products{
 
 class Cart{
 
-	constructor(id, timestampCart, products){
+	constructor(timestampCart, products){
 
-		this.id = id;
 		this.timestampCart = timestampCart;
 		this.products = products;
-
 	}
 }
 
@@ -308,7 +306,7 @@ fetch('/carrito').then(response => {
 	
 	if(json.length == 0){
 
-		cart = new Cart("1",(new Date(Date.now()).toString()),[])
+		cart = new Cart((new Date(Date.now()).toString()),[])
 		let dataBody = JSON.stringify(cart)
 		
 		fetch("/carrito", {
@@ -331,13 +329,13 @@ fetch('/carrito').then(response => {
 	}else{
 
 		// if cart exist and it is still active, this idCartNow hold the actual Cart
-		if(json[0].id){
-			idCartNow=json[0].id
+		if(json[0]._id){
+			idCartNow=json[0]._id
 		}else{
 
 			// This POST method create a new car when first car already exist and it is finished
-			idCartNow=JSON.parse(json)+1
-			cart = new Cart(idCartNow,(new Date(Date.now()).toString()),[])
+			//idCartNow=JSON.parse(json)+1
+			cart = new Cart((new Date(Date.now()).toString()),[])
 			let dataBody = JSON.stringify(cart)
 		
 		fetch("/carrito", {
@@ -345,7 +343,15 @@ fetch('/carrito').then(response => {
 				headers: {
 					"Content-Type": "application/json"
 				},
-				body: dataBody})
+				body: dataBody}).then(response => {
+					return response.text()
+				})
+				.then(data => {
+					const json = JSON.parse(data);
+					idCartNow=json
+		
+					console.log("Carrito creado, ID: ", idCartNow)
+				})
 
 			console.log(idCartNow)
 		}	

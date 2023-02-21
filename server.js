@@ -8,6 +8,7 @@ import { logger, loggerError } from "./utils/log.js";
 import loginRouter from "./src/routes/loginRoutes.js";
 import productsRouter from "./src/routes/productsRoute.js";
 import cartRouter from "./src/routes/cartRoutes.js";
+import ordersRouter from "./src/routes/ordersRoutes.js";
 import infoRouter from "./src/routes/infoRoute.js"
 import MongoStore from 'connect-mongo'
 import session from 'express-session'
@@ -46,6 +47,7 @@ app.use(loginRouter.init())
 app.use(infoRouter.init())
 app.use('/', loginValidator, passport.authenticate('jwt', {session: false}), productsRouter.init())
 app.use('/carrito', passport.authenticate('jwt', {session: false}), cartRouter.init())
+app.use('/orden', passport.authenticate('jwt', {session: false}), ordersRouter.init())
 
 const PORT = config.PORT || 8080
     httpServer.listen(PORT, () =>{

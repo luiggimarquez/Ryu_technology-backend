@@ -1,7 +1,16 @@
 let idCartNow = []
+let cart =[]
 let containerProduct = document.getElementById('bodyCart')
 let containerDeleteCart = document.getElementById('buttonEmpty')
 
+class Cart{
+
+	constructor(timestampCart, products){
+
+		this.timestampCart = timestampCart;
+		this.products = products;
+	}
+}
 
 loadProducts = (itemsCart) =>{
     
@@ -65,13 +74,15 @@ loadProducts = (itemsCart) =>{
 	div.setAttribute("id","empty");
 	div.innerHTML = `
 		<button id="emptyCart">Vaciar Carrito </button>
-		<button id="finishCart">Finalizar Compra </button>`
+        <button type="submit" id="finishCart" >Finalizar Compra </button>
+       
+        `
 	containerDeleteCart.appendChild(div);
 
 	let eventEmptyCart =  document.getElementById("emptyCart")
 	eventEmptyCart.addEventListener("click", ()=>{
 
-		fetch(`/api/carrito/${idCartNow}`,{
+		fetch(`/carrito/${idCartNow}`,{
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json"
@@ -85,16 +96,19 @@ loadProducts = (itemsCart) =>{
 	
 	// After Finish Cart, this Fetch (POST) save the data from actual cart and make a new Cart
 
-	filename = {
+/* 	filename = {
 		id:(parseInt(idCartNow)+1).toString(),
 		timestampCart:new Date(Date.now()).toString(),
 		products:[]
-	}
+	} */
 
-	let dataBody = JSON.stringify(filename)
+	//let dataBody = JSON.stringify(filename)
+
 
 	let eventFinishCart = document.getElementById("finishCart")
-	eventFinishCart.addEventListener('click', () =>{
+	eventFinishCart.addEventListener('click', () =>{ 
+
+        console.log(idCartNow)
 
 		fetch(`/carrito/${idCartNow}`, {
 			method: "PUT",
@@ -104,7 +118,7 @@ loadProducts = (itemsCart) =>{
 			body: JSON.stringify(itemsCart)
 		}).then(()=>{
 
-			fetch(`/carrito/`,{
+			 /*fetch(`/carrito/`,{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -116,10 +130,27 @@ loadProducts = (itemsCart) =>{
 			.then(data => {
 				const json = JSON.parse(data);
 				console.log("Carrito creado, ID: ",json)
-			})
+			})*/
+            let order = JSON.stringify({ products: itemsCart, _id:idCartNow, timestamp: new Date(Date.now()).toString(), address:""})
+            
+            fetch('/orden/',{
+                method: "POST",
+                headers:{
+                    "Content-Type" : "application/json"
+
+                },
+                body: order
+            }).then(()=>{
+
+				
+            })
+
+            localStorage.setItem("id_order", JSON.stringify(idCartNow))
+			console.log(localStorage.getItem("id_order"))
+
+            location.href = '/orden/preOrden'
 		})
-	
-		location.href = '/'  
+		  
 	})	
 }
 
@@ -131,9 +162,9 @@ loadCartEmpty= () => {
 	div.innerHTML = `
 			<div class="cartEmpty">
 				
-				<img src="./img/carritovacio.png" alt="imagen carrito de compras vacio">
+				<img src="../images/carritovacio.png" alt="imagen carrito de compras vacio">
                 <h2> Carrito se encuentra vacío </h2>
-                <a href="/products"><button>Ir a productos</button></a>
+                <a href="/productos"><button>Ir a productos</button></a>
 				
 			</div>`;
 	containerProduct.appendChild(div);
@@ -152,26 +183,53 @@ fetch('/carrito/').then(response => {
 		}else{
 
 			// ID from actual user cart
-			if(json[0].id){idCartNow=json[0].id}
-			else{ idCartNow=JSON.parse(json)+1 }
-			
-		}
+			if(json[0]._id){
+                idCartNow=json[0]._id
+            }
+			else{
+                cart = new Cart((new Date(Date.now()).toString()),[])
+			    let dataBody = JSON.stringify(cart)
+                fetch("/carrito", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: dataBody}).then(response => {
+                        return response.text()
+                    })
+                    .then(data => {
+                        const json = JSON.parse(data);
+                        idCartNow=json
+            
+                        console.log("Carrito creado, ID: ", idCartNow)
+                    })
     
+                    console.log(idCartNow)
+                
+
+            }
+            
+             
+        }
+		
 			//Fetch Method Get for load items for the cart
 
-        fetch(`/carrito/${idCartNow}/productos`).then(response => {
-            return response.text()
-        }).then(data => {
+        setTimeout(()=>{
 
-            const itemsCart = JSON.parse(data);
-            if (itemsCart.error === 'producto no encontrado' || itemsCart[0].products.length === 0) {
-            	loadCartEmpty();
-            } else {
-            	loadProducts(itemsCart[0].products)
-            }
-        }).catch(err=>{
-			console.log(err)
-		})
+            fetch(`/carrito/${idCartNow}/productos`).then(response => {
+                return response.text()
+            }).then(data => {
+    
+                const itemsCart = JSON.parse(data);
+                if (itemsCart.error === 'producto no encontrado' || itemsCart[0].products.length === 0) {
+                    loadCartEmpty();
+                } else {
+                    loadProducts(itemsCart[0].products)
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+        },500)
 		
 	}).catch(err=>{
 	    console.log(err)

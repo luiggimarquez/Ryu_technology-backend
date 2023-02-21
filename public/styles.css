@@ -300,3 +300,39 @@ main{
     width: 50% !important;
     text-align-last: center;
 }
+
+.formContainer{
+
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 84vh;
+}
+
+.alignContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.alignFormAddress{
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.formTextbox {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.buttonSize {
+    width: 50%;
+    align-self: center;
+}

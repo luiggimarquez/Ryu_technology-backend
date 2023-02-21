@@ -4,7 +4,6 @@ const cartsCollection = "carts"
 
 const cartsSchema = new mongoose.Schema({
 
-    id: {type: String, require: true, max: 100},
     timestampCart: {type: String, require: true, max: 100},
     email: {type: String, require: true, max:100 },
     address:{ type: String},

@@ -15,12 +15,10 @@ passport.use('register', new LocalStrategy({
     }, async(req, email, password, done)=>{
 
         let userDb = await usersModel.find({email})
-        console.log(userDb)
         if(userDb.length > 0){
             return done(null,false)
         }else{
 
-            console.log("aqui registro")
             if(!req.body.avatar){( img = `/img/pictures-registers/avatar.jpg`)}else{ (img =  `/img/pictures-registers/${req.body.email}.jpg`)}
             let user =  new usersModel();
             const saltRounds = 10;
@@ -51,7 +49,6 @@ passport.use('login', new LocalStrategy({
     }, async(req, email, password, done)=>{
         
         const userDb = await usersModel.find({email})
-        console.log("login", userDb)
         if(userDb.length === 0){
            return done(null, false)
         }

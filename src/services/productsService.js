@@ -16,7 +16,6 @@ class productsService{
     getProduct(req, res){
 
         const { id }= req.params
-        console.log("id de busqueda: ", id)
 
         if(id !== ""){
             
@@ -59,7 +58,6 @@ class productsService{
         }
         let received2 = await productsDaoMethods.saveProducts(test)
         let a = JSON.parse(JSON.stringify(received2.id))
-        console.log(a)
         await productsDaoMethods.updateImg(a)
     } 
 
@@ -79,7 +77,6 @@ class productsService{
 
      getProductsCategory = (category) =>{
 
-        console.log("resultado: --- ",category)
         if(category !== "0"){
             return productsDaoMethods.getByCategory(category).then((products)=>{
                 return products

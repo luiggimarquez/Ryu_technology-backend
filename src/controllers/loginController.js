@@ -58,7 +58,6 @@ class LoginControllers{
     postLoginCallBack = (req,res,next)=>{
 
         res.cookie('token', req.user.token, { httpOnly: true });
-        console.log("usuario: ", req.user)
         res.redirect("/")
     }
 

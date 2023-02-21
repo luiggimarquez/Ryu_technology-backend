@@ -18,6 +18,9 @@ class CartRouter{
         routerCart.get('/:id/productos', loginValidator, this.controllersMethod.getProductsCart)
         routerCart.post('/', loginValidator, this.controllersMethod.createCart)
         routerCart.post('/:id/productos', loginValidator, this.controllersMethod.AddProductToCart)
+        routerCart.delete('/:id/productos/:id_prod', loginValidator, this.controllersMethod.deleteProductCart)
+        routerCart.delete('/:id', loginValidator, this.controllersMethod.deleteCart)
+        routerCart.put('/:id', loginValidator, this.controllersMethod.finishCart)
 
         return routerCart
     }

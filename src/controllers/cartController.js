@@ -1,5 +1,4 @@
 import services from '../services/cartServices.js'
-import cartsDaoMethods from '../Persistence/DAO/cart/cartsDaoMongoDb.js'
 let actualCart = []
 let totalLength = []
 
@@ -15,31 +14,19 @@ class CartControllers{
         actualCart = await this.servicesMethod.getActualCart(req,res)
         totalLength = await this.servicesMethod.getLengthCart()
         actualCart.length !== 0 ? res.send(actualCart) : res.send([totalLength])
-
-        /* cartsDaoMethods.getAll().then((products) =>{
-        
-            actualCart = products.filter(activeCart => (activeCart.active === true && req.user.email === activeCart.email))
-            console.log(products)
-            console.log(typeof(products))
-            let totalLength = products.length
-            console.log(totalLength)
-            actualCart.length !== 0 ? res.send(actualCart) : res.send([totalLength])
-        }) */
     }
 
-    createCart = (req,res) => {
+    createCart = async(req,res) => {
 
         let productReceived = req.body
-        this.servicesMethod.saveCart(req,res)
-        res.send(productReceived.id)
+        let result = await this.servicesMethod.saveCart(req,res)
+        res.json(result._id)
     }
 
     AddProductToCart = (req,res) => {
 
         const { id } = req.params
         let product = req.body
-        console.log("id: ",id)
-        console.log("producto: ",product)
         this.servicesMethod.addItemCart(product,id)
     }
 
@@ -53,15 +40,28 @@ class CartControllers{
     getProductsCart = async (req,res) =>{
 
         const {id} = req.params;
-        
         let products = await this.servicesMethod.getProductsAdded(id)
-        
-        console.log(products)
         res.send(products)
     }
 
-}
+    deleteProductCart = (req,res) => {
 
+        this.servicesMethod.deleteItemCart(req,res)
+    }
+
+    deleteCart = (req,res) =>{
+
+        this.servicesMethod.deleteCart(req,res)
+    }
+
+    finishCart = (req, res) => {
+
+        console.log("paso")
+
+        this.servicesMethod.finishCart(req,res)
+        res.json({message : "Order ok"})
+    }
+}
 
 let controllers = new CartControllers
 export default controllers 

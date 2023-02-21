@@ -17,7 +17,6 @@ class ProductControllers{
     getProductById = async (req, res) =>{
 
        let result = await this.servicesMethod.getProduct(req,res)
-       console.log(result)
        res.send(result)
     }
 
@@ -49,7 +48,6 @@ class ProductControllers{
     updateImage = (req,res) =>{
 
         const id = req.body.idProduct
-        console.log("img loaded: ", id)
         this.servicesMethod.updateImageProduct(id)
         res.redirect("/productos")
     }
