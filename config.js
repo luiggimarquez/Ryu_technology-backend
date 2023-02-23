@@ -8,9 +8,7 @@ const config = {
     PORT : process.env.PORT,
     MONGOSESSION : process.env.MONGOSESSION,
     ADMINMAIL : process.env.ADMINMAIL,
-    TWILIOSID : process.env.TWILIOSID,
-    TWILIOTOKEN : process.env.TWILIOTOKEN
-
+    CODE: process.env.CODE
 
 }
 

@@ -1,0 +1,177 @@
+[2023-02-22T16:12:50.396] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMail.ejs:11
+    9|     <p><strong>Info: </strong></p>
+    10|     <% content = content.pop() %>
+ >> 11|     <% content.forEach( x => { %>
+    12|         
+    13|         <ul style="text-decoration: none;">
+    14|         
+
+content.forEach is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:21:16)
+    at sendMail (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmail (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at Strategy._verify (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/middleware/passport.js:26:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMail.ejs'
+}
+[2023-02-22T16:20:46.580] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMail.ejs:10
+    8|     
+    9|     <p><strong>Info: </strong></p>
+ >> 10|     <% content = content.pop() %>
+    11|     <% content.forEach( x => { %>
+    12|         
+    13|         <ul style="text-decoration: none;">
+
+content.pop is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:26)
+    at sendMail (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmail (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at Strategy._verify (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/middleware/passport.js:27:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMail.ejs'
+}
+[2023-02-22T16:22:21.028] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMail.ejs:10
+    8|     
+    9|     <p><strong>Info: </strong></p>
+ >> 10|     <% content.forEach( x => { %>
+    11|         
+    12|         <ul style="text-decoration: none;">
+    13|         
+
+content.forEach is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
+    at sendMail (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmail (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at Strategy._verify (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/middleware/passport.js:27:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMail.ejs'
+}
+[2023-02-22T17:18:36.720] [ERROR] archivoError - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Connection.openUri (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\connection.js:825:32)
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\index.js:411:10
+    at D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:41:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\helpers\promiseOrCallback.js:40:10)
+    at Mongoose._promiseOrCallback (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\index.js:1285:10)
+    at Mongoose.connect (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\mongoose\lib\index.js:410:20)
+    at file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/Persistence/mongoDbConfig.js:17:34
+    at file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/Persistence/mongoDbConfig.js:27:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-xn3dkbj-shard-00-00.el27giy.mongodb.net:27017' => [ServerDescription],
+      'ac-xn3dkbj-shard-00-01.el27giy.mongodb.net:27017' => [ServerDescription],
+      'ac-xn3dkbj-shard-00-02.el27giy.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-ztceyc-shard-0',
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+[2023-02-22T17:22:29.576] [ERROR] archivoError - SyntaxError: missing ) after argument list in D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22)
+[2023-02-22T17:25:01.767] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs:10
+    8|     
+    9|     <p><strong>Info: </strong></p>
+ >> 10|     <% content.forEach( items => { %>
+    11|         <ul style="text-decoration: none;"></ul>
+    12|             <li> ID Compra: <%= items._id %></li>
+    13|             <li> Cliente: <%= items.userName %> <%= items.userLastName %></li>
+
+content.forEach is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:16)
+    at sendMailOrder (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+}
+[2023-02-22T17:26:16.962] [ERROR] archivoError - ReferenceError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs:10
+    8|     
+    9|     <p><strong>Info: </strong></p>
+ >> 10|     <% result.forEach( items => { %>
+    11|         <ul style="text-decoration: none;"></ul>
+    12|             <li> ID Compra: <%= items._id %></li>
+    13|             <li> Cliente: <%= items.userName %> <%= items.userLastName %></li>
+
+result is not defined
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:8)
+    at sendMailOrder (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+}
+[2023-02-22T17:29:51.385] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs:10
+    8|     
+    9|     <p><strong>Info: </strong></p>
+ >> 10|     <% result.forEach( items => { %>
+    11|         <ul style="text-decoration: none;"></ul>
+    12|             <li> ID Compra: <%= items._id %></li>
+    13|             <li> Cliente: <%= items.userName %> <%= items.userLastName %></li>
+
+result.forEach is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:15)
+    at sendMailOrder (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+}
+[2023-02-22T17:31:26.293] [ERROR] archivoError - TypeError: D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs:21
+    19|         <ul style="text-decoration: none;">Productos Comprados
+    20|             
+ >> 21|             <% items.forEach( products =>{ %>
+    22|                 <li>Producto <%= products.name %><li>
+    23|                 <li>Precio: <%= products.price %><li>
+    24|                 <li>Cantidad: <%= products.quantity %></li> 
+
+items.forEach is not a function
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:41:14)
+    at Array.forEach (<anonymous>)
+    at eval (eval at compile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:673:12), <anonymous>:18:15)
+    at sendMailOrder (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:19:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+}

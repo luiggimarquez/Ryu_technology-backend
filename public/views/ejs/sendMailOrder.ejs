@@ -1,0 +1,40 @@
+<div style="margin: 0 auto; max-width: 720px; padding: 30px 0; font-family: Arial; text-align: center; background-color: blue; color: aliceblue;">
+    <h3><strong>Hello !!!</strong></h3>
+    <p><%= message %></p>
+    <div></div>
+</div>
+
+<div style="margin: 0 auto; max-width: 720px; padding: 30px 0; font-family: Arial">
+    
+    <p><strong>Info: </strong></p>
+    <% result.forEach( items => { %>
+        <ul style="text-decoration: none;">
+            <li> ID Compra: <%= items._id %></li>
+            <li> Cliente: <%= items.userName %> <%= items.userLastName %></li>
+            <li> Telefono: <%= items.phone %></li>
+            <li> Email: <%= items.email %></li>
+            <li> Fecha Compra: <%= items.timestamp %></li>
+            <li> Direccion de entrega: <%= items.address %></li>
+        </ul>
+        <ul style="text-decoration: none;">Productos Comprados
+           
+            <% items.products.forEach( products =>{ %>
+                
+                <ul>
+                    </br>
+                    <li>Producto: <%= products.name %></li>
+                    <li>Precio: <%= products.price %></li>
+                    <li>Cantidad: <%= products.quantity %></li>
+                    </br>
+                    </br>
+                </ul>
+                
+            <% }) %>
+        </ul>
+        </br>
+        </br>
+        <p><strong>Total de la compra: <%= items.totalPay %> $ USD </strong></p>
+    <% }) %>
+
+
+</div>

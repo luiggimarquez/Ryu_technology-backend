@@ -23,7 +23,7 @@ const app = express()
 const httpServer = http.createServer(app)
 const socketServer = new SocketServer(httpServer)
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))

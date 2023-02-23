@@ -1,8 +1,12 @@
 let id = JSON.parse(localStorage.getItem("id_order"));
+let inputID =  document.getElementById("id")
+inputID.value=id
 
+console.log(inputID)
+localStorage.clear();
+//let submit =  document.getElementById("formAddress")
 
-let submit =  document.getElementById("formAddress")
-
+/*
 submit.addEventListener("submit", (e)=>{
 
     e.stopImmediatePropagation()
@@ -35,15 +39,12 @@ submit.addEventListener("submit", (e)=>{
 
                 },
                 body: infoAddressOrder
-    })/* .then(()=>{
+    }) .then(()=>{
 
 
         location.href = '/orden'
-    }) */
+    })
         
     
-
-
-
 })
-
+*/

@@ -22,9 +22,9 @@ class CartServices {
         })
     }
 
-    addItemCart = (products,id) =>{
+    addItemCart = async(products,id) =>{
 
-        cartsDaoMethods.addItemCart(products,id)
+        return await cartsDaoMethods.addItemCart(products,id)
     }
 
     getProductsAdded = async (id) => {

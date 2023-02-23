@@ -23,11 +23,12 @@ class CartControllers{
         res.json(result._id)
     }
 
-    AddProductToCart = (req,res) => {
+    AddProductToCart = async(req,res) => {
 
         const { id } = req.params
         let product = req.body
-        this.servicesMethod.addItemCart(product,id)
+        await this.servicesMethod.addItemCart(product,id)
+        res.json({message: "ok"})
     }
 
     getCartPreview = (req,res) =>{

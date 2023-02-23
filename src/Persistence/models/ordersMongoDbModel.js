@@ -34,6 +34,10 @@ const ordersCollection = "orders"
     address: { 
         type: String 
     },
+    totalPay:{
+        type:Number,
+        require: true
+    },
     products: {
         type: [
         {

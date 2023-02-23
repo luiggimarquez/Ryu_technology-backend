@@ -24,11 +24,12 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg">Direccion de entrega</span>
                 
                 <div class="alignFormAddress">
-                    <form id="formAddress" class="formTextbox">
-                        <input type="text" class="form-control" id="Address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Calle y numero" required>
-                        <input type="text" class="form-control" id="City" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Ciudad" required>
-                        <input type="text" class="form-control" id="State" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Provincia" required>
-                        <textarea placeholder="Escribe alguna referencia de utilidad (opcional)" maxlength="1000" name="textarea" class="form-control" id="Reference" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required></textarea>
+                    <form id="formAddress" class="formTextbox" method="post" action="/orden/pre-orden">
+                        <input name="id" id="id" type="hidden">
+                        <input type="text" class="form-control" id="Address" name="address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Calle y numero" required>
+                        <input type="text" class="form-control" id="City" name="city" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Ciudad" required>
+                        <input type="text" class="form-control" id="State" name="state" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Ingrese Provincia" required>
+                        <textarea placeholder="Escribe alguna referencia de utilidad (opcional)" maxlength="1000" name="reference" class="form-control" id="Reference" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required></textarea>
                         <button type="submit" id="submitButton" class="buttonSize">Boton de enviar</button>
                     </form>
                 </div>

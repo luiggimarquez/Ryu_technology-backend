@@ -4,6 +4,9 @@ import { usersModel } from "../Persistence/models/usersMongoDbModels.js";
 import bcrypt from "bcrypt";
 import { Strategy as JWTStrategy} from 'passport-jwt'
 import jsonwebtoken from 'jsonwebtoken'
+import { sendEmailRegister } from '../../utils/email.js';
+import config from '../../config.js';
+
 let img=[]
 
 passport.use('register', new LocalStrategy({
@@ -18,6 +21,10 @@ passport.use('register', new LocalStrategy({
         if(userDb.length > 0){
             return done(null,false)
         }else{
+
+            //let content = [JSON.parse(JSON.stringify(req.body))]
+            let content = [{ Name:req.body.name, LastName:req.body.lastname, Phone: req.body.phone, Email: req.body.email, Register_date: new Date(Date.now()).toString()}]
+            sendEmailRegister(config.ADMINMAIL,`RyuTech: nuevo usuario: ${req.body.name} - ${req.body.email}`,content, 'Tenemos un nuevo usuario registrado en RyuTechnology');
 
             if(!req.body.avatar){( img = `/img/pictures-registers/avatar.jpg`)}else{ (img =  `/img/pictures-registers/${req.body.email}.jpg`)}
             let user =  new usersModel();

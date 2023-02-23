@@ -193,7 +193,7 @@ function loadProducts(items) {
 					body: dataBody
 				})
 
-				location.reload()
+				//location.reload()
 			})
 
 

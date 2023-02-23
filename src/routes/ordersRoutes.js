@@ -13,7 +13,7 @@ class OrdersRouter{
 
     init(){
 
-       // routerOrders.get('/',loginValidator, this.controllersMethod.getOrders)
+        routerOrders.get('/',loginValidator, this.controllersMethod.getOrders)
         routerOrders.get('/preOrden',loginValidator,this.controllersMethod.getPreOrder)
         routerOrders.post('/',loginValidator, this.controllersMethod.createOrderCart)
         routerOrders.post('/pre-orden',this.controllersMethod.saveAddressOrder)

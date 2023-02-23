@@ -17,7 +17,9 @@ class OrdersDaoMongoDb extends MongoDbContainer{
 
     async updateOrder(id, address){
 
-        let modify = await ordersModel.findByIdAndUpdate({_id:id},{address: address})
+        let result= await ordersModel.findByIdAndUpdate({_id:id},{address: address}, {new: true})
+        console.log("resultado de mongo: ", result)
+        return result
     }
 
    
