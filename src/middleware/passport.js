@@ -22,8 +22,15 @@ passport.use('register', new LocalStrategy({
             return done(null,false)
         }else{
 
-            //let content = [JSON.parse(JSON.stringify(req.body))]
-            let content = [{ Name:req.body.name, LastName:req.body.lastname, Phone: req.body.phone, Email: req.body.email, Register_date: new Date(Date.now()).toString()}]
+            let content = [
+                {
+                    Name: req.body.name,
+                    LastName: req.body.lastname,
+                    Phone: req.body.phone,
+                    Email: req.body.email,
+                    Register_date: new Date(Date.now()).toString(),
+                },
+            ];
             sendEmailRegister(config.ADMINMAIL,`RyuTech: nuevo usuario: ${req.body.name} - ${req.body.email}`,content, 'Tenemos un nuevo usuario registrado en RyuTechnology');
 
             if(!req.body.avatar){( img = `/img/pictures-registers/avatar.jpg`)}else{ (img =  `/img/pictures-registers/${req.body.email}.jpg`)}
@@ -41,7 +48,7 @@ passport.use('register', new LocalStrategy({
                 user.save()
             });
             userDb = [user]
-            const token =jsonwebtoken.sign({userDb} ,'your_jwt_secret', {expiresIn:"4h"});
+            const token =jsonwebtoken.sign({userDb} ,config.CODE_JWT, {expiresIn:config.JWT_SESSION_TIME});
             done(null,{userDb, token})
         }
     })
@@ -63,7 +70,7 @@ passport.use('login', new LocalStrategy({
         bcrypt.compare(password,userDb[0].password, function(err, result){
 
             if(result) {
-                const token =jsonwebtoken.sign({userDb} ,'your_jwt_secret');
+                const token =jsonwebtoken.sign({userDb} ,config.CODE_JWT);
                 done(null,{userDb, token})
             
             } else{ done(null,false)}
@@ -79,7 +86,7 @@ const cookieExtractor = req => {
 
 passport.use(new JWTStrategy({
     jwtFromRequest: cookieExtractor,
-    secretOrKey: 'your_jwt_secret'
+    secretOrKey: config.CODE_JWT
 },
     function (jwtPayload, done) {
 

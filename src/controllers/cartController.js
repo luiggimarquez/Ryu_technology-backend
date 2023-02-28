@@ -35,7 +35,7 @@ class CartControllers{
         
         let name = req.user.userName
         let email =  req.user.email
-        res.render("cart", {name, email})
+        res.render("cart.ejs", {name, email})
     }
 
     getProductsCart = async (req,res) =>{

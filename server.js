@@ -10,6 +10,7 @@ import productsRouter from "./src/routes/productsRoute.js";
 import cartRouter from "./src/routes/cartRoutes.js";
 import ordersRouter from "./src/routes/ordersRoutes.js";
 import infoRouter from "./src/routes/infoRoute.js"
+import chatsRouter from "./src/routes/chatsRoutes.js";
 import MongoStore from 'connect-mongo'
 import session from 'express-session'
 import path from 'path';
@@ -17,6 +18,8 @@ import passport from 'passport'
 import './src/Persistence/mongoDbConfig.js'
 import {fileURLToPath} from 'url';
 import cookieParser from 'cookie-parser';
+import { engine } from 'express-handlebars';
+import socket from './utils/socket.js'
 
 
 const app = express()
@@ -27,18 +30,19 @@ export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
+console.log(__dirname)
 app.set('views', path.join(__dirname, '/public/views/ejs'))
 app.set('view engine','ejs')
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
 app.use(cookieParser());
-
 app.use(session({
     secret:'RyuTechKey',
     resave: false,
     saveUninitialized:false,
     rolling:true,
     store: MongoStore.create({mongoUrl:config.MONGOSESSION}),
-    cookie:{maxAge:600000}
+    cookie:{maxAge:config.SESSION_TIME}
 }))
 
 app.use(passport.initialize())
@@ -48,6 +52,24 @@ app.use(infoRouter.init())
 app.use('/', loginValidator, passport.authenticate('jwt', {session: false}), productsRouter.init())
 app.use('/carrito', passport.authenticate('jwt', {session: false}), cartRouter.init())
 app.use('/orden', passport.authenticate('jwt', {session: false}), ordersRouter.init())
+app.use('/chat', passport.authenticate('jwt', {session: false}), chatsRouter.init())
+
+app.all('*', (req, res) =>{
+    let response = {
+		error : -2,
+		description : `Ruta: ${req.path}   Metodo: ${req.method}  No implementada`
+    };
+    res.render('index.ejs', {response} )
+})
+
+function handleErrors(err, req, res, next) {
+
+    let error=[err.view]
+    res.status(500).render('errors.ejs',{err, error})
+}
+
+app.use(handleErrors);
+socket(socketServer)
 
 const PORT = config.PORT || 8080
     httpServer.listen(PORT, () =>{

@@ -1,13 +1,11 @@
+import config from "../../config.js"
+
 class InfoControllers{
-
-   
-
 
 
     getInfo= (req,res)=>{
         
-        
-        res.redirect("/errorlogin")
+        res.render("infoPartial.handlebars",{config,layout: false})
     }
 
 }

@@ -4,13 +4,12 @@ import { logger, loggerError } from "./log.js";
 import { __dirname } from "../server.js";
 import config from "../config.js";
 
-
 const transport = nodemailer.createTransport({
-	host: 'smtp.googlemail.com',
-	port: 465,
+	host: config.NODEMAILER_HOST,
+	port: config.NODEMAILER_PORT,
 	auth: {
-		user: 'nf.snake@gmail.com',
-		pass: config.CODE
+		user: config.NODEMAILER_MAIL,
+		pass: config.NODEMAILER_CODE
 	}
 });
 
@@ -23,7 +22,7 @@ const sendEmailOrder = (receiver, subject, result, message) => {
 			loggerError.error(err)
 		} else {
 
-			let mailList= [ receiver, 'nf.snake@gmail.com']
+			let mailList= [ receiver, config.ADMINMAIL]
 
 			let mailOptions = {
 				from: 'RyuTechnology <Admin@RyuTech.com>',
@@ -53,7 +52,7 @@ const sendEmailRegister = (receiver, subject, content, message) => {
 		} else {
 
 			let mailOptions = {
-				from: 'RyuTechnology',
+				from: 'RyuTechnology <Admin@RyuTech.com>',
 				to: receiver,
 				subject: subject,
 				html: data

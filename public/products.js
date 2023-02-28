@@ -64,10 +64,13 @@ function loadProducts(items) {
 							<p>Descripcion: ${description}</p></br>
 							
 						</div>
+						
+					<% if(name === "Admin"){ %>
 						<div class="aliningButtons">
 							<button  id="myBtn${_id}">Editar</button>
 							<button id="deleteItem${_id}">Borrar</button>
 						</div>
+					<% } %>
 
 					</div>`;
 			containerProduct.appendChild(div);

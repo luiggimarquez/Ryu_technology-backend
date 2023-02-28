@@ -222,6 +222,12 @@ main{
 	margin: 250px 0 100px 0;
 }
 
+.titleErrorDefault{
+
+    font-weight: 900;
+	margin: 100px 0 100px 0;
+
+}
 .messageContainer{
 
 	display: flex;
@@ -408,3 +414,49 @@ tbody, td, th, tr, table, thead{
 
     margin: 30px 0;
 }
+
+.errorsContainer {
+
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subTitleError {
+
+    text-align: center;
+    margin: 20px;
+}
+
+.mainProfile {
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.profileContainer {
+
+    align-items: center;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+    background-color: snow;
+    border-radius: 3px;
+    box-shadow: 0px 5px 8px 1px rgb(15 3 25 / 62%);
+}
+
+.imgProfile {
+    
+    width: 150px;
+    height: 150px;
+    margin: 30px 50px;
+}
+
+
+

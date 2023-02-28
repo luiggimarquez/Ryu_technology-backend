@@ -18,25 +18,25 @@ class LoginControllers{
     
         this.servicesMethod.getLogout()
         let name = []
-        req.isAuthenticated() ? (name = req.user.userName, res.render('logout',{name})) : res.redirect("/login")
+        req.isAuthenticated() ? (name = req.user.userName, res.render('logout.ejs',{name})) : res.redirect("/login")
     }
     
     getRegister = (req,res)=>{
     
         this.servicesMethod.getRegister()
-        res.render("register")
+        res.render("register.ejs")
     }
     
     getErrorRegister = (req,res)=>{
     
         this.servicesMethod.getErrorRegister()
-        res.render("errorRegister")  
+        res.render("errorRegister.ejs")  
     }
     
     getErrorLogin = (req,res)=>{
     
         this.servicesMethod.getErrorLogin()
-        res.render("errorLogin")
+        res.render("errorLogin.ejs")
     }
     
     deleteLogout = async(req,res)=>{
@@ -65,6 +65,12 @@ class LoginControllers{
 
         res.cookie('token', req.user.token, { httpOnly: true });
         res.redirect("/")
+    }
+
+    getUserLogged = (req,res) =>{
+
+        const user = req.user
+        res.render('userLogged.ejs',{user})
     }
 }
 

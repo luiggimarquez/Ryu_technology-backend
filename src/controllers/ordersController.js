@@ -20,7 +20,7 @@ class OrdersControllers{
 
         let name = req.user.userName
         let email = req.user.email
-        res.render('preOrder',{name,email})
+        res.render('preOrder.ejs',{name,email})
     }
 
     saveAddressOrder = async (req,res) =>{
@@ -33,7 +33,7 @@ class OrdersControllers{
         console.log("result controller----------------------------------------------------: ",result)
         result= [result]
         console.log(typeof(result))
-        res.render('finishedOrder',{name,email,result})
+        res.render('finishedOrder.ejs',{name,email,result})
     }
 
     getOrders = async (req,res) =>{
@@ -42,7 +42,7 @@ class OrdersControllers{
         let name = req.user.userName
         let email = req.user.email
         console.log(result)
-        res.render('orders', {name, email, result})
+        res.render('orders.ejs', {name, email, result})
     }
 
 

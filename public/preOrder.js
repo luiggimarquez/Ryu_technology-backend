@@ -1,9 +1,12 @@
+
 let id = JSON.parse(localStorage.getItem("id_order"));
 let inputID =  document.getElementById("id")
 inputID.value=id
 
 console.log(inputID)
 localStorage.clear();
+
+
 //let submit =  document.getElementById("formAddress")
 
 /*

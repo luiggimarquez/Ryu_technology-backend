@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/template.css" type="text/css">
+    
+    <title>Desafio_5</title>
+</head>
+<body>
+    <header>
+        <h1>Ryu Technology</h1>
+    </header>
+
+    <h2>Ryu Tech - Info de Sistema</h2>
+
+    
+    <section class="infoContainerGeneral">
+            
+ 
+        <div class="infoContainer">
+
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">URL Mongo DB: </div>
+                <div class="infoElementValue">{{config.MONGOSESSION}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Data Base: </div>
+                <div class="infoElementValue">{{config.DB}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Server Port: </div>
+                <div class="infoElementValue">{{config.PORT}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Tiempo Sesión Login: </div>
+                <div class="infoElementValue">{{config.SESSION_TIME}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Tiempo Sesion Token: </div>
+                <div class="infoElementValue">{{config.JWT_SESSION_TIME}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Mail Adminstrador: </div>
+                <div class="infoElementValue">{{config.ADMINMAIL}}</div>
+            </div>
+
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Mail Nodemailer: </div>
+                <div class="infoElementValue">{{config.NODEMAILER_MAIL}}</div>
+            </div>
+
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Host Nodemailer: </div>
+                <div class="infoElementValue">{{config.NODEMAILER_HOST}}</div>
+            </div>
+            <div class="infoElementContainer">
+                <div class="infoElementTitle">Port Nodemailer: </div>
+                <div class="infoElementValue">{{config.NODEMAILER_PORT}}</div>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <div class="centerButton">
+        <a href="/"><button >Ir a Home</button></a>
+    </div>
+    
+</body>
+
+</html>

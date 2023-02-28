@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { uploadImgUsers } from "../../utils/uploadImg.js"
 import controllers from "../controllers/loginController.js";
+import { loginValidator } from "../middleware/loginValidate.js";
 
 const routerLogin = Router()
 
@@ -18,6 +19,7 @@ class LoginRouter{
         routerLogin.get("/register", this.controllersMethod.getRegister)
         routerLogin.get('/errorLogin', this.controllersMethod.getErrorLogin)
         routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
+        routerLogin.get('/userLogged', loginValidator, this.controllersMethod.getUserLogged)
         routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
         routerLogin.post("/login", this.controllersMethod.postLoginMiddleware, this.controllersMethod.postLoginCallBack)
         routerLogin.post("/register",uploadImgUsers, this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)
