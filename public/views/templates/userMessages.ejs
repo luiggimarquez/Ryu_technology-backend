@@ -1,0 +1,50 @@
+<div class="orders">
+
+    <% if(result.length !== 0){ %> 
+
+        <h1 class="ordersTitle">Estas son sus mensajes hechos:</h1>
+
+        <div class="orderContainer">
+
+            <% result.forEach(message =>{ %>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th colspan="5">Mensajes</th>
+                        </tr>
+                    </thead>
+            
+                        <tbody>
+    
+                            <tr>
+                                <td colspan="3"><p class="pOrder">Email</p></td>
+                                <td colspan="2"><p class="pOrder"><%= message.email %> </p></td>
+                            </tr>
+                            <tr> 
+                                <td colspan="3"><p class="pOrder">Tipo</p></td>
+                                <td colspan="2"><p class="pOrder"><%= message.type %></p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">Fecha</p></td>
+                                <td colspan="2"><p class="pOrder"><%= message.timestamp %></p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">Mensaje</p></td>
+                                <td colspan="2"><p class="pOrder"><%= message.message %></p></td>
+                            </tr>
+                              
+                        </tbody>
+                    </table>
+                  
+            <% }) %>
+        </div>
+        
+    <% }else{ %>
+
+        <h1>No tienes chats registrados</h1>
+
+    <% } %>
+
+    </div>

@@ -19,27 +19,26 @@ loadProducts = (itemsCart) =>{
 
 	    let { name,description,category,thumbnail,price,stock,_id, quantity } = items;
 		let div = document.createElement('div');
-		div.classList.add('item1');
+		div.classList.add('item2');
 		div.setAttribute("id","item1");
 		div.innerHTML = `
-			<div class="alineadorContenido">
+			<div class="alineadorContenidoCart">
 				
-				<img src="${thumbnail}" alt="">
+				<img class="imgProductCart" src="${thumbnail}" alt="">
 				<div class="datosBoton">
 					<span class=textCard>${name}</span>
 				</div>
 
 				<div class="dataBase">
 
-					<p>Codigo: ${category}</p></br>
-					<p>Precio: ${price}</p></br>
-					<p>Disponibles: ${stock}</p></br>
-					<p>Descripcion: ${description}</p></br>
-					<p>Cantidad agregada al carrito: ${quantity}</p></br>
+					<p>Codigo: ${category}</p>
+					<p>Precio: ${price}</p>
+					<p>Descripcion: ${description}</p>
+					<p>Cantidad agregada al carrito: ${quantity}</p>
 							
 				</div>
 				<div class="aliningButtons">
-					<button id="deleteItem${_id}">Borrar</button>
+					<button class="buttonProducts" id="deleteItem${_id}">Borrar</button>
 				</div>
 				
 			</div>`;
@@ -73,8 +72,8 @@ loadProducts = (itemsCart) =>{
 	div.classList.add('empty');
 	div.setAttribute("id","empty");
 	div.innerHTML = `
-		<button id="emptyCart">Vaciar Carrito </button>
-        <button type="submit" id="finishCart" >Finalizar Compra </button>
+		<button class="buttonProducts" id="emptyCart">Vaciar Carrito </button>
+        <button class="buttonProducts" type="submit" id="finishCart" >Finalizar Compra </button>
        
         `
 	containerDeleteCart.appendChild(div);
@@ -164,7 +163,7 @@ loadCartEmpty= () => {
 				
 				<img src="../images/carritovacio.png" alt="imagen carrito de compras vacio">
                 <h2> Carrito se encuentra vacío </h2>
-                <a href="/productos"><button>Ir a productos</button></a>
+                <a href="/productos"><button class="buttonProducts">Ir a productos</button></a>
 				
 			</div>`;
 	containerProduct.appendChild(div);

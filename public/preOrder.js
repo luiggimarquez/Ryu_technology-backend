@@ -4,7 +4,7 @@ let inputID =  document.getElementById("id")
 inputID.value=id
 
 console.log(inputID)
-localStorage.clear();
+//localStorage.clear();
 
 
 //let submit =  document.getElementById("formAddress")

@@ -20,7 +20,12 @@ const chatsSchema = new mongoose.Schema({
     message:{
         type: String,
         require: true
+    },
+    img:{
+        type: String,
+        require: true
     }
+
 })
 
 export const chatsModel = mongoose.model(chatsCollection, chatsSchema)

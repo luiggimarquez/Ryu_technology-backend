@@ -20,6 +20,7 @@ class LoginRouter{
         routerLogin.get('/errorLogin', this.controllersMethod.getErrorLogin)
         routerLogin.get('/errorRegister', this.controllersMethod.getErrorRegister)
         routerLogin.get('/userLogged', loginValidator, this.controllersMethod.getUserLogged)
+        routerLogin.get('/user',loginValidator, this.controllersMethod.getUser)
         routerLogin.delete("/logout", this.controllersMethod.deleteLogout)
         routerLogin.post("/login", this.controllersMethod.postLoginMiddleware, this.controllersMethod.postLoginCallBack)
         routerLogin.post("/register",uploadImgUsers, this.controllersMethod.postRegister, this.controllersMethod.postRegisterCallBack)

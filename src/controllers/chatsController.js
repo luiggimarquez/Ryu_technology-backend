@@ -23,7 +23,6 @@ class ChatsControllers{
                 result= await this.servicesMethod.getMessages(next) 
             }
             catch(err){
-                
                 next(err)
             }
            res.send({user,result})
@@ -34,6 +33,13 @@ class ChatsControllers{
             let message = req.body
             let result = await this.servicesMethod.saveMessage(message)
             res.json(result)
+        }
+
+        getChatsbyEmail = async (req,res,next) =>{
+
+            console.log("correo by email: ", req.params)
+            let result = await this.servicesMethod.getMessagesEmail(req,res,next)
+            res.send(result)
         }
 }
 

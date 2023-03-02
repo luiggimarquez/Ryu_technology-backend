@@ -25,15 +25,12 @@ class OrdersControllers{
 
     saveAddressOrder = async (req,res) =>{
 
-        console.log("grabando orden")
         let name = req.user.userName
         let email = req.user.email
+        let img = req.user.img
         let result = await this.servicesMethod.saveAddress(req)
-        //res.json({message : "OK"})
-        console.log("result controller----------------------------------------------------: ",result)
         result= [result]
-        console.log(typeof(result))
-        res.render('finishedOrder.ejs',{name,email,result})
+        res.render('finishedOrder.ejs',{name,email,result,img})
     }
 
     getOrders = async (req,res) =>{
@@ -41,8 +38,7 @@ class OrdersControllers{
         let result = await this.servicesMethod.getAllOrders(req,res)
         let name = req.user.userName
         let email = req.user.email
-        console.log(result)
-        res.render('orders.ejs', {name, email, result})
+        res.send(result)
     }
 
 

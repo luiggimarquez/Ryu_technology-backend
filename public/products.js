@@ -19,6 +19,7 @@ class Cart{
 	}
 }
 
+let admin = []
 let cart =[]
 let idCartNow =[]
 let productReceived = []
@@ -34,6 +35,8 @@ let modalContainer = document.getElementById('itemModal')
 let getProductbyId = document.getElementById("itemId")
 let getCategory = document.getElementById("category")
 
+
+
 function loadProducts(items) {
 
 	containerProduct.innerHTML="";
@@ -46,33 +49,56 @@ function loadProducts(items) {
 			let div = document.createElement('div');
 			div.classList.add('item1');
 			div.setAttribute("id","item1");
-			div.innerHTML = `
+			if(!admin.isAdmin){
+				div.innerHTML = `
 					<div class="alineadorContenido">
 				
-						<img src="${thumbnail}" alt="">
+						<img class="imgProduct" src="${thumbnail}" alt="">
 						<div class="datosBoton">
 								<span class=textCard>${name}</span>
-								<button id="addCart${_id}"> Add to Cart</button>
+								<button id="addCart${_id}" class="buttonProducts"> Add to Cart</button>
 						</div>
 
 						<div class="dataBase">
 
-							<p>ID Producto: ${_id}</p></br>
-							<p>Category: ${category}</p></br>
-							<p>Precio: ${price}</p></br>
-							<p>Disponibles: ${stock}</p></br>
+							<p>ID Producto: ${_id}</p>
+							<p>Category: ${category}</p>
+							<p>Precio: ${price}</p>
+							<p>Disponibles: ${stock}</p>
 							<p>Descripcion: ${description}</p></br>
 							
 						</div>
 						
-					<% if(name === "Admin"){ %>
-						<div class="aliningButtons">
-							<button  id="myBtn${_id}">Editar</button>
-							<button id="deleteItem${_id}">Borrar</button>
-						</div>
-					<% } %>
-
 					</div>`;
+					containerProduct.appendChild(div);
+					
+			}else{
+				div.innerHTML = `
+					<div class="alineadorContenido">
+				
+						<img class="imgProduct" src="${thumbnail}" alt="">
+						<div class="datosBoton">
+								<span class=textCard>${name}</span>
+								<button class="buttonProducts" id="addCart${_id}"> Add to Cart</button>
+						</div>
+
+						<div class="dataBase">
+
+							<p>ID Producto: ${_id}</p>
+							<p>Category: ${category}</p>
+							<p>Precio: ${price}</p>
+							<p>Disponibles: ${stock}</p>
+							<p>Descripcion: ${description}</p></br>
+							
+						</div>
+
+						<div class="aliningButtons">
+						<button class="buttonProducts" id="myBtn${_id}">Editar</button>
+						<button class="buttonProducts" id="deleteItem${_id}">Borrar</button>
+					</div>
+						
+					</div>`;
+			
 			containerProduct.appendChild(div);
 
 
@@ -101,7 +127,7 @@ function loadProducts(items) {
 						
 					</div>
 					<div class="aliningButtons">
-						<button id="submitPut">Guardar modificación</button>
+						<button class="buttonProducts" id="submitPut">Guardar modificación</button>
 					</div>
 
 					<div class="dataBase">
@@ -110,7 +136,7 @@ function loadProducts(items) {
 						<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="file" class="input" name="imgProductUpdate" required></p></div>
 							
 							<div class="aliningButtons">
-								<button id="submitPhoto">Guardar foto</button>
+								<button class="buttonProducts" id="submitPhoto">Guardar foto</button>
 							</div>
 						</form>
 					</div>
@@ -184,7 +210,7 @@ function loadProducts(items) {
 
 			// Fetch Method POST to add  items to cart
 
-			let addCart = document.getElementById(`addCart${_id}`)
+			/* let addCart = document.getElementById(`addCart${_id}`)
 			addCart.addEventListener("click", () =>{
 				
 				let dataBody = JSON.stringify(product)
@@ -197,7 +223,7 @@ function loadProducts(items) {
 				})
 
 				//location.reload()
-			})
+			}) */
 
 
 			//modal
@@ -216,12 +242,45 @@ function loadProducts(items) {
 				}
 			}
 
+
+		}//else
+
+		// Fetch Method POST to add  items to cart
+
+		let addCart = document.getElementById(`addCart${_id}`)
+		addCart.addEventListener("click", () =>{
+			
+			let dataBody = JSON.stringify(product)
+			fetch(`/carrito/${idCartNow}/productos`,{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: dataBody
+			})
+
+			//location.reload()
+		})
+		
+			
 		})//foreach
 	}else{
 	containerProduct.innerHTML=`<div class="error">Producto no Existe<div>`}
 
 }
 
+// Fecth Get Method, for valide Admin user
+fetch('/user').then(response => {
+	
+	return response.text()
+}).then(data => {
+	
+	const json = JSON.parse(data);
+	admin = json
+
+}).catch(err => {
+	console.log(err)
+});
 
 // Fetch Method GET, start with DOM for load products Card
 

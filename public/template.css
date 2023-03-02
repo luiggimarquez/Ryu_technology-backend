@@ -104,6 +104,11 @@ td {
     box-shadow: 3px 4px 15px 5px rgb(15 3 25 / 56%);
 }
 
+.form{
+
+    width: 333px;
+}
+
 .formInfo{
 
     width: 80%;
@@ -124,10 +129,10 @@ td {
     align-items: center;
 }
 
-.input{
-
-    margin: 10px 0;
+.input {
+    margin: 24px 5px 5px 5px;
     padding: 5px 5px;
+    width: 75%;
 }
 
 .buttonAling{
@@ -218,4 +223,119 @@ td {
     border-radius: 0 0 5px 5px;
     background-color: white;
     color: bal;
+}
+.buttonProducts{
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 7px;
+    padding-right: 7px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  }
+  
+  .buttonProducts:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  }
+  
+  .buttonProducts:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .buttonProducts:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+  
+  .formatPrinting {
+    display: flex;
+    margin: 10px 17px;
+    align-items: flex-end;
+}
+
+
+.mailColor {
+
+    color: blue;
+    font-weight: 900;
+    padding: 0px 9px 0px 0px;
+}
+
+.dateColor {
+
+    color: brown;
+    padding: 0px 9px 0px 0px;
+}
+
+.colorMessage {
+
+    color: green;
+    font-style: italic;
+    padding: 0px 9px 0px 9px;
+}
+
+.sizeAvatar {
+    margin: 0;
+    padding: 0;
+    width: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.tituloChat{
+    
+    margin: 10px 0px;
+    color: white;
+    font-size: larger;
+}
+
+.buttonChat {
+
+    margin: 10px;
+    padding: 5px;
+}
+
+textarea {
+
+    height: 80px;
+    width: 400px;
+}
+
+.form2{ 
+
+    width: 550px;
+}
+
+.chatTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.chatTitle a {
+    color: white;
+    text-decoration: none;
 }

@@ -72,6 +72,12 @@ class LoginControllers{
         const user = req.user
         res.render('userLogged.ejs',{user})
     }
+
+    getUser = (req, res) => {
+
+        const user = req.user
+        res.send(user)
+    }
 }
 
 let controllers = new LoginControllers

@@ -11,15 +11,15 @@
 <body>
 
     <header>
-        <h1>Ryu Technology {{name}}</h1>
+        <div class="chatTitle"><div><a href="/"><h1>Ryu Technology</h1></a></div><button class="buttonLogout buttonProducts" onclick="location.href='/logout'">Logout</button></div>
     </header>
 
-    <h2>Xhat Ryu Tech</h2>
+    <h2>Sata de Chat con Ryu Tech</h2>
     
     {{{body}}}
 
     <div class="centerButton">
-        <a href="/"><button >Ir formulario</button></a>
+        <a href="/"><button class="buttonProducts" >Ir a Home</button></a>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>

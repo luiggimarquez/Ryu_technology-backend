@@ -35,7 +35,8 @@ class CartControllers{
         
         let name = req.user.userName
         let email =  req.user.email
-        res.render("cart.ejs", {name, email})
+        let img =  req.user.img
+        res.render("cart.ejs", {name, email, img})
     }
 
     getProductsCart = async (req,res) =>{

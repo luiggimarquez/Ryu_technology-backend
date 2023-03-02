@@ -21,6 +21,7 @@
                 </div>
 
                 <div class="errorTitle" >
+                    <% if(error != ""){ %>
                     <h2 class="subTitleError">Detalles:</h2> 
                     <div class="itemsError"> 
                         <% error.forEach(items =>{ %>
@@ -29,6 +30,7 @@
                             <% } %>
                         <% }) %>
                     </div>
+                    <% } %>
                 </div>
             
             </div>

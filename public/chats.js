@@ -9,9 +9,7 @@ fetch('/chat',{
 }).then(response => {return response.text()})
 .then(data => {
 
-    console.log(data)
-     allMsg= JSON.parse(data);
-    console.log(allMsg)
+    allMsg= JSON.parse(data);
     socketClient.emit('update',allMsg.result)
 })
 
@@ -22,14 +20,9 @@ socketClient.on('totalChat', messages =>{
     }else{
         messagesFilter= messages.filter( item => item.email === allMsg.user.email)
     }
-    console.log(messagesFilter)
     printMessage(messagesFilter)
+    //document.getElementById('span').scrollIntoView({ block: "end" })
 })
-
-/* form.onsubmit = () =>{
-    
-    socketClient.emit('update')
-} */
 
 formChat.onsubmit = (e) => {
 
@@ -39,30 +32,26 @@ formChat.onsubmit = (e) => {
     const date = new Date().toLocaleString();
 
     (allMsg.user.isAdmin) && (inputSelect = document.getElementById("mails"))
-   console.log(inputSelect.value)
-   console.log(allMsg.user.isAdmin)
-
-   console.log((allMsg.user.isAdmin) ? inputSelect.value : allMsg.user.email)
-
+   
     const totalMesagge = {
       timestamp: date,
       email: (allMsg.user.isAdmin) ? inputSelect.value : allMsg.user.email,
       type: allMsg.user.isAdmin ? "sistema" : "usuario",
       message: message,
+      img: allMsg.user.img
     };
-    console.log("total", totalMesagge)
+    
     let dataBody = JSON.stringify(totalMesagge);
 
     fetch("/chat/", {
-      method: "POST",
-      headers: {
+        method: "POST",
+        headers: {
         "Content-Type": "application/json",
-      },
-      body: dataBody,
+        },
+        body: dataBody,
     }).then(response => {return response.text()})
     .then(data => {
         const allMsg = JSON.parse(data);
-        console.log(allMsg)
         socketClient.emit("messageChat", allMsg);
         inputChat.value = "";
         let main = document.getElementById('templateChat')
@@ -77,26 +66,25 @@ printMessage = (messages) => {
     let nameShowed = []
     
     messages.forEach(items =>{
+      
         
         (items.type === 'sistema') ? (nameShowed = ((allMsg.user.isAdmin) ? (`Admin, reply To:${items.email}`) : ("Admin") )) : (nameShowed=items.email)
 
         let messagePrinting = document.createElement("div");
         messagePrinting.className="formatPrinting";
-        messagePrinting.innerHTML = `<p class="mailColor">${nameShowed}</p><p class="dateColor">[ ${items.timestamp} ]</p> <p class="sizeAvatar"><p class="colorMessage"> ${items.message} </p>`
+        messagePrinting.innerHTML = `<p class="mailColor">${nameShowed}</p><p class="dateColor">[ ${items.timestamp} ]</p><img class="sizeAvatar" src=.${items.img}><p class="sizeAvatar"><p class="colorMessage"> ${items.message} </p>`
         main.insertAdjacentElement("beforeend", messagePrinting)
     }) 
     let spanPrint = document.createElement("span")
-        spanPrint.setAttribute("id","spann");
+        spanPrint.setAttribute("id","span");
         main.insertAdjacentElement("beforeend", spanPrint)
-        document.getElementById('spann').scrollIntoView(true)
-    
+        document.getElementById('span').scrollIntoView({ block: "end" })
+       
         
     if(allMsg.user.isAdmin){
 
         let hash = {};
 	    let reply = messages.filter(items => hash[items.email] ? false : hash[items.email] = true);
-        //let mails = document.getElementById('mails')
-        
         
         let containerSelect = document.getElementById("mails")
         containerSelect.innerHTML=[];
@@ -106,7 +94,6 @@ printMessage = (messages) => {
             containerSelect.innerHTML+= `<option id="test" value="${emailsReply.email}">${emailsReply.email}</option>`
         })
     
-        console.log("reply", reply)
     }
 
 }

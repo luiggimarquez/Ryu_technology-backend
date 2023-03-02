@@ -17,8 +17,25 @@ class OrdersServices {
             next(err)
         }
     }
-    
-   
+
+    getMessagesEmail = async(req,res,next) =>{
+
+        let result =[]
+        try {
+
+            result = await chatsDaoMethods.getAll()
+            if(req.user.isAdmin){
+                result =  result.filter(filter => filter.type === "sistema")
+            }else{
+                result = result.filter(filter => (filter.email === req.user.email && filter.type === "usuario" ))
+            }
+            return result
+
+        } catch (error) {
+            next(error)
+        }
+        return result
+    }
 }
 
 let services = new OrdersServices

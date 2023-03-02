@@ -31,7 +31,7 @@ app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 console.log(__dirname)
-app.set('views', path.join(__dirname, '/public/views/ejs'))
+app.set('views', path.join(__dirname, '/public/views/templates'))
 app.set('view engine','ejs')
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -65,7 +65,8 @@ app.all('*', (req, res) =>{
 function handleErrors(err, req, res, next) {
 
     let error=[err.view]
-    res.status(500).render('errors.ejs',{err, error})
+    console.log(err)
+    res.status(500).render('errors.ejs',{err,error})
 }
 
 app.use(handleErrors);

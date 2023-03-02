@@ -35,7 +35,9 @@ class ProductControllers{
         
         let name = req.user.userName
         let email =  req.user.email
-        res.render("products.ejs", {name, email})
+        let admin = req.user.isAdmin
+        let img = req.user.img
+        res.render("products.ejs", {name, email, admin, img})
     }
 
     modifyProduct = (req,res) => {

@@ -13,8 +13,7 @@ class chatsDaoMongoDb extends MongoDbContainer{
         const chatSaveModel = new chatsModel(message)
         let result = await chatSaveModel.save()
         
-    }
-   
+    }   
 }
 
 let chatsDaoMethods = new chatsDaoMongoDb;
