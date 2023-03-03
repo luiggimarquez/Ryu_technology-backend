@@ -33,8 +33,8 @@ passport.use('register', new LocalStrategy({
                 },
             ];
             sendEmailRegister(config.ADMINMAIL,`RyuTech: nuevo usuario: ${req.body.name} - ${req.body.email}`,content, 'Tenemos un nuevo usuario registrado en RyuTechnology');
-
-            if(!req.body.avatar){( img = `/img/pictures-registers/avatar.jpg`)}else{ (img =  `/img/pictures-registers/${req.body.email}.jpg`)}
+            
+            if(!req.file){( img = `./images/pictures-registers/avatar.jpg`)}else{ (img =  `./images/pictures-registers/${req.body.email}.jpg`)}
             let user =  new usersModel();
             const saltRounds = 10;
             bcrypt.hash(password, saltRounds, function(err,hash){

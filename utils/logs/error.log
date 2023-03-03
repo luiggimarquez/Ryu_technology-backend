@@ -199,3 +199,18 @@ items.forEach is not a function
   syscall: 'querySrv',
   hostname: '_mongodb._tcp.backendcordercourse.el27giy.mongodb.net'
 }
+[2023-03-03T19:11:07.357] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/templates/sendMail.ejs'
+    at Object.openSync (node:fs:600:3)
+    at Object.readFileSync [as fileLoader] (node:fs:468:35)
+    at fileLoader (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:293:18)
+    at handleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:233:16)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailRegister (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:47:6)
+    at Strategy._verify (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/middleware/passport.js:35:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/templates/sendMail.ejs'
+}

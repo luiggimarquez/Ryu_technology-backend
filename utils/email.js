@@ -44,7 +44,7 @@ const sendEmailOrder = (receiver, subject, result, message) => {
 
 const sendEmailRegister = (receiver, subject, content, message) => {
 
-	ejs.renderFile(__dirname +'/public/views/templates/sendMail.ejs', {receiver,content, message}, (err, data) => {
+	ejs.renderFile(__dirname +'/public/views/templates/sendMailRegister.ejs', {receiver,content, message}, (err, data) => {
 
 		if (err) {
 			logger.info(err);

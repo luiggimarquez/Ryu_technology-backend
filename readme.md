@@ -455,6 +455,8 @@ Mediante el post hecho en la etapa anterior para guardar la dirección, en la re
 ## User Profile
 #
 
+**Los usuarios se crean todos como "usuarios", para modificar un usuario a administrador, se debe cambiar en el database el atributo del usuario isAdmin a true en el collection users**
+
 En esta página, tenemos la informacion de registro del usuario. Podemos acceder desde los navbar, está junto al nombre de usuario
 
 ![user](./public/images/user.jpg)
