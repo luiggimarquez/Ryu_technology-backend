@@ -2,7 +2,7 @@ import {Router} from 'express'
 import passport from 'passport'
 import { loginValidator } from "../middleware/loginValidate.js";
 import { uploadImgProducts, uploadImgProductUpdate } from '../../utils/uploadImg.js';
-import controllers from '../Controllers/productsController.js'
+import controllers from '../controllers/productsController.js'
 
 
 const router = Router()

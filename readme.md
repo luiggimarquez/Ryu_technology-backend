@@ -338,7 +338,7 @@ A excepcion del index.html, todas las vistas/páginas del sitio son renderizadas
 en su mayoria EJS, a excepcion de los chats y del /info que son plantillas handlebars. Se encuentras ubicados en la ruta `./public/views/templates`, los cuales son llamados a través de los diferentes endpoints en diferentes etapas del proyecto:
 
 ** allOrdes.ejs: contiene la información de todas las ordenes almacenadas
-* cart.ejs: contiene la página `/cart/cartPreview`
+* cart.ejs: contiene la página `/carrito/cartPreview`
 * errorLogin.ejs: carga la página que muestra error de login
 * errorRegister.ejs: carga la pagina que muestra error de registro 
 * errors.js: vista cargada cuando se captura un error
