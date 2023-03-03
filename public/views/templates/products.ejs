@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Ryu Tech - Products</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body id="body">
+<body>
     
     <header>
         <div class="headerTitle"><a href="/"><h1>Ryu Technology</h1></a></div><div class="iconCart"><a href="/carrito/cartPreview"><img src="./images/cart.png" alt="acceso al carrito"></a></div>
@@ -29,33 +29,32 @@
             </div>
         </section>
 
-    <section class="card" id="card"></section>
+        <section class="card" id="card"></section>
 
-    <% if(admin){ %>
-        <section class="cardSpace" >
-            <form id="form" class="formCards" method="post" action="/" enctype="multipart/form-data" >
-                <div class="tittleForm">Formulario para agregar productos</div>
-                <input type="text" class="input" placeholder="Nombre" name="name" id="name" required >
-                <input type="text" class="input" placeholder="Descripción" name="description" id="description" required >
-                <input type="number" class="input" placeholder="Precio" name="price" id="price" required >
-                <input type="text" class="input" placeholder="Categoria" name="category" id="category" required >
-                <input type="number" class="input" placeholder="Stock" name="stock" id="stock" required >
-                <input type="file" class="input" name="imgProduct" accept=".jpg, .png, .gif" required >
-            
-                <button class="buttonProducts" type="submit">Enviar</button>
-            </form>
+        <% if(admin){ %>
+            <section class="cardSpace" >
+                <form id="form" class="formCards" method="post" action="/" enctype="multipart/form-data" >
+                    <div class="tittleForm">Formulario para agregar productos</div>
+                    <input type="text" class="input" placeholder="Nombre" name="name" id="name" required >
+                    <input type="text" class="input" placeholder="Descripción" name="description" id="description" required >
+                    <input type="number" class="input" placeholder="Precio" name="price" id="price" required >
+                    <input type="text" class="input" placeholder="Categoria" name="category" id="category" required >
+                    <input type="number" class="input" placeholder="Stock" name="stock" id="stock" required >
+                    <input type="file" class="input" name="imgProduct" accept=".jpg, .png, .gif" required >
+                
+                    <button class="buttonProducts" type="submit">Enviar</button>
+                </form>
 
-        </section>
+            </section>
 
-        <div id="myModal" class="modal">
-            <div class="modal-content" id="modal-content">
-                <span class="close">&times;</span>
-                <div class="itemModal" id="itemModal"></div>
+            <div id="myModal" class="modal">
+                <div class="modal-content" id="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="itemModal" id="itemModal"></div>
+                </div>
             </div>
-        </div>
-    <% } %>
-
-    <div class="centerChat"><a href="/chat/salaChat"><img class="imagenAvatar" src="../../images/iconchat.png" title="ir a Sala de Chat con el Administrador"></a></div>
+        <% } %>
+        <div class="centerChat"><a href="/chat/salaChat"><img class="imagenAvatar" src="../../images/iconchat.png" title="ir a Sala de Chat con el Administrador"></a></div>
     </main>
 
     <footer class="footer"><h4 class="footerTitle">Ryu Technology || 2023 © All right Reserved</h4></footer>

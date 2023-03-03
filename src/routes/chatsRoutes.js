@@ -17,8 +17,6 @@ class ChatsRouter{
         routerChat.get('/',loginValidator, this.controllersMethod.getChats)
         routerChat.get('/:email', loginValidator, this.controllersMethod.getChatsbyEmail)
         routerChat.post('/',loginValidator, this.controllersMethod.saveChat)
-        
-
         return routerChat
     }
 }

@@ -9,15 +9,27 @@ class OrdersDaoMongoDb extends MongoDbContainer{
     }
 
     async createOrder(order){
-
+        let result = []
         const ordersSaveModel = new ordersModel(order)
-        let result = await ordersSaveModel.save()
+        try {
+            result = await ordersSaveModel.save()
+        } catch (error) {
+            logger.error(error)
+            loggerError.error(error)
+        }
         return result
     }
 
     async updateOrder(id, address){
-
-        let result= await ordersModel.findByIdAndUpdate({_id:id},{address: address}, {new: true})
+        
+        let result = []
+        try {
+            result= await ordersModel.findByIdAndUpdate({_id:id},{address: address}, {new: true})
+        } catch (error) {
+            logger.error(error)
+            loggerError.error(error)
+            next(error)
+        }
         return result
     }
 }

@@ -2,8 +2,6 @@ let showOrders = document.getElementById("allOrders")
 let showMessages = document.getElementById("allMessages")
 let userMail = document.getElementById("userMail").value
 
-console.log("correo: ",userMail)
-
 function orders()  {
    
     if (showOrders.style.display === "none") {
@@ -72,12 +70,9 @@ getMessages.addEventListener("click",()=>{
 
 })
 
-
-
-
 async function  loadOrders(result) {
 
-    const response = await fetch('views/ejs/allOrders.ejs');
+    const response = await fetch('views/templates/allOrders.ejs');
     const templateOrders = await response.text();
     const template = ejs.compile(templateOrders);
     const tableOrders = template({ result });
@@ -86,7 +81,7 @@ async function  loadOrders(result) {
 
 async function  loadMessages(result) {
 
-    const response = await fetch('views/ejs/userMessages.ejs');
+    const response = await fetch('views/templates/userMessages.ejs');
     const templateMessages = await response.text();
     const template = ejs.compile(templateMessages);
     const tableMessages = template({ result });

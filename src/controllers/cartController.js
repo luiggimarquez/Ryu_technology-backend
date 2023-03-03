@@ -9,25 +9,37 @@ class CartControllers{
         this.servicesMethod = services
     }
 
-    getCarts = async (req, res) => {
-
-        actualCart = await this.servicesMethod.getActualCart(req,res)
-        totalLength = await this.servicesMethod.getLengthCart()
+    getCarts = async (req,res,next) => {
+        try{
+            actualCart = await this.servicesMethod.getActualCart(req,res,next)
+            totalLength = await this.servicesMethod.getLengthCart(next)
+        }catch(err){
+            next(err)
+        }
         actualCart.length !== 0 ? res.send(actualCart) : res.send([totalLength])
     }
 
-    createCart = async(req,res) => {
-
-        let productReceived = req.body
-        let result = await this.servicesMethod.saveCart(req,res)
+    createCart = async(req,res,next) => {
+        
+        //let productReceived = req.body
+        let result =[]
+        try {
+            result = await this.servicesMethod.saveCart(req,res,next)
+        }catch(err){
+            next(err)
+        }
         res.json(result._id)
     }
 
-    AddProductToCart = async(req,res) => {
+    AddProductToCart = async(req,res,next) => {
 
         const { id } = req.params
         let product = req.body
-        await this.servicesMethod.addItemCart(product,id)
+        try {
+            await this.servicesMethod.addItemCart(product,id,next)
+        }catch(err) {
+            next(err)
+        }
         res.json({message: "ok"})
     }
 
@@ -39,28 +51,41 @@ class CartControllers{
         res.render("cart.ejs", {name, email, img})
     }
 
-    getProductsCart = async (req,res) =>{
+    getProductsCart = async (req,res,next) =>{
 
         const {id} = req.params;
-        let products = await this.servicesMethod.getProductsAdded(id)
+        let products =[]
+        try {
+            products = await this.servicesMethod.getProductsAdded(id,next)
+        }catch(error){
+            next(err)
+        }
         res.send(products)
     }
 
-    deleteProductCart = (req,res) => {
-
-        this.servicesMethod.deleteItemCart(req,res)
+    deleteProductCart = async(req,res,next) => {
+        try{
+            this.servicesMethod.deleteItemCart(req,res,next)
+        }catch(err){
+            next(err)
+        }
     }
 
-    deleteCart = (req,res) =>{
-
-        this.servicesMethod.deleteCart(req,res)
+    deleteCart = async (req,res,next) =>{
+        try{
+            await this.servicesMethod.deleteCart(req,res,next)
+        }catch(error){
+            next(err)
+        }
     }
 
-    finishCart = (req, res) => {
+    finishCart = async(req, res, next) => {
 
-        console.log("paso")
-
-        this.servicesMethod.finishCart(req,res)
+        try {
+            await this.servicesMethod.finishCart(req,res,next)
+        }catch(error){
+            next(err)
+        }
         res.json({message : "Order ok"})
     }
 }

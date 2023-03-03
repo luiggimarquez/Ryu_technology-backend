@@ -10,9 +10,14 @@ class chatsDaoMongoDb extends MongoDbContainer{
 
     saveMessage = async(message) =>{
 
+        let result = []
         const chatSaveModel = new chatsModel(message)
-        let result = await chatSaveModel.save()
-        
+        try {
+            result = await chatSaveModel.save()
+        } catch (error) {
+            logger.error(error)
+            loggerError.error(error) 
+        } 
     }   
 }
 

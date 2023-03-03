@@ -11,10 +11,15 @@ class ProductsDaoMongoDb extends MongoDbContainer{
 
     async saveProducts(product){
 
+        let id = []
         let FileToSave = { ...product, timestamp: (new Date(Date.now()).toString()), thumbnail: ''}
-        let id = await new productsModel(FileToSave).save()
+        try {
+            id = await new productsModel(FileToSave).save()
+        } catch (error) {
+            logger.error(error)
+            loggerError.error(error)
+        }
         return id
-        
     }
 
     async updateProducts(product, id){
@@ -45,13 +50,16 @@ class ProductsDaoMongoDb extends MongoDbContainer{
                     })
                 }
             });
+        }).catch((error)=>{
+            logger.error(error)
+            loggerError.error(error)
         })
     }
 
     updateImg = async (id) => {
 
         let modify = await productsModel.findByIdAndUpdate({_id:id},{thumbnail: `/images/products/${id}.jpg`})
-       fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
+        fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
             if (err) throw err;
             console.log('File Renamed.');
         });

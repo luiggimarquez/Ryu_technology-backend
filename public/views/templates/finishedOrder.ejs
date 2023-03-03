@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Ryu Tech - Orden</title>
     <link rel="stylesheet" href="../../styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
-
 </head>
 <body id="body">
     
@@ -17,89 +15,78 @@
         <div class="templateUserloged"><h2 class="h2Header"> --- <%= name %>  --- <%= email %></h2><a href="/chat/salaChat"><img class="imagenAvatar" src="../../images/iconchat.png" title="ir a Sala de Chat con el Administrador"></a><a href="/userLogged"><img class="imagenAvatar" title="Ir a perfil de usuario" src=.<%= img %>></a><button class="buttonLogout buttonProducts" onclick="location.href='/logout'">Logout</button></div>
     </header>
 
-
     <main class="orders">
 
-        <h1 class="ordersTitle">Hola, <%= name %>, esta es su orden de compra:</h1>
-
+        <h1 class="ordersTitle">Hola, <%= name %>, ésta es su orden de compra:</h1>
         <div class="orderContainer">
 
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th colspan="5">Orden de Compra</th>
-                        </tr>
-                    </thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5">Orden de Compra</th>
+                    </tr>
+                </thead>
             
-                        <tbody>
-    
-                            <% result.forEach(data =>{ %>
-                                
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">ID compra</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= data.id %> </p></td>
-                                </tr>
-                                <tr> 
-                                    <td colspan="3"><p class="pOrder">Cliente</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= data.userName %> <%=data.userLastName %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">Email</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= data.email %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">Telefono</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= data.phone %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">direccion de Entrega</p></td>
-                                    <td colspan="2"><p class="pOrder"> <%= data.address %></p></td>
-                                </tr>
-                                
-                        </tbody>
-                    </table>
-                    <table>
-                        <tbody>
-                                <tr>
-                                    <th colspan="1"><p class="pOrder">  Producto  </p></th>
-                                    <th colspan="1"><p class="pOrder">  Descripcion  </p></th>
-                                    <th colspan="1"><p class="pOrder">  Precio  </p></th>
-                                    <th colspan="1"><p class="pOrder">  Cantidad  </p></th>
-                                    <th colspan="1"><p class="pOrder">  subtotal  </p></th>
-                                </tr>
-
-                                <% data.products.forEach(items =>{ %>
-                                    
-                                    
-                                    <tr>
-                                        <td><p class="pOrder"> <%= items.name %> </p></td>
-                                        <td><p class="pOrder"> <%= items.description %> </p></td>
-                                        <td><p class="pOrder"> <%= items.price %> </p></td>
-                                        <td><p class="pOrder"> <%= items.quantity %> </p></td>
-                                        <td><p class="pOrder"> <%= items.quantity * items.price%> $USD </p></td>
-                                    </tr>
-                                    
-
-                                <% }) %>
-                                <tr>
-                                    <td colspan="5"><p style="text-align: end;" class="pOrder"> SubTotal a Pagar: <%= data.totalPay / 1.21 %> $USD</p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5"><p  style="text-align: end;" class="pOrder"></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5"><p  style="text-align: end;" class="pOrder">Total a Pagar: <%= data.totalPay%> $USD</p></td>
-                                </tr>
-
-                            <% }) %>
-    
-                        </tbody>
+                <% result.forEach(data =>{ %>
+                <tbody>          
+                    <tr>
+                        <td colspan="3"><p class="pOrder">ID compra</p></td>
+                        <td colspan="2"><p class="pOrder"><%= data.id %> </p></td>
+                    </tr>
+                    <tr> 
+                        <td colspan="3"><p class="pOrder">Cliente</p></td>
+                        <td colspan="2"><p class="pOrder"><%= data.userName %> <%=data.userLastName %></p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><p class="pOrder">Email</p></td>
+                        <td colspan="2"><p class="pOrder"><%= data.email %></p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><p class="pOrder">Telefono</p></td>
+                        <td colspan="2"><p class="pOrder"><%= data.phone %></p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><p class="pOrder">direccion de Entrega</p></td>
+                        <td colspan="2"><p class="pOrder"> <%= data.address %></p></td>
+                    </tr>        
+                </tbody>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th colspan="1"><p class="pOrder">  Producto  </p></th>
+                            <th colspan="1"><p class="pOrder">  Descripcion  </p></th>
+                            <th colspan="1"><p class="pOrder">  Precio  </p></th>
+                            <th colspan="1"><p class="pOrder">  Cantidad  </p></th>
+                            <th colspan="1"><p class="pOrder">  subtotal  </p></th>
+                        </tr>
+                        
+                        <% data.products.forEach(items =>{ %>
+                            
+                            <tr>
+                                <td><p class="pOrder"> <%= items.name %> </p></td>
+                                <td><p class="pOrder"> <%= items.description %> </p></td>
+                                <td><p class="pOrder"> <%= items.price %> </p></td>
+                                <td><p class="pOrder"> <%= items.quantity %> </p></td>
+                                <td><p class="pOrder"> <%= items.quantity * items.price%> $USD </p></td>
+                            </tr>
+                            
+                        <% }) %>
+                        <tr>
+                            <td colspan="5"><p style="text-align: end;" class="pOrder"> SubTotal a Pagar: <%= data.totalPay / 1.21 %> $USD</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><p  style="text-align: end;" class="pOrder"></p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><p  style="text-align: end;" class="pOrder">Total a Pagar: <%= data.totalPay%> $USD</p></td>
+                        </tr>
+                        
+                    </tbody>
                 </table>
-
-        </div>
-
-
+                
+                <% }) %>
+            </table>
+        </div>     
     </main>
     <div class="centerChat"><a href="/chat/salaChat"><img class="imagenAvatar" src="../../images/iconchat.png" title="ir a Sala de Chat con el Administrador"></a></div>
     <div class="centerChat"> 
@@ -110,6 +97,6 @@
         localStorage.clear();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
+    
 </body>
 </html>

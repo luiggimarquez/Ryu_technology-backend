@@ -30,7 +30,6 @@ export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname+ '/public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-console.log(__dirname)
 app.set('views', path.join(__dirname, '/public/views/templates'))
 app.set('view engine','ejs')
 app.engine('handlebars', engine());

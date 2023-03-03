@@ -175,3 +175,20 @@ items.forEach is not a function
     at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
   path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
 }
+[2023-03-02T16:59:33.488] [ERROR] archivoError - Error: ENOENT: no such file or directory, open 'D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+    at Object.openSync (node:fs:600:3)
+    at Object.readFileSync [as fileLoader] (node:fs:468:35)
+    at fileLoader (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:293:18)
+    at handleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:233:16)
+    at tryHandleCache (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile (D:\Users\luiggi_marquez\Desktop\Coder\Desarrollo Backend\Programacion Backend\Desafios\Proyecto_final\node_modules\ejs\lib\ejs.js:491:10)
+    at sendEmailOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/utils/email.js:18:6)
+    at OrdersServices.saveAddress (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/services/ordersServices.js:31:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveAddressOrder (file:///D:/Users/luiggi_marquez/Desktop/Coder/Desarrollo%20Backend/Programacion%20Backend/Desafios/Proyecto_final/src/controllers/ordersController.js:31:22) {
+  errno: -4058,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
+}
+[2023-03-02T21:42:58.189] [ERROR] archivoError - Error en servidor Error: listen EACCES: permission denied XXX

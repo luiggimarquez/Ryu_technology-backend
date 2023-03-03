@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 
 const ordersCollection = "orders"
-
-    const ordersSchema = new mongoose.Schema({
+const ordersSchema = new mongoose.Schema({
     _id: { 
         type: String,
         require: true
@@ -78,7 +77,7 @@ const ordersCollection = "orders"
             quantity: { 
                 type: Number 
             },
-      },
+        },
     ],
   },
 });

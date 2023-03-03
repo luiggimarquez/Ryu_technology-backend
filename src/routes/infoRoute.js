@@ -15,7 +15,6 @@ class InfoRouter{
     init(){
 
         routerInfo.get("/info", this.controllersMethod.getInfo)
-        
         return routerInfo
     }
 }

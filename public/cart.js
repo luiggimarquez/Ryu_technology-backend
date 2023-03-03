@@ -95,15 +95,6 @@ loadProducts = (itemsCart) =>{
 	
 	// After Finish Cart, this Fetch (POST) save the data from actual cart and make a new Cart
 
-/* 	filename = {
-		id:(parseInt(idCartNow)+1).toString(),
-		timestampCart:new Date(Date.now()).toString(),
-		products:[]
-	} */
-
-	//let dataBody = JSON.stringify(filename)
-
-
 	let eventFinishCart = document.getElementById("finishCart")
 	eventFinishCart.addEventListener('click', () =>{ 
 
@@ -117,19 +108,6 @@ loadProducts = (itemsCart) =>{
 			body: JSON.stringify(itemsCart)
 		}).then(()=>{
 
-			 /*fetch(`/carrito/`,{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-				body: dataBody
-			}).then(response => {
-				return response.text()
-			})
-			.then(data => {
-				const json = JSON.parse(data);
-				console.log("Carrito creado, ID: ",json)
-			})*/
             let order = JSON.stringify({ products: itemsCart, _id:idCartNow, timestamp: new Date(Date.now()).toString(), address:""})
             
             fetch('/orden/',{
@@ -139,20 +117,15 @@ loadProducts = (itemsCart) =>{
 
                 },
                 body: order
-            }).then(()=>{
-
-				
             })
 
             localStorage.setItem("id_order", JSON.stringify(idCartNow))
-			console.log(localStorage.getItem("id_order"))
-
             location.href = '/orden/preOrden'
 		})
-		  
 	})	
 }
 
+// function Print Empty cart
 
 loadCartEmpty= () => {
 
@@ -195,23 +168,14 @@ fetch('/carrito/').then(response => {
                     },
                     body: dataBody}).then(response => {
                         return response.text()
-                    })
-                    .then(data => {
-                        const json = JSON.parse(data);
-                        idCartNow=json
-            
-                        console.log("Carrito creado, ID: ", idCartNow)
-                    })
-    
-                    console.log(idCartNow)
-                
-
-            }
-            
-             
+                }).then(data => {
+                    const json = JSON.parse(data);
+                    idCartNow=json
+                })
+            } 
         }
 		
-			//Fetch Method Get for load items for the cart
+		//Fetch Method Get for load items for the cart
 
         setTimeout(()=>{
 

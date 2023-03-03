@@ -35,7 +35,6 @@ const usersSchema = new mongoose.Schema({
         type: String,
         require: true,
         max: 300
-        
     }
 })
 

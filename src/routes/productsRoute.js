@@ -25,7 +25,6 @@ class RouterProducts{
         router.post('/products/imageUpdate', uploadImgProductUpdate, this.controllersMethod.updateImage)
         router.put('/products/:id', loginValidator, this.controllersMethod.modifyProduct)
         router.delete('/products/:id',loginValidator, this.controllersMethod.deleteProduct)
-
         return router
     }
 }

@@ -27,15 +27,12 @@ let formAddProduct = document.getElementById("form")
 let inputNameProduct = document.getElementById("name")
 let inputDescriptionProduct = document.getElementById("description")
 let inputPriceProduct = document.getElementById("price")
-//let inputPhotoProduct = document.getElementById("thumbnail")
 let inputCategoryProduct= document.getElementById("category")
 let inputStockProduct = document.getElementById("stock")
 let containerProduct = document.getElementById('card')
 let modalContainer = document.getElementById('itemModal')
 let getProductbyId = document.getElementById("itemId")
 let getCategory = document.getElementById("category")
-
-
 
 function loadProducts(items) {
 
@@ -99,118 +96,135 @@ function loadProducts(items) {
 						
 					</div>`;
 			
-			containerProduct.appendChild(div);
+				containerProduct.appendChild(div);
 
+				//Modal - Popup Window for show form to modify items
 
-			//Modal - Popup Window for show form to modify items
+				let modifyItem = document.getElementById(`myBtn${_id}`)
+				modifyItem.addEventListener(('click'), ()=>{
 
-			let modifyItem = document.getElementById(`myBtn${_id}`)
-			modifyItem.addEventListener(('click'), ()=>{
-
-				modalContainer.innerHTML="";
-				let divModal = document.createElement('div');
-				divModal.classList.add('modal1');
-				divModal.setAttribute("id","modal1");
-				divModal.innerHTML=`
+					modalContainer.innerHTML="";
+					let divModal = document.createElement('div');
+					divModal.classList.add('modal1');
+					divModal.setAttribute("id","modal1");
+					divModal.innerHTML=`
 				
-				<div class="alineadorContenido">
-				
-					<div class="dataBase">
+					<div class="alineadorContenido">
+					
+						<div class="dataBase">
 
-						<div class="tittleFormEdit">Formulario para editar productos</div>
-						<div class="dataModal"><p>ID: ${_id}</p><p><input type="text" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>
-						<div class="dataModal"><p>Nombre: ${name}</p><p><input type="text" class="input" placeholder="Nuevo Nombre" name="newName" id="newName"></p></div>
-						<div class="dataModal"><p>Category: ${category}</p><p><input type="text" class="input" placeholder="Nueva Categoria" name="newCategory" id="newCategory"></p></div>
-						<div class="dataModal"><p>Precio: ${price}</p><p><input type="number" class="input" placeholder="Nuevo Precio" name="newPrice" id="newPrice"></p></div>
-						<div class="dataModal"><p>Disponibles: ${stock}</p><p><input type="number" class="input" placeholder="Nuevo Valor" name="newStock" id="newStock"></p></div>
-						<div class="dataModal"><p>Descripcion: ${description}</p><p><input type="text" class="input" placeholder="Nuevo Valor" name="newDescription" id="newDescription"></p></div>
-						
-					</div>
-					<div class="aliningButtons">
-						<button class="buttonProducts" id="submitPut">Guardar modificación</button>
-					</div>
-
-					<div class="dataBase">
-						<form id="form" class="formCards" method="post" action="/products/imageUpdate" enctype="multipart/form-data" >
-						<div class="dataModal"><p><input  type="hidden" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>	
-						<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="file" class="input" name="imgProductUpdate" required></p></div>
+							<div class="tittleFormEdit">Formulario para editar productos</div>
+							<div class="dataModal"><p>ID: ${_id}</p><p><input type="text" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>
+							<div class="dataModal"><p>Nombre: ${name}</p><p><input type="text" class="input" placeholder="Nuevo Nombre" name="newName" id="newName"></p></div>
+							<div class="dataModal"><p>Category: ${category}</p><p><input type="text" class="input" placeholder="Nueva Categoria" name="newCategory" id="newCategory"></p></div>
+							<div class="dataModal"><p>Precio: ${price}</p><p><input type="number" class="input" placeholder="Nuevo Precio" name="newPrice" id="newPrice"></p></div>
+							<div class="dataModal"><p>Disponibles: ${stock}</p><p><input type="number" class="input" placeholder="Nuevo Valor" name="newStock" id="newStock"></p></div>
+							<div class="dataModal"><p>Descripcion: ${description}</p><p><input type="text" class="input" placeholder="Nuevo Valor" name="newDescription" id="newDescription"></p></div>
 							
-							<div class="aliningButtons">
-								<button class="buttonProducts" id="submitPhoto">Guardar foto</button>
-							</div>
-						</form>
-					</div>
-					
-					
-				</div>`;
+						</div>
+						<div class="aliningButtons">
+							<button class="buttonProducts" id="submitPut">Guardar modificación</button>
+						</div>
 
-				modalContainer.appendChild(divModal);
+						<div class="dataBase">
+							<form id="form" class="formCards" method="post" action="/products/imageUpdate" enctype="multipart/form-data" >
+							<div class="dataModal"><p><input  type="hidden" class="input" value=${_id} name="idProduct" id="idProduct" readonly></p></div>	
+							<div class="dataModal"><p>Foto: ${thumbnail}</p><p><input type="file" class="input" name="imgProductUpdate" required></p></div>
+								
+								<div class="aliningButtons">
+									<button class="buttonProducts" id="submitPhoto">Guardar foto</button>
+								</div>
+							</form>
+						</div>
+						
+						
+					</div>`;
 
-				//let inputNewUrl = document.getElementById('newUrl')
-				let inputNewName = document.getElementById('newName')
-				let inputNewCategory = document.getElementById('newCategory')
-				let inputNewPrice = document.getElementById('newPrice')
-				let inputNewStock = document.getElementById('newStock')
-				let inputNewDescription = document.getElementById('newDescription')
-				let formUpdateProduct = document.getElementById('submitPut')
+					modalContainer.appendChild(divModal);
+
+					let inputNewName = document.getElementById('newName')
+					let inputNewCategory = document.getElementById('newCategory')
+					let inputNewPrice = document.getElementById('newPrice')
+					let inputNewStock = document.getElementById('newStock')
+					let inputNewDescription = document.getElementById('newDescription')
+					let formUpdateProduct = document.getElementById('submitPut')
 				
-				formUpdateProduct.addEventListener("click", () => {
+					formUpdateProduct.addEventListener("click", () => {
 
-					productReceived = {
-						name: inputNewName.value,
-						description: inputNewDescription.value,
-						category: inputNewCategory.value,
-						price: inputNewPrice.value,
-						stock: inputNewStock.value
-					};
+						productReceived = {
+							name: inputNewName.value,
+							description: inputNewDescription.value,
+							category: inputNewCategory.value,
+							price: inputNewPrice.value,
+							stock: inputNewStock.value
+						};
 		
-					// Fetch Method PUT modify any item
+						// Fetch Method PUT modify any item
 
-					let dataBody = JSON.stringify(productReceived)
+						let dataBody = JSON.stringify(productReceived)
+						fetch(`/products/${_id}`, {
+							method: "PUT",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: dataBody
+						}).then(response => {return response.text()})
+						.then(data => {
+							const json = JSON.parse(data);
+							alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+						})
+						setTimeout(() => {
+			
+							location.reload()
+						}, 1000)
+					})
+				
+				}) 
+
+				// Fetch Method Delete to delete any item
+
+				let deleteProduct= document.getElementById(`deleteItem${_id}`)
+				deleteProduct.addEventListener("click", () =>{
+
+					let itemToDelete = JSON.stringify(product)
 					fetch(`/products/${_id}`, {
-						method: "PUT",
+						method: "DELETE",
 						headers: {
 							"Content-Type": "application/json"
 						},
-						body: dataBody
+						body: itemToDelete
+
 					}).then(response => {return response.text()})
-					  .then(data => {
-						const json = JSON.parse(data);
-						alert(`Error: ${json.error}, Descripcion: ${json.description} `);
+					.then(data => {
+					const json = JSON.parse(data);
+					alert(`Error: ${json.error}, Descripcion: ${json.description} `);
 					})
-					setTimeout(() => {
-		
-						location.reload()
-					}, 1000)
+					
+					location.reload()
 				})
-				
-			}) 
 
-			// Fetch Method Delete to delete any item
+				//modal
+				let modal = document.getElementById("myModal");
+				let btn = document.getElementById(`myBtn${_id}`);
+				let span = document.getElementsByClassName("close")[0]; 
+				btn.onclick = function () {
+					modal.style.display = "block";
+				}
+				span.onclick = function () {
+					modal.style.display = "none";
+				}
+				window.onclick = function (event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
 
-			let deleteProduct= document.getElementById(`deleteItem${_id}`)
-			deleteProduct.addEventListener("click", () =>{
 
-				let itemToDelete = JSON.stringify(product)
-				fetch(`/products/${_id}`, {
-					method: "DELETE",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: itemToDelete
-
-				}).then(response => {return response.text()})
-				.then(data => {
-				const json = JSON.parse(data);
-				alert(`Error: ${json.error}, Descripcion: ${json.description} `);
-				})
-				
-				location.reload()
-			})
+			}//End - else
 
 			// Fetch Method POST to add  items to cart
 
-			/* let addCart = document.getElementById(`addCart${_id}`)
+			let addCart = document.getElementById(`addCart${_id}`)
 			addCart.addEventListener("click", () =>{
 				
 				let dataBody = JSON.stringify(product)
@@ -221,55 +235,16 @@ function loadProducts(items) {
 					},
 					body: dataBody
 				})
-
-				//location.reload()
-			}) */
-
-
-			//modal
-			let modal = document.getElementById("myModal");
-			let btn = document.getElementById(`myBtn${_id}`);
-			let span = document.getElementsByClassName("close")[0]; 
-			btn.onclick = function () {
-				modal.style.display = "block";
-			}
-			span.onclick = function () {
-				modal.style.display = "none";
-			}
-			window.onclick = function (event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-				}
-			}
-
-
-		}//else
-
-		// Fetch Method POST to add  items to cart
-
-		let addCart = document.getElementById(`addCart${_id}`)
-		addCart.addEventListener("click", () =>{
-			
-			let dataBody = JSON.stringify(product)
-			fetch(`/carrito/${idCartNow}/productos`,{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: dataBody
 			})
-
-			//location.reload()
-		})
 		
 			
 		})//foreach
 	}else{
 	containerProduct.innerHTML=`<div class="error">Producto no Existe<div>`}
-
 }
 
 // Fecth Get Method, for valide Admin user
+
 fetch('/user').then(response => {
 	
 	return response.text()
@@ -290,7 +265,6 @@ fetch('/products').then(response => {
 }).then(data => {
 	
 	const json = JSON.parse(data);
-	console.log(json)
 	loadMenuCategory(json)
 	loadProducts(json)
 
@@ -308,7 +282,6 @@ getProductbyId.addEventListener("keyup", ()=>{
 		return response.text()
 	}).then(data => {
 
-		
 		const json = JSON.parse(data)
 		loadProducts(json)
 
@@ -322,22 +295,15 @@ getProductbyId.addEventListener("keyup", ()=>{
 
 let loadMenuCategory = (products) => {
 
-	//divCateg.innerHTML = "";
 	
 	let hash = {};
 	products = products.filter(product => hash[product.category] ? false : hash[product.category] = true);
-	
-	console.log(hash)
-	console.log(products)
-	
 	let divCateg = document.getElementById("category")
-	
 	products.forEach( categoriesMenu => {
-	divCateg.innerHTML += `
-	
-	<option value="${categoriesMenu.category}">${categoriesMenu.category}</option>			
-	`
-})
+		divCateg.innerHTML += `
+			<option value="${categoriesMenu.category}">${categoriesMenu.category}</option>			
+		`
+	})
 }
 
 getCategory.addEventListener("change", ()=>{
@@ -396,26 +362,23 @@ fetch('/carrito').then(response => {
 		}else{
 
 			// This POST method create a new car when first car already exist and it is finished
-			//idCartNow=JSON.parse(json)+1
+	
 			cart = new Cart((new Date(Date.now()).toString()),[])
 			let dataBody = JSON.stringify(cart)
 		
-		fetch("/carrito", {
+			fetch("/carrito", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
 				},
-				body: dataBody}).then(response => {
+				body: dataBody
+			}).then(response => {
 					return response.text()
-				})
-				.then(data => {
-					const json = JSON.parse(data);
-					idCartNow=json
-		
-					console.log("Carrito creado, ID: ", idCartNow)
-				})
-
-			console.log(idCartNow)
+			}).then(data => {
+				const json = JSON.parse(data);
+				idCartNow=json
+				console.log("Carrito creado, ID: ", idCartNow)
+			})
 		}	
 	}
 

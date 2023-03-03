@@ -4,12 +4,9 @@ import ordersDaoMethods from '../Persistence/DAO/orders/ordersDaoMongoDb.js'
 import config from '../../config.js'
 import { sendEmailOrder } from '../../utils/email.js'
 
-
-
 class OrdersServices {
 
-    
-    saveOrder = async(req,res) =>{
+    saveOrder = async(req,res,next) =>{
 
         let order = req.body
         let totalPay = getTotalPayOrder(order.products)
@@ -20,22 +17,37 @@ class OrdersServices {
             email:req.user.email,
             totalPay: totalPay
             }
-        return await ordersDaoMethods.createOrder(order) 
+        try {
+            return await ordersDaoMethods.createOrder(order)   
+        }catch(err){
+            next(err)
+        }
     }
 
-    saveAddress = async (req) =>{
+    saveAddress = async (req,res,next) =>{
 
+        let result =[]
         let id = req.body.id
         let address =`${req.body.address}, ${req.body.city}, ${req.body.state}. Referencia: ${req.body.reference}`
-        let result = await ordersDaoMethods.updateOrder(id, address)
+        try {
+            result = await ordersDaoMethods.updateOrder(id, address)
+        }catch(err){
+            next(err)
+        }
         sendEmailOrder(config.ADMINMAIL,`RyuTech: Nueva Orden de Compra: ID - ${result._id} de ${result.email} `, [result] , 'Tenemos un compra en RyuTechnology');
         return result
     }
 
     getAllOrders = async(req,res) =>{
 
-        let totalOrders = await ordersDaoMethods.getAll()
-        let result = totalOrders.filter( filters => filters.email === req.user.email) 
+        let result=[]
+        let totalOrders=[]
+        try {
+            totalOrders = await ordersDaoMethods.getAll()
+        } catch (error) {
+            next(err)
+        }
+        result = totalOrders.filter( filters => filters.email === req.user.email) 
         return result
     }
 }

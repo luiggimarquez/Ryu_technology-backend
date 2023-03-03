@@ -1,21 +1,14 @@
 
-     <section class="formCenter">
-            
-            
-            
-        <section id="templateChat" class="templateChat"></section>
+<section class="formCenter">
 
-            <form class="form2" id="formularioChat">
-                <div class="tituloChat">Servicio de Chat de {{email}}</div>
-                <textarea placeholder="Escribe tu mensaje" maxlength="1000" name="msg" id="msg" required></textarea>
-                {{#if admin}}
-           
-                        <select id="mails"></select>
-                        
-                 
-                {{/if}}
-                <button class="buttonChat buttonProducts" type="submit"> Enviar </button>
-            </form>
-
-
-        </section>
+    <section id="templateChat" class="templateChat"></section>
+    <form class="form2" id="formularioChat">
+        <div class="tituloChat">Servicio de Chat de {{email}}</div>
+        <textarea placeholder="Escribe tu mensaje" maxlength="1000" name="msg" id="msg" required></textarea>
+            {{#if admin}}
+                <select id="mails"></select>
+            {{/if}}
+        <button class="buttonChat buttonProducts" type="submit"> Enviar </button>
+    </form>
+    
+</section>

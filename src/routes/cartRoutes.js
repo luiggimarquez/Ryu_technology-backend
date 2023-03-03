@@ -21,7 +21,6 @@ class CartRouter{
         routerCart.delete('/:id/productos/:id_prod', loginValidator, this.controllersMethod.deleteProductCart)
         routerCart.delete('/:id', loginValidator, this.controllersMethod.deleteCart)
         routerCart.put('/:id', loginValidator, this.controllersMethod.finishCart)
-
         return routerCart
     }
 }

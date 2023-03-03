@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 
 const chatsCollection = "chats"
-
 const chatsSchema = new mongoose.Schema({
 
     timestamp: {

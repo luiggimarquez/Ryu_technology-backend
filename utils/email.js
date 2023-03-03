@@ -15,7 +15,7 @@ const transport = nodemailer.createTransport({
 
 const sendEmailOrder = (receiver, subject, result, message) => {
 
-	ejs.renderFile(__dirname +'/public/views/ejs/sendMailOrder.ejs', {receiver,result, message}, (err, data) => {
+	ejs.renderFile(__dirname +'/public/views/templates/sendMailOrder.ejs', {receiver,result, message}, (err, data) => {
 
 		if (err) {
 			logger.info(err);
@@ -44,7 +44,7 @@ const sendEmailOrder = (receiver, subject, result, message) => {
 
 const sendEmailRegister = (receiver, subject, content, message) => {
 
-	ejs.renderFile(__dirname +'/public/views/ejs/sendMail.ejs', {receiver,content, message}, (err, data) => {
+	ejs.renderFile(__dirname +'/public/views/templates/sendMail.ejs', {receiver,content, message}, (err, data) => {
 
 		if (err) {
 			logger.info(err);

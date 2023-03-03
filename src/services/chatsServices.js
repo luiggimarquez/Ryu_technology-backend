@@ -1,13 +1,16 @@
 import chatsDaoMethods from '../Persistence/DAO/chat/chatsDaoMongoDb.js'
 import { logger, loggerError } from '../../utils/log.js'
 
-
 class OrdersServices {
 
-    saveMessage = async (message) => {
+    saveMessage = async (message,next) => {
 
-        await chatsDaoMethods.saveMessage(message)
-        return await chatsDaoMethods.getAll()
+        try{
+            await chatsDaoMethods.saveMessage(message)
+            return await chatsDaoMethods.getAll()
+        }catch(err){
+            next(err)
+        }
     }
 
     getMessages = async(next) =>{
@@ -21,8 +24,7 @@ class OrdersServices {
     getMessagesEmail = async(req,res,next) =>{
 
         let result =[]
-        try {
-
+        try{
             result = await chatsDaoMethods.getAll()
             if(req.user.isAdmin){
                 result =  result.filter(filter => filter.type === "sistema")
@@ -31,8 +33,8 @@ class OrdersServices {
             }
             return result
 
-        } catch (error) {
-            next(error)
+        }catch(err){
+            next(err)
         }
         return result
     }

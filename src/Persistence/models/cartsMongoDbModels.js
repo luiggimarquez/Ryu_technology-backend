@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 
 const cartsCollection = "carts"
-
 const cartsSchema = new mongoose.Schema({
 
     timestampCart: {type: String, require: true, max: 100},

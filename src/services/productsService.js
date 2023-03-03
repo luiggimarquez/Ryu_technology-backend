@@ -5,15 +5,17 @@ import productsDaoMethods from '../Persistence/DAO/products/ProductsDaoMongoDb.j
 
 class productsService{
 
-    getProducts(){
+    getProducts = async (next)=>{
         let result=[]
         return productsDaoMethods.getAll().then((products) =>{
             (products.length !== 0) && (result=products)
             return result
+        }).catch((err)=>{
+            next(err)
         })
     }
 
-    getProduct(req, res){
+    getProduct = async(req, res, next)=>{
 
         const { id }= req.params
 
@@ -22,46 +24,45 @@ class productsService{
             if(id.match(/^[0-9a-fA-F]{24}$/)){
 
                 return productsDaoMethods.getById(id).then((product) =>{
-                    //res.send(product)
                     return product
+                }).catch(err =>{
+                    next(err)
                 })
             }else{
-                //res.send({Error : "Producto no encontrado"})
                 return {Error : "Producto no encontrado"}
             }
         }
     }
 
-    /* getRoot(req){
-
-        logger.info("Request Received: Route: / Method: GET")
-        let name = req.user.userName
-        let email = req.user.email
-
-        const options = { root: './public/index/' , headers:{ 
-            'Access-Control-Expose-Headers': 'name',
-            'name': name, 'email': email }}
-        
-        return options
-    }*/
-
-    async postRoot(req){
+    postRoot = async(req,res,next)=>{
 
         logger.info("Request Received: Route: / Method: POST")
-        let received = req.body;
-        let test ={
+        let product ={
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
             category: req.body.category,
             stock: req.body.stock
         }
-        let received2 = await productsDaoMethods.saveProducts(test)
-        let a = JSON.parse(JSON.stringify(received2.id))
-        await productsDaoMethods.updateImg(a)
+        try {
+            let received = await productsDaoMethods.saveProducts(product)
+            let imagen = JSON.parse(JSON.stringify(received.id))
+            await productsDaoMethods.updateImg(imagen)
+        }catch(err){
+            next(err) 
+        }
     } 
 
-    async updateImageProduct(id){
+    updateItems = async(product,id,next)=>{
+
+        try {
+            await productsDaoMethods.updateProducts(product,id)  
+        }catch(error){
+            next(err) 
+        }
+    }
+
+    updateImageProduct = async (id) => {
         
         let renameImg = ()=>{
 
@@ -75,11 +76,22 @@ class productsService{
         fs.unlink(`./public/images/products/${id}.jpg`, renameImg());
     }
 
-     getProductsCategory = (category) =>{
+    discardItem = async(id,next)=>{
+
+        try {
+            await productsDaoMethods.deleteItem(id)
+        }catch(err){
+            next(err)
+        }
+    }
+
+     getProductsCategory = async (category,next) =>{
 
         if(category !== "0"){
             return productsDaoMethods.getByCategory(category).then((products)=>{
                 return products
+            }).catch((err)=>{
+                next(err)
             })
         }else{
 

@@ -5,6 +5,7 @@ let inputSelect = []
 let allMsg = []
 let messagesFilter =[]
 
+// Fetch GET method for Load initals Messages 
 fetch('/chat',{
 }).then(response => {return response.text()})
 .then(data => {
@@ -21,8 +22,9 @@ socketClient.on('totalChat', messages =>{
         messagesFilter= messages.filter( item => item.email === allMsg.user.email)
     }
     printMessage(messagesFilter)
-    //document.getElementById('span').scrollIntoView({ block: "end" })
 })
+
+// Fetch POST Method for save a new message
 
 formChat.onsubmit = (e) => {
 
@@ -34,11 +36,11 @@ formChat.onsubmit = (e) => {
     (allMsg.user.isAdmin) && (inputSelect = document.getElementById("mails"))
    
     const totalMesagge = {
-      timestamp: date,
-      email: (allMsg.user.isAdmin) ? inputSelect.value : allMsg.user.email,
-      type: allMsg.user.isAdmin ? "sistema" : "usuario",
-      message: message,
-      img: allMsg.user.img
+        timestamp: date,
+        email: (allMsg.user.isAdmin) ? inputSelect.value : allMsg.user.email,
+        type: allMsg.user.isAdmin ? "sistema" : "usuario",
+        message: message,
+        img: allMsg.user.img
     };
     
     let dataBody = JSON.stringify(totalMesagge);
@@ -53,11 +55,11 @@ formChat.onsubmit = (e) => {
     .then(data => {
         const allMsg = JSON.parse(data);
         socketClient.emit("messageChat", allMsg);
-        inputChat.value = "";
-        let main = document.getElementById('templateChat')
-      
+        inputChat.value = "";      
     })
 };
+
+//Function for Print Messages in HTML
 
 printMessage = (messages) => {
     
@@ -67,7 +69,6 @@ printMessage = (messages) => {
     
     messages.forEach(items =>{
       
-        
         (items.type === 'sistema') ? (nameShowed = ((allMsg.user.isAdmin) ? (`Admin, reply To:${items.email}`) : ("Admin") )) : (nameShowed=items.email)
 
         let messagePrinting = document.createElement("div");
@@ -80,21 +81,16 @@ printMessage = (messages) => {
         main.insertAdjacentElement("beforeend", spanPrint)
         document.getElementById('span').scrollIntoView({ block: "end" })
        
-        
     if(allMsg.user.isAdmin){
 
         let hash = {};
 	    let reply = messages.filter(items => hash[items.email] ? false : hash[items.email] = true);
-        
         let containerSelect = document.getElementById("mails")
         containerSelect.innerHTML=[];
 
         reply.forEach(emailsReply =>{
-
             containerSelect.innerHTML+= `<option id="test" value="${emailsReply.email}">${emailsReply.email}</option>`
         })
-    
     }
-
 }
 

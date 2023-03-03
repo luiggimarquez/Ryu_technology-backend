@@ -32,6 +32,4 @@ const uploadImgUsers = multer({storage:storageUsers}).single('avatar')
 const uploadImgProducts = multer({storage:storageProducts}).single('imgProduct')
 const uploadImgProductUpdate = multer({storage: storageUpdateImageProducts}).single('imgProductUpdate')
 
-
-
 export { uploadImgProducts , uploadImgUsers, uploadImgProductUpdate}

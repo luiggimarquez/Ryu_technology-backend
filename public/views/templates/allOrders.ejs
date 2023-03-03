@@ -3,44 +3,41 @@
     <% if(result.length !== 0){ %> 
 
         <h1 class="ordersTitle">Estas son sus ordenes registradas:</h1>
-
         <div class="orderContainer">
 
-                        <% result.forEach(x =>{ %>
+                <% result.forEach(items =>{ %>
 
-                            <h3 class="dateOrders">Fecha de compra: <%= x.timestamp %></h3>
-                <table>
+                    <h3 class="dateOrders">Fecha de compra: <%= items.timestamp %></h3>
+                    <table>
 
-                    <thead>
-                        <tr>
-                            <th colspan="5">Orden de Compra</th>
-                        </tr>
-                    </thead>
+                        <thead>
+                            <tr>
+                                <th colspan="5">Orden de Compra</th>
+                            </tr>
+                        </thead>
             
                         <tbody>
     
-                            
-                                
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">ID compra</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= x._id %> </p></td>
-                                </tr>
-                                <tr> 
-                                    <td colspan="3"><p class="pOrder">Cliente</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= x.userName %> <%=x.userLastName %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">Email</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= x.email %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">Telefono</p></td>
-                                    <td colspan="2"><p class="pOrder"><%= x.phone %></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><p class="pOrder">direccion de Entrega</p></td>
-                                    <td colspan="2"><p class="pOrder"> <%= x.address %></p></td>
-                                </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">ID compra</p></td>
+                                <td colspan="2"><p class="pOrder"><%= items._id %> </p></td>
+                            </tr>
+                            <tr> 
+                                <td colspan="3"><p class="pOrder">Cliente</p></td>
+                                <td colspan="2"><p class="pOrder"><%= items.userName %> <%=items.userLastName %></p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">Email</p></td>
+                                <td colspan="2"><p class="pOrder"><%= items.email %></p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">Telefono</p></td>
+                                <td colspan="2"><p class="pOrder"><%= items.phone %></p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p class="pOrder">direccion de Entrega</p></td>
+                                <td colspan="2"><p class="pOrder"> <%= items.address %></p></td>
+                            </tr>
                                 
                         </tbody>
                     </table>
@@ -54,34 +51,29 @@
                                     <th colspan="1"><p class="pOrder">  subtotal  </p></th>
                                 </tr>
 
-                                <% x.products.forEach(y =>{ %>
-                                    
-                                    
+                                <% items.products.forEach(item =>{ %>
                                     <tr>
-                                        <td><p class="pOrder"> <%= y.name %> </p></td>
-                                        <td><p class="pOrder"> <%= y.description %> </p></td>
-                                        <td><p class="pOrder"> <%= y.price %> </p></td>
-                                        <td><p class="pOrder"> <%= y.quantity %> </p></td>
-                                        <td><p class="pOrder"> <%= y.quantity * y.price%> $USD </p></td>
+                                        <td><p class="pOrder"> <%= item.name %> </p></td>
+                                        <td><p class="pOrder"> <%= item.description %> </p></td>
+                                        <td><p class="pOrder"> <%= item.price %> </p></td>
+                                        <td><p class="pOrder"> <%= item.quantity %> </p></td>
+                                        <td><p class="pOrder"> <%= item.quantity * item.price%> $USD </p></td>
                                     </tr>
                                     
-
                                 <% }) %>
                                 <tr>
-                                    <td colspan="5"><p style="text-align: end;" class="pOrder"> SubTotal a Pagar: <%= x.totalPay / 1.21 %> $USD</p></td>
+                                    <td colspan="5"><p style="text-align: end;" class="pOrder"> SubTotal a Pagar: <%= items.totalPay / 1.21 %> $USD</p></td>
                                 </tr>
                                 <tr>
                                     <td colspan="5"><p  style="text-align: end;" class="pOrder"></p></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5"><p  style="text-align: end;" class="pOrder">Total a Pagar: <%= x.totalPay%> $USD</p></td>
+                                    <td colspan="5"><p  style="text-align: end;" class="pOrder">Total a Pagar: <%= items.totalPay%> $USD</p></td>
                                 </tr>
-
-                                
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
                         
-                        <% }) %>
+                <% }) %>
         </div>
         
     <% }else{ %>
@@ -90,4 +82,4 @@
 
     <% } %>
 
-    </div>
+</div>

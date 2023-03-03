@@ -1,4 +1,3 @@
-import productsDaoMethods from '../Persistence/DAO/products/ProductsDaoMongoDb.js'
 import services from '../services/productsService.js'
 
 class ProductControllers{
@@ -8,15 +7,25 @@ class ProductControllers{
         this.servicesMethod = services
     }
 
-    getProducts = async(req, res) => {
+    getProducts = async(req, res,next) => {
 
-        let result = await this.servicesMethod.getProducts(req,res)
+        let result=[]
+        try{
+            result = await this.servicesMethod.getProducts(next)
+        }catch(err){
+            next(err)
+        }
         res.send(result)
     }
 
-    getProductById = async (req, res) =>{
+    getProductById = async (req, res,next) =>{
 
-       let result = await this.servicesMethod.getProduct(req,res)
+        let result=[]
+        try {
+            result = await this.servicesMethod.getProduct(req,res,next)
+        } catch (err) {
+           next(err) 
+        }
        res.send(result)
     }
 
@@ -25,9 +34,12 @@ class ProductControllers{
         req.isAuthenticated() ? res.redirect("/productos") : res.redirect("/login")
     }
 
-    postRoot = (req, res) => {
-
-        this.servicesMethod.postRoot(req,res)
+    postRoot = (req, res, next) => {
+        try {
+            this.servicesMethod.postRoot(req,res)  
+        }catch(err){
+            next(err)
+        }
         res.redirect('/')
     }
     
@@ -40,32 +52,57 @@ class ProductControllers{
         res.render("products.ejs", {name, email, admin, img})
     }
 
-    modifyProduct = (req,res) => {
+    modifyProduct = async (req,res, next) => {
 
         const { id } = req.params;
         const product = req.body;
-        productsDaoMethods.updateProducts(product,id)
+        try {
+            await this.servicesMethod.updateItems(product,id,next)
+        } catch (err) {
+            next(err)
+        }
+        
     }
 
-    updateImage = (req,res) =>{
+    updateImage = async (req,res,next) =>{
 
         const id = req.body.idProduct
-        this.servicesMethod.updateImageProduct(id)
+        try {
+            this.servicesMethod.updateImageProduct(id)
+        }catch(err){
+            next(err)
+        }
         res.redirect("/productos")
     }
 
-    deleteProduct = (req,res) => {
+    deleteProduct = async(req,res,next) => {
 
         const { id } = req.params;
-        productsDaoMethods.deleteItem(id)
+        try{
+            await this.servicesMethod.discardItem(id,next)
+        }catch(err){
+            next(err)
+        }
     }
 
-    getProductsbyCategory = async (req,res) =>{
+    getProductsbyCategory = async (req,res,next) =>{
 
+        let products = []
         const { category } = req.params
-        let products = await this.servicesMethod.getProductsCategory(category)
-        if(products !== ""){res.send(products)}else{this.getProducts(req,res)}
-        //res.send(products)
+        try {
+            products = await this.servicesMethod.getProductsCategory(category)  
+        } catch (err) {
+           next(err) 
+        }
+        if(products !== ""){
+            res.send(products)
+        }else{
+            try {
+                await this.getProducts(req,res,next)
+            } catch (err) {
+                next(err)
+            }
+        }
     }
 }
 

@@ -17,8 +17,6 @@ class OrdersRouter{
         routerOrders.get('/preOrden',loginValidator,this.controllersMethod.getPreOrder)
         routerOrders.post('/',loginValidator, this.controllersMethod.createOrderCart)
         routerOrders.post('/pre-orden',this.controllersMethod.saveAddressOrder)
-       
-
         return routerOrders
     }
 }
