@@ -13,9 +13,9 @@ class OrdersRouter{
 
     init(){
 
-        routerOrders.get('/',loginValidator, this.controllersMethod.getOrders)
-        routerOrders.get('/preOrden',loginValidator,this.controllersMethod.getPreOrder)
-        routerOrders.post('/',loginValidator, this.controllersMethod.createOrderCart)
+        routerOrders.get('/', this.controllersMethod.getOrders)
+        routerOrders.get('/preOrden',this.controllersMethod.getPreOrder)
+        routerOrders.post('/', this.controllersMethod.createOrderCart)
         routerOrders.post('/pre-orden',this.controllersMethod.saveAddressOrder)
         return routerOrders
     }

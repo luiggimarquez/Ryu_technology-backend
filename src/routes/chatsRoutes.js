@@ -13,10 +13,10 @@ class ChatsRouter{
 
     init(){
 
-        routerChat.get('/SalaChat',loginValidator, this.controllersMethod.getChatRoom)
-        routerChat.get('/',loginValidator, this.controllersMethod.getChats)
-        routerChat.get('/:email', loginValidator, this.controllersMethod.getChatsbyEmail)
-        routerChat.post('/',loginValidator, this.controllersMethod.saveChat)
+        routerChat.get('/SalaChat', this.controllersMethod.getChatRoom)
+        routerChat.get('/', this.controllersMethod.getChats)
+        routerChat.get('/:email', this.controllersMethod.getChatsbyEmail)
+        routerChat.post('/', this.controllersMethod.saveChat)
         return routerChat
     }
 }

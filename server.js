@@ -49,9 +49,9 @@ app.use(passport.session())
 app.use(loginRouter.init())
 app.use(infoRouter.init())
 app.use('/', loginValidator, passport.authenticate('jwt', {session: false}), productsRouter.init())
-app.use('/carrito', passport.authenticate('jwt', {session: false}), cartRouter.init())
-app.use('/orden', passport.authenticate('jwt', {session: false}), ordersRouter.init())
-app.use('/chat', passport.authenticate('jwt', {session: false}), chatsRouter.init())
+app.use('/carrito',loginValidator, passport.authenticate('jwt', {session: false}), cartRouter.init())
+app.use('/orden', loginValidator,passport.authenticate('jwt', {session: false}), ordersRouter.init())
+app.use('/chat', loginValidator, passport.authenticate('jwt', {session: false}), chatsRouter.init())
 
 app.all('*', (req, res) =>{
     let response = {

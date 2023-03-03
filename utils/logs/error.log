@@ -192,3 +192,10 @@ items.forEach is not a function
   path: 'D:\\Users\\luiggi_marquez\\Desktop\\Coder\\Desarrollo Backend\\Programacion Backend\\Desafios\\Proyecto_final/public/views/ejs/sendMailOrder.ejs'
 }
 [2023-03-02T21:42:58.189] [ERROR] archivoError - Error en servidor Error: listen EACCES: permission denied XXX
+[2023-03-03T14:09:56.071] [ERROR] archivoError - Error: querySrv ECONNREFUSED _mongodb._tcp.backendcordercourse.el27giy.mongodb.net
+    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:251:17) {
+  errno: undefined,
+  code: 'ECONNREFUSED',
+  syscall: 'querySrv',
+  hostname: '_mongodb._tcp.backendcordercourse.el27giy.mongodb.net'
+}

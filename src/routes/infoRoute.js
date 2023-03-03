@@ -1,6 +1,6 @@
 import { Router } from "express";
-
 import controllers from "../controllers/infoController.js";
+import { loginValidator } from "../middleware/loginValidate.js";
 
 const routerInfo = Router()
 
@@ -14,7 +14,7 @@ class InfoRouter{
 
     init(){
 
-        routerInfo.get("/info", this.controllersMethod.getInfo)
+        routerInfo.get("/info", loginValidator, this.controllersMethod.getInfo)
         return routerInfo
     }
 }

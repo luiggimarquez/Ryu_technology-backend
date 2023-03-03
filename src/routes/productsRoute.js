@@ -16,7 +16,7 @@ class RouterProducts{
 
     init(){
 
-        router.get('/', this.controllersMethod.getRoot)
+        router.get('/',loginValidator, this.controllersMethod.getRoot)
         router.get('/products', loginValidator, this.controllersMethod.getProducts)
         router.get('/productos',loginValidator, this.controllersMethod.getPageProducts)
         router.get('/products/:id', loginValidator, this.controllersMethod.getProductById)

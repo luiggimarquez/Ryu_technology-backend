@@ -13,14 +13,14 @@ class CartRouter{
 
     init(){
 
-        routerCart.get('/',loginValidator, this.controllersMethod.getCarts)
-        routerCart.get('/cartPreview',loginValidator, this.controllersMethod.getCartPreview)
-        routerCart.get('/:id/productos', loginValidator, this.controllersMethod.getProductsCart)
-        routerCart.post('/', loginValidator, this.controllersMethod.createCart)
-        routerCart.post('/:id/productos', loginValidator, this.controllersMethod.AddProductToCart)
-        routerCart.delete('/:id/productos/:id_prod', loginValidator, this.controllersMethod.deleteProductCart)
-        routerCart.delete('/:id', loginValidator, this.controllersMethod.deleteCart)
-        routerCart.put('/:id', loginValidator, this.controllersMethod.finishCart)
+        routerCart.get('/', this.controllersMethod.getCarts)
+        routerCart.get('/cartPreview', this.controllersMethod.getCartPreview)
+        routerCart.get('/:id/productos', this.controllersMethod.getProductsCart)
+        routerCart.post('/', this.controllersMethod.createCart)
+        routerCart.post('/:id/productos', this.controllersMethod.AddProductToCart)
+        routerCart.delete('/:id/productos/:id_prod', this.controllersMethod.deleteProductCart)
+        routerCart.delete('/:id',this.controllersMethod.deleteCart)
+        routerCart.put('/:id', this.controllersMethod.finishCart)
         return routerCart
     }
 }
