@@ -64,7 +64,8 @@ app.all('*', (req, res) =>{
 function handleErrors(err, req, res, next) {
 
     let error=[err.view]
-    console.log(err)
+    logger.error(err)
+    loggerError.error(err)
     res.status(500).render('errors.ejs',{err,error})
 }
 

@@ -89,7 +89,7 @@ printMessage = (messages) => {
         containerSelect.innerHTML=[];
 
         reply.forEach(emailsReply =>{
-            containerSelect.innerHTML+= `<option id="test" value="${emailsReply.email}">${emailsReply.email}</option>`
+            containerSelect.innerHTML+= `<option value="${emailsReply.email}">${emailsReply.email}</option>`
         })
     }
 }

@@ -34,7 +34,7 @@ const ordersSchema = new mongoose.Schema({
         type: String 
     },
     totalPay:{
-        type:Number,
+        type: Number,
         require: true
     },
     products: {

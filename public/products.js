@@ -309,7 +309,6 @@ let loadMenuCategory = (products) => {
 getCategory.addEventListener("change", ()=>{
 
 	let getInputCategory = document.getElementById("category")
-	console.log(getInputCategory.value)
 	let inputItemCategory = getInputCategory.value;
 	fetch(`/productos/category/${inputItemCategory}`).then(response => {
 		return response.text()

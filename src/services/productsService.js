@@ -66,10 +66,10 @@ class productsService{
         
         let renameImg = ()=>{
 
-            console.log('File deleted!');
+            logger.info('File deleted!');
                 fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
                     if (err) throw err;
-                    console.log('File Renamed.');
+                    logger.info('File Renamed.');
             });
         } 
 

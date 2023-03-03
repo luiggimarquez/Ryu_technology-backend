@@ -1,4 +1,3 @@
-import { logger, loggerError } from '../../utils/log.js'
 import getTotalPayOrder from '../../utils/totalPay.js'
 import ordersDaoMethods from '../Persistence/DAO/orders/ordersDaoMongoDb.js'
 import config from '../../config.js'

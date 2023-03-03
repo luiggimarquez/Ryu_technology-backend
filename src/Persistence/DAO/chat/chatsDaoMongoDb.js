@@ -1,5 +1,6 @@
 import MongoDbContainer from "../../Repository/mongoDbContainer.js";
 import { chatsModel } from "../../models/chatsMongoModels.js" 
+import { logger, loggerError } from "../../../../utils/log.js";
 
 class chatsDaoMongoDb extends MongoDbContainer{
 

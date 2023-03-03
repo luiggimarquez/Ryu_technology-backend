@@ -6,6 +6,7 @@ import { Strategy as JWTStrategy} from 'passport-jwt'
 import jsonwebtoken from 'jsonwebtoken'
 import { sendEmailRegister } from '../../utils/email.js';
 import config from '../../config.js';
+import { logger, loggerError } from '../../utils/log.js';
 
 let img=[]
 
@@ -95,7 +96,8 @@ passport.use(new JWTStrategy({
                 return done(null, user);
             }
             ).catch(err => {
-                console.log(err)
+                logger.error(err)
+                loggerError.error(err)
                 return done(err);
         });
     }

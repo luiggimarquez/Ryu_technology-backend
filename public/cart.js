@@ -98,8 +98,6 @@ loadProducts = (itemsCart) =>{
 	let eventFinishCart = document.getElementById("finishCart")
 	eventFinishCart.addEventListener('click', () =>{ 
 
-        console.log(idCartNow)
-
 		fetch(`/carrito/${idCartNow}`, {
 			method: "PUT",
 			headers: {

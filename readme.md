@@ -433,39 +433,98 @@ AL agregar productos desde /productos, se habilitan los endpoints borrar articul
 
 Todos los fetch de estos endpoints son hecho en el archivo cart.js ubicado en `./public/carts.js`. Basicamente consta de dos funciones: loadProducts() y loadCartEmpty(). Cuando se carga la página se ejecuta el fetch GET de /carrito/:id/producto y si tiene productos se cargan o si regresa vacío imprime el aviso de carrito vacío. Al vaciarse el carrito se redirige hacia /productos, creandose un nuevo carrito.
 
+Al finalizar el carrito, se hace en el evento del boton un fetch hacia el endpoint POST (/orden) para crear la orden, y se redirige hacia /orden/pre-order
+
 
 ## Pre-Order
 #
 
+En esta vista simplemente vamos a solicitar al usuario que nos provea de una dirección para completar la orden de compra
+
+![dir](./public/images/direccion.jpg)
+
+Este endpoint es un post /orden/pre-order agrega a la orden la dirección y hace un render('finishedOrder.ejs'), que nos carga finalmente la vista de la orden finalizada. Aqui es necesario acotar que ID para pasar esta compra, se almacena al finalizar el carrito en el localStorage, se lee en preOrder.js, que se usa aqui la /pre-order y se borra en el siguiente paso, en el finishedOrder.ejs
+
+## Finished Order
+#
+
+Mediante el post hecho en la etapa anterior para guardar la dirección, en la respuesta del render del finishedOrder.ejs se envian los datos necesario para mostrar nuestra orden de compra
+
+![orden](./public/images/orderfinal.jpg)
+
+## User Profile
+#
+
+En esta página, tenemos la informacion de registro del usuario. Podemos acceder desde los navbar, está junto al nombre de usuario
+
+![user](./public/images/user.jpg)
+
+En este podemos acceder al historial de ordenes de compra del usuario, con un metodo GET que se activa con el boton *"ordenes"* y hace fetch al endpoint /orden que nos devuelve todos las compras realizadas.
+
+Con el boton *"mensajes"* se realiza el fetch GET al endpoint /chat/:email para traer del actual usuario todos los mensajes del chat hechos por éste.
+
+![ordenesmensajes](./public/images/userprofile.jpg)
+
+El boton sala chat nos redirige a la ruta chat/salaChat y el boton Info Backend nos lleva al archivo handlebars que contiene la informacion del sistema solicitada.
 
 
+## Chat
+#
+EL sistema de chat del sitio esta basado en websockets, dependencia socket.io v4.5.4. El archivo socket.js, ubicado en ./utils/socket.js, inicia la comunicación llamada en el archivo server.js. Como fue solicitado en la consigna, en el archivo handlebars main.handlebars, se ejecuta el llamado a dos endpoints de /chat, GET para llamar (/chat) y actualizar los mensajes del chat, POST (/chat) para guardarlos.
+
+En esta parte, está programado para ser utilizado entre un cliente y el administrador; en cada sesion de usuario está persona solo verá sus mensajes y las respuestas del administrador. Por otra parte, el administrador si podrá ver todos los mensajes, y debe seleccionar un mail para responder, y está respuesta solo saldrá en la sesión de ese usuario
 
 
+Esta lógica monitorea el usuario logueado, tomando en cuenta el estado de la variable **isAdmin**; el mensaje cuando se guarda, tambien monitorea si es usuario o administrador y lo coloca en la variable type: usuario para "*preguntas*" y "*sistemas*" para respuestas del admin. Asi con estos parametros podemos luego clasificar que mensajes mostrar. 
+
+Para el panel de respuestas del administrador, tenemos un tag `<select>` llenando dinamicamente con `<option>` de acuerdo a los diferentes mails que se encuentren en la colección messages de la base de datos haciendo un filter en estos para sacar valores únicos y luego imprimiendo con un forEach y un innerHTML para escribirlo en le HTML. El select aparece por un `if` que valida si el usuario es administrador
+
+![chat](./public/images/chat_admin.jpg)
+
+Para el chat del usuario sale asi:
+
+![chatuser](./public/images/chat_user.jpg)
 
 
+## Info
+#
+
+Esta página, hecha con template handlebars, toma del archivo config.js los datos y los muestra. Recordando que este boton carga en la página del perfil del usuario
 
 
+![ordenesmensajes](./public/images/info.jpg)
 
 
+## Persistance
+#
+
+De acuerdo a nuestra arquitectura MVC, tenemos una etapa de persistencia, aqui tenemos dos carpetas:
+
+* persistance: poseen funciones comunes para acceder a la base de datos, en este caso mongoDB; tenemos el archivo mongoDbContainer.js que tiene las funciones: **getAll()**, para obtener todos los elemente de un recurso de nuestra DB, **getByID()**, para consultar items filtrando por su ID, **deleteItem()**, donde borrarmos un item por su ID.
+
+* DAO: se tiene uno por cada colección: cart: funciones createCart, addItemCart, deleteItemCart, finishCart; chat: saveMessages; orders:  createOrder, updateOrder; products: saveProducts, updateProducts, updateImg, getByCategory. Estas funciones son especificas para cada modelo de colección debido su estructura de los datos particular. Los nombres de cada una intentan explicar por si solos que hacen
 
 
+## Manejo de errores
+#
 
+![errores](./public/images/manejo_errores.jpg)
 
+Se manejan las rutas erróneas por una ruta * de modo de capturarlas y rendear un ejs con el error. También de usó el manejo de errores de express, declarando una función para capturar errores con los parametros (err, req, res, next), Se agregó el parámetro err que recibe el error generado, este debe ser el primer parámetro, de lo contrario Express.js no reconocerá la función como un middleware para el manejo de errores.
 
+Después se agrega el middleware a la aplicación:
 
+>app.use(handleErrors);
 
+Ambas hacen render en un archivo EJS
 
-
-
-
-
-
-
+#
 ## Autor✒️
+#
 
 
-Este proyecto fue realizado para las clases de React.js de CoderHouse por:
+Este proyecto fue realizado para las clases de porgramación Backend de CoderHouse por:
 
 **Ing. Luiggi Márquez** - [GitHub Profile](https://github.com/luiggimarquez) ✌️
 
-Buenos Aires, Argentina 2022
+Buenos Aires, Argentina 2023

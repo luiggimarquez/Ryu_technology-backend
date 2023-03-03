@@ -1,6 +1,7 @@
 import MongoDbContainer from "../../Repository/mongoDbContainer.js";
 import { productsModel } from "../../models/productsMongoDbModels.js";
 import { promises as fs } from 'fs';
+import { logger, loggerError } from "../../../../utils/log.js";
 
 class ProductsDaoMongoDb extends MongoDbContainer{
 
@@ -61,7 +62,7 @@ class ProductsDaoMongoDb extends MongoDbContainer{
         let modify = await productsModel.findByIdAndUpdate({_id:id},{thumbnail: `/images/products/${id}.jpg`})
         fs.rename('./public/images/products/temporal.jpg', `./public/images/products/${id}.jpg`, function (err) {
             if (err) throw err;
-            console.log('File Renamed.');
+            logger.info('File Renamed.');
         });
 
     }
